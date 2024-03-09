@@ -5,16 +5,16 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.hp.hpl.jena.rdf.model.*;
-        import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.sadiframework.service.annotations.*;
-        import org.sadiframework.service.simple.SimpleSynchronousServiceServlet;
+import org.sadiframework.service.simple.SimpleSynchronousServiceServlet;
 
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Iterator;
 
-@Name("getCatchments")
+@Name("getCatchment")
 @Description("Get all catchments and their properties")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getCatchment.owl#Input")

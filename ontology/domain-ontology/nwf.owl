@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://localhost:8080/ontology/domain-ontology/nwf.owl#"
-     xml:base="http://localhost:8080/ontology/domain-ontology/nwf.owl"
+<rdf:RDF xmlns="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#"
+     xml:base="http://localhost:8080/ontology-data/domain-ontology/nwf.owl"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl">
-        <owl:versionIRI rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl/1.0.0"/>
+    <owl:Ontology rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl">
+        <owl:versionIRI rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl/1.0.0"/>
     </owl:Ontology>
     
 
@@ -23,45 +23,87 @@
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#displayName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#catchmentId -->
 
-    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#displayName"/>
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#catchmentId"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#fencedCatchmentArea -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#cuttingArea -->
 
-    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#fencedCatchmentArea"/>
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#cuttingArea"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#hydrologicalCatchmentArea -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#displayId -->
 
-    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#hydrologicalCatchmentArea"/>
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#displayId"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#id -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#displayName -->
 
-    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#id"/>
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#displayName"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#name -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#fencedArea -->
 
-    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#name"/>
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#fencedArea"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#validFrom -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#fencedCatchmentArea -->
 
-    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#validFrom"/>
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#fencedCatchmentArea"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#validUntil -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#hydrologicalArea -->
 
-    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#validUntil"/>
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#hydrologicalArea"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#hydrologicalCatchmentArea -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#hydrologicalCatchmentArea"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#id -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#id"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#inorganicSpreadingArea -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#inorganicSpreadingArea"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#name -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#name"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#organicSpreadingArea -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#organicSpreadingArea"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#validFrom -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#validFrom"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#validUntil -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#validUntil"/>
     
 
 
@@ -76,9 +118,9 @@
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value -->
 
-    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
     
 
 
@@ -93,809 +135,809 @@
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Animal -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Animal -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Animal"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Animal"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#AnimalCategoryName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#AnimalCategoryName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#AnimalCategoryName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#AnimalCategoryName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#AnimalLocation -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#AnimalLocation -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#AnimalLocation"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#AnimalLocation"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Application -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Application -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Application"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Application"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationBatchNumber -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationBatchNumber -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationBatchNumber">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Application"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationBatchNumber">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Application"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationInfo -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationInfo -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationInfo">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Application"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationInfo">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Application"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationInfoApp -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationInfoApp -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationInfoApp">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Application"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationInfoApp">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Application"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationRate -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationRate -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationRate">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Application"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationRate">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Application"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationTypeName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationTypeName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ApplicationTypeName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ApplicationTypeName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Area -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Area -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Area"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Area"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#BirthDamId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#BirthDamId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#BirthDamId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#BirthDamId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#BirthLitterSize -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#BirthLitterSize -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#BirthLitterSize">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Size"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#BirthLitterSize">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Size"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Breed -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Breed -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Breed"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Breed"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#BreedingAnimal -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#BreedingAnimal -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#BreedingAnimal">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Animal"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#BreedingAnimal">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Animal"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Catchment -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Catchment"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentDisplayName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CatchmentDisplayName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentDisplayName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CatchmentDisplayName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CatchmentId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CatchmentId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CatchmentName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CatchmentName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Comments -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Comments -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Comments"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Comments"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#CuttingArea -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CuttingArea -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#CuttingArea">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Area"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CuttingArea">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Area"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#DataQuality -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DataQuality -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#DataQuality">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Quality"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DataQuality">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Quality"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#DatasetTypeFormat -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DatasetTypeFormat -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#DatasetTypeFormat">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Format"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DatasetTypeFormat">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Format"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#DatasetVersionId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DatasetVersionId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#DatasetVersionId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DatasetVersionId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Date -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Date -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Date"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Date"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#DateOfBirth -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateOfBirth -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#DateOfBirth">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Date"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateOfBirth">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Date"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Description -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Description -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Description"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Description"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayUnit -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayUnit -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayUnit">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Unit"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayUnit">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Unit"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#EndGrazingYear -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EndGrazingYear -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#EndGrazingYear">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Year"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EndGrazingYear">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Year"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#EndTractorHour -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EndTractorHour -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#EndTractorHour">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EndTractorHour">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#EventDate -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EventDate -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#EventDate">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Date"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EventDate">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Date"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Farmlet -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Farmlet -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Farmlet"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Farmlet"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FarmletId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FarmletId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FarmletId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FarmletId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FeedCategory -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FeedCategory -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FeedCategory"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FeedCategory"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FeedMethod -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FeedMethod -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FeedMethod"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FeedMethod"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FeedType -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FeedType -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FeedType">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Type"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FeedType">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Type"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedArea -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FencedArea -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedArea">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Area"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FencedArea">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Area"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedCatchmentArea -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FencedCatchmentArea -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedCatchmentArea">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Area"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FencedCatchmentArea">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Area"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Field -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Field -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Field"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Field"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldApplication -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldApplication -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldApplication"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldApplication"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldApplicationId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldApplicationId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldApplicationId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldApplicationId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldEvent -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldEvent -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldEvent"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldEvent"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldOperation -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldOperation -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldOperation"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldOperation"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldOperationId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldOperationId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldOperationId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldOperationId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldStrip -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldStrip -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldStrip"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldStrip"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Format -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Format -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Format"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Format"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FormatName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FormatName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FormatName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FormatName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Gender -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Gender -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Gender"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Gender"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#GrazingYear -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#GrazingYear -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#GrazingYear">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Year"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#GrazingYear">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Year"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Height -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Height -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Height">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Measurement"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Height">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Measurement"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologialCatchmentArea -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#HydrologialCatchmentArea -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologialCatchmentArea">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Area"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#HydrologialCatchmentArea">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Area"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalArea -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#HydrologicalArea -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalArea">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Area"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#HydrologicalArea">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Area"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Id -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#InorganicSpreadingArea -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#InorganicSpreadingArea -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#InorganicSpreadingArea">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Area"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#InorganicSpreadingArea">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Area"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#LLO -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LLO -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#LLO">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Unit"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LLO">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Unit"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Location -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Location -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Location"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Location"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationType -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationType -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationType">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Type"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationType">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Type"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationTypeId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationTypeId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationTypeId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationTypeId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationTypeName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationTypeName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationTypeName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationTypeName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationX -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationX -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationX">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Location"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationX">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Location"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationY -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationY -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationY">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Location"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationY">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Location"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ManagementTag -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ManagementTag -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ManagementTag">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Tag"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ManagementTag">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Tag"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Manufacturer -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Manufacturer -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Manufacturer"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Manufacturer"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Measurement -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Measurement -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Measurement"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Measurement"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementLocationName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#MeasurementLocationName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementLocationName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#MeasurementLocationName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementType -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#MeasurementType -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementType">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Type"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#MeasurementType">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Type"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeDisplayName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#MeasurementTypeDisplayName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeDisplayName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#MeasurementTypeDisplayName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeFormat -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#MeasurementTypeFormat -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeFormat">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Format"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#MeasurementTypeFormat">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Format"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Name -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#NewFarmlet -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#NewFarmlet -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#NewFarmlet">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Farmlet"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#NewFarmlet">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Farmlet"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#OfficialTag -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OfficialTag -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#OfficialTag">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Tag"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OfficialTag">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Tag"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#OldFarmlet -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OldFarmlet -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#OldFarmlet">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Farmlet"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OldFarmlet">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Farmlet"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#OperationGroup -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OperationGroup -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#OperationGroup"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OperationGroup"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#OperationName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OperationName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#OperationName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OperationName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#OrganicSpreadingArea -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OrganicSpreadingArea -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#OrganicSpreadingArea">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Area"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OrganicSpreadingArea">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Area"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ProductName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ProductName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ProductName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ProductName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Quality -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Quality -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Quality"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Quality"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#RangeEndDateTime -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#RangeEndDateTime -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#RangeEndDateTime">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#RangeEndDateTime">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#RangeStartDateTime -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#RangeStartDateTime -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#RangeStartDateTime">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#RangeStartDateTime">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#RearingDamId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#RearingDamId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#RearingDamId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#RearingDamId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#RearingLitterSize -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#RearingLitterSize -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#RearingLitterSize">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Size"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#RearingLitterSize">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Size"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#SeverityOrder -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#SeverityOrder -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#SeverityOrder"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#SeverityOrder"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#SireId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#SireId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#SireId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#SireId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Size -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Size -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Size"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Size"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#StartTractorHour -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#StartTractorHour -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#StartTractorHour">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#StartTractorHour">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#SystemSetQuality -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#SystemSetQuality -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#SystemSetQuality">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Quality"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#SystemSetQuality">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Quality"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Tag -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Tag -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Tag"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Tag"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#TempFieldName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TempFieldName -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#TempFieldName">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TempFieldName">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#TemporaryFieldId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TemporaryFieldId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#TemporaryFieldId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TemporaryFieldId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#TimeIn -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TimeIn -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#TimeIn">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TimeIn">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#TimeInField -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TimeInField -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#TimeInField">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TimeInField">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#TimeOut -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TimeOut -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#TimeOut">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TimeOut">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#TotalApplication -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TotalApplication -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#TotalApplication">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Application"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TotalApplication">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Application"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#TotalTractorHour -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TotalTractorHour -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#TotalTractorHour">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TotalTractorHour">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#TractorId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TractorId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#TractorId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TractorId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Type -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Type -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Type"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Type"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#TypeId -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TypeId -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#TypeId">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#TypeId">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ULO -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ULO -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ULO">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Unit"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ULO">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Unit"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Unit -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Unit -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Unit"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Unit"/>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidFromDate -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Date"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidFromDate">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Date"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidUntilDate -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidUntilDate -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidUntilDate">
-        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Date"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidUntilDate">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Date"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Year -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Year -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Year"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Year"/>
     
 
 
@@ -910,66 +952,130 @@
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Catchment -->
 
-    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment">
-        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment"/>
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Catchment">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Catchment"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CatchmentId -->
 
-    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName">
-        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName"/>
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CatchmentId">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CatchmentId"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedCatchmentArea -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CuttingArea -->
 
-    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedCatchmentArea">
-        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedCatchmentArea"/>
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CuttingArea">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CuttingArea"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrolocalCatchmentArea -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayId -->
 
-    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrolocalCatchmentArea">
-        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologialCatchmentArea"/>
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayId">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayId"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Id -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayName -->
 
-    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id">
-        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayName">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayName"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Name -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FencedArea -->
 
-    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name">
-        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FencedArea">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FencedArea"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FencedCatchmentArea -->
 
-    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate">
-        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate"/>
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FencedCatchmentArea">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FencedCatchmentArea"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidUntilDate -->
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Field -->
 
-    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidUntilDate">
-        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidUntilDate"/>
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Field">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Field"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#HydrolocalCatchmentArea -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#HydrolocalCatchmentArea">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#HydrologialCatchmentArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#HydrologicalArea -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#HydrologicalArea">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#HydrologicalArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#InorganicSpreadingArea -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#InorganicSpreadingArea">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#InorganicSpreadingArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Name"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OrganicSpreadingArea -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OrganicSpreadingArea">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#OrganicSpreadingArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidFromDate -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidFromDate">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidFromDate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidUntilDate -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidUntilDate">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidUntilDate"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 
