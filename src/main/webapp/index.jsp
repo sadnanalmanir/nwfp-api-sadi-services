@@ -28,6 +28,7 @@
             <h2>SADI Services</h2>
             <ul>
                 <li><a href="./getCatchment">getCatchment</a></li>
+                <li><a href="./getField">getField</a></li>
             </Ul>
         </div> <!-- content -->
         <div id='footer'>

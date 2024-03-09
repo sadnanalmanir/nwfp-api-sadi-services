@@ -8,9 +8,17 @@
         <servlet-name>getCatchment</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetCatchment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getField</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.GetField</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>getCatchment</servlet-name>
         <url-pattern>/getCatchment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getField</servlet-name>
+        <url-pattern>/getField</url-pattern>
     </servlet-mapping>
 </web-app>
 
