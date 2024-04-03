@@ -29,6 +29,7 @@
             <ul>
                 <li><a href="./getCatchment">getCatchment</a></li>
                 <li><a href="./getField">getField</a></li>
+                <li><a href="./getAnimalBasicData">getAnimalBasicData</a></li>
             </Ul>
         </div> <!-- content -->
         <div id='footer'>
