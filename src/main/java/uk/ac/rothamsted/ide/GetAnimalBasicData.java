@@ -1,0 +1,243 @@
+package uk.ac.rothamsted.ide;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.Resource;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.sadiframework.service.annotations.*;
+import org.sadiframework.service.simple.SimpleSynchronousServiceServlet;
+
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.Iterator;
+
+@Name("getAnimalBasicData")
+@Description("Get all catchments and their properties")
+@ContactEmail("sadnanalmanir@gmail.com")
+@InputClass("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Input")
+@OutputClass("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Output")
+public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
+    private static final Logger log = Logger.getLogger(GetAnimalBasicData.class);
+
+    @Override
+    public void processInput(Resource input, Resource output) {
+
+        PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
+
+        log.info("Service invoked: getAnimalBasicData");
+        Model outputModel = output.getModel();
+
+        try {
+
+            URL url = new URL("https://nwfp.rothamsted.ac.uk:8443/getAnimalBasicData");
+
+            InputStreamReader reader = new InputStreamReader(url.openStream());
+            JsonArray jsonArray = new Gson().fromJson(reader, JsonArray.class);
+            reader.close();
+
+            Iterator<JsonElement> elementIterator = jsonArray.iterator();
+            JsonObject element;
+
+            while (elementIterator.hasNext()) {
+
+                element = elementIterator.next().getAsJsonObject();
+
+                String idVal = getNullAsEmptyString(element.get("Id"));
+                String officialTagVal = getNullAsEmptyString(element.get("OfficialTag"));
+                String managementTagVal = getNullAsEmptyString(element.get("ManagementTag"));
+                String breedVal = getNullAsEmptyString(element.get("Breed"));
+                String dateOfBirthVal = getNullAsEmptyString(element.get("DateOfBirth"));
+                String grazingYearVal = getNullAsEmptyString(element.get("GrazingYear"));
+                String endGrazingYearVal = getNullAsEmptyString(element.get("EndGrazingYear"));
+                String genderVal = getNullAsEmptyString(element.get("Gender"));
+                String farmletNameVal = getNullAsEmptyString(element.get("farmletName"));
+                String sireIdVal = getNullAsEmptyString(element.get("SireId"));
+                String birthDamIdVal = getNullAsEmptyString(element.get("BirthDamId"));
+                String rearingDamIdVal = getNullAsEmptyString(element.get("RearingDamId"));
+                String birthLitterSizeVal = getNullAsEmptyString(element.get("BirthLitterSize"));
+                String rearingLitterSizeVal = getNullAsEmptyString(element.get("RearingLitterSize"));
+                String animalIdVal = getNullAsEmptyString(element.get("AnimalId"));
+                String commentVal = getNullAsEmptyString(element.get("Comments"));
+                String rangeStartDateTimeVal = getNullAsEmptyString(element.get("RangeStartDateTime"));
+                String rangeEndDateTimeVal = getNullAsEmptyString(element.get("RangeEndDateTime"));
+                String animalCategoryNameVal = getNullAsEmptyString(element.get("AnimalCategoryName"));
+                String breedingAnimalVal = getNullAsEmptyString(element.get("BreedingAnimal"));
+
+
+                Resource AnimalResource = outputModel.createResource();
+
+                Resource IdResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.Id);
+                IdResource.addLiteral(Vocab.has_value, idVal);
+                AnimalResource.addProperty(Vocab.id, IdResource);
+
+                Resource OfficialTagResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.OfficialTag);
+                IdResource.addLiteral(Vocab.has_value, officialTagVal);
+                AnimalResource.addProperty(Vocab.officialTag, OfficialTagResource);
+
+                Resource ManagementTagResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.ManagementTag);
+                IdResource.addLiteral(Vocab.has_value, managementTagVal);
+                AnimalResource.addProperty(Vocab.managementTag, ManagementTagResource);
+
+                Resource BreedResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.Breed);
+                IdResource.addLiteral(Vocab.has_value, breedVal);
+                AnimalResource.addProperty(Vocab.breed, BreedResource);
+
+                Resource DateOfBirthResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.DateOfBirth);
+                IdResource.addLiteral(Vocab.has_value, dateOfBirthVal);
+                AnimalResource.addProperty(Vocab.dateOfBirth, DateOfBirthResource);
+
+                Resource GrazingYearResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.GrazingYear);
+                IdResource.addLiteral(Vocab.has_value, grazingYearVal);
+                AnimalResource.addProperty(Vocab.grazingYear, GrazingYearResource);
+
+                Resource EndGrazingYearResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.EndGrazingYear);
+                IdResource.addLiteral(Vocab.has_value, endGrazingYearVal);
+                AnimalResource.addProperty(Vocab.endGrazingYear, EndGrazingYearResource);
+
+                Resource GenderResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.Gender);
+                IdResource.addLiteral(Vocab.has_value, genderVal);
+                AnimalResource.addProperty(Vocab.gender, GenderResource);
+
+                Resource FarmletNameResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.FarmletName);
+                IdResource.addLiteral(Vocab.has_value, farmletNameVal);
+                AnimalResource.addProperty(Vocab.farmletName, FarmletNameResource);
+
+                Resource SireIdResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.SireId);
+                IdResource.addLiteral(Vocab.has_value, sireIdVal);
+                AnimalResource.addProperty(Vocab.sireId, SireIdResource);
+
+                Resource BirthDamIdResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.BirthDamId);
+                IdResource.addLiteral(Vocab.has_value, birthDamIdVal);
+                AnimalResource.addProperty(Vocab.birthDamId, BirthDamIdResource);
+
+                Resource RearingDamIdResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.RearingDamId);
+                IdResource.addLiteral(Vocab.has_value, rearingDamIdVal);
+                AnimalResource.addProperty(Vocab.rearingDamId, RearingDamIdResource);
+
+                Resource BirthLitterSizeResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.BirthLitterSize);
+                IdResource.addLiteral(Vocab.has_value, birthLitterSizeVal);
+                AnimalResource.addProperty(Vocab.birthLitterSize, BirthLitterSizeResource);
+
+                Resource RearingLitterSizeResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.RearingLitterSize);
+                IdResource.addLiteral(Vocab.has_value, rearingLitterSizeVal);
+                AnimalResource.addProperty(Vocab.rearingLitterSize, RearingLitterSizeResource);
+
+                Resource AnimalIdResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.AnimalId);
+                IdResource.addLiteral(Vocab.has_value, animalIdVal);
+                AnimalResource.addProperty(Vocab.animalId, AnimalIdResource);
+
+                Resource CommentResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.Comment);
+                IdResource.addLiteral(Vocab.has_value, commentVal);
+                AnimalResource.addProperty(Vocab.comment, CommentResource);
+
+                Resource RangeStartDateTimeResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.RangeStartDateTime);
+                IdResource.addLiteral(Vocab.has_value, rangeStartDateTimeVal);
+                AnimalResource.addProperty(Vocab.rangeStartDateTime, RangeStartDateTimeResource);
+
+                Resource RangeEndDateTimeResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.RangeEndDateTime);
+                IdResource.addLiteral(Vocab.has_value, rangeEndDateTimeVal);
+                AnimalResource.addProperty(Vocab.rangeEndDateTime, RangeEndDateTimeResource);
+
+                Resource AnimalCategoryNameResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.AnimalCategoryName);
+                IdResource.addLiteral(Vocab.has_value, animalCategoryNameVal);
+                AnimalResource.addProperty(Vocab.animalCategoryName, AnimalCategoryNameResource);
+
+                Resource BreedingAnimalResource = outputModel.createResource();
+                IdResource.addProperty(Vocab.type, Vocab.BreedingAnimal);
+                IdResource.addLiteral(Vocab.has_value, breedingAnimalVal);
+                AnimalResource.addProperty(Vocab.breedingAnimal, BreedingAnimalResource);
+
+                AnimalResource.addProperty(Vocab.type, output);
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public static final class Vocab {
+        private static final Model m_model = ModelFactory.createDefaultModel();
+        // Object properties
+        public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
+        public static final Property id = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#id");
+        public static final Property officialTag = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#officialTag");
+        public static final Property managementTag = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#managementTag");
+        public static final Property breed = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#breed");
+        public static final Property dateOfBirth = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#dateOfBirth");
+        public static final Property grazingYear = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#grazingYear");
+        public static final Property endGrazingYear = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#endGrazingYear");
+        public static final Property gender = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#gender");
+        public static final Property farmletName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#farmletName");
+        public static final Property sireId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#sireId");
+        public static final Property birthDamId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#birthDamId");
+        public static final Property rearingDamId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#rearingDamId");
+        public static final Property birthLitterSize = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#birthLitterSize");
+        public static final Property rearingLitterSize = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#rearingLitterSize");
+        public static final Property animalId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#animalId");
+        public static final Property comment = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#comment");
+        public static final Property rangeStartDateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#rangeStartDateTime");
+        public static final Property rangeEndDateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#rangeEndDateTime");
+        public static final Property animalCategoryName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#animalCategoryName");
+        public static final Property breedingAnimal = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#breedingAnimal");
+        // data property
+        public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
+        // Resources
+        public static final Resource Id = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Id");
+        public static final Resource OfficialTag = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#OfficialTag");
+        public static final Resource ManagementTag = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ManagementTag");
+        public static final Resource Breed = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Breed");
+        public static final Resource DateOfBirth = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DateOfBirth");
+        public static final Resource GrazingYear = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#GrazingYear");
+        public static final Resource EndGrazingYear = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#EndGrazingYear");
+        public static final Resource Gender = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Gender");
+        public static final Resource FarmletName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#FarmletName");
+        public static final Resource SireId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#SireId");
+        public static final Resource BirthDamId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#BirthDamId");
+        public static final Resource RearingDamId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#RearingDamId");
+        public static final Resource BirthLitterSize = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#BirthLitterSize");
+        public static final Resource RearingLitterSize = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#RearingLitterSize");
+        public static final Resource AnimalId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#AnimalId");
+        public static final Resource Comment = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Comment");
+        public static final Resource RangeStartDateTime = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#RangeStartDateTime");
+        public static final Resource RangeEndDateTime = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#RangeEndDateTime");
+        public static final Resource AnimalCategoryName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#AnimalCategoryName");
+        public static final Resource BreedingAnimal = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#BreedingAnimal");
+        public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Input");
+        public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Output");
+
+    }
+
+    private static String getNullAsEmptyString(JsonElement jsonElement) {
+        return jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
+    }
+}
+
