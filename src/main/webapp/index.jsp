@@ -30,6 +30,7 @@
                 <li><a href="./getCatchment">getCatchment</a></li>
                 <li><a href="./getCatchmentMeasurementType">getCatchmentMeasurementType</a></li>
                 <li><a href="./getField">getField</a></li>
+                <li><a href="./getFieldEvent">getFieldEvent</a></li>
                 <li><a href="./getAnimalBasicData">getAnimalBasicData</a></li>
                 <li><a href="./getDataQuality">getDataQuality</a></li>
                 <li><a href="./getMeasurementLocation">getMeasurementLocation</a></li>
