@@ -8,8 +8,25 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://localhost:8080/ontology/service-ontology/getCatchment.owl">
         <owl:versionIRI rdf:resource="http://localhost:8080/ontology/service-ontology/getCatchment.owl"/>
-        <owl:imports rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl/1.0.0"/>
+        <owl:imports rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl/1.0.0"/>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#qualifiedCardinality -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#qualifiedCardinality"/>
     
 
 
@@ -21,6 +38,48 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#displayName -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#displayName"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#fencedCatchmentArea -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#fencedCatchmentArea"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#hydrologicalCatchmentArea -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#hydrologicalCatchmentArea"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#id -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#id"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#name -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#name"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#validFrom -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#validFrom"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#validUntil -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#validUntil"/>
     
 
 
@@ -66,14 +125,10 @@
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error8"/>
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
                                         <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName"/>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
-                                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
@@ -84,14 +139,10 @@
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error9"/>
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
                                         <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedCatchmentArea"/>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
-                                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
@@ -102,14 +153,10 @@
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error10"/>
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
                                         <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrolocalCatchmentArea"/>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
-                                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
@@ -120,14 +167,10 @@
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error11"/>
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
                                         <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
-                                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
@@ -138,14 +181,10 @@
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error12"/>
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
                                         <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
-                                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
@@ -156,14 +195,10 @@
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error13"/>
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
                                         <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate"/>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
-                                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
@@ -174,14 +209,10 @@
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error14"/>
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
                                         <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidUntilDate"/>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
-                                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
@@ -192,6 +223,128 @@
         </rdfs:subClassOf>
         <rdfs:label>Output</rdfs:label>
     </owl:Class>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error10 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error10"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error11 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error11"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error12 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error12"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error13 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error13"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error14 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error14"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error8 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error8"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error9 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error9"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedCatchmentArea -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedCatchmentArea"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrolocalCatchmentArea -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrolocalCatchmentArea"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Id -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Name -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Name"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate"/>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidUntilDate -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidUntilDate"/>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
 </rdf:RDF>
 
 

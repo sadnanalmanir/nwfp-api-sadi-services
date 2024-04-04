@@ -131,6 +131,12 @@
     
 
 
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#dataQuality -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#dataQuality"/>
+    
+
+
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#datasetVersionId -->
 
     <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#datasetVersionId"/>
@@ -140,6 +146,12 @@
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#dateOfBirth -->
 
     <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#dateOfBirth"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#dateTime -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#dateTime"/>
     
 
 
@@ -164,6 +176,12 @@
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#displayUnit -->
 
     <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#displayUnit"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#endDate -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#endDate"/>
     
 
 
@@ -287,6 +305,12 @@
     
 
 
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#itemPerPage -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#itemPerPage"/>
+    
+
+
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#llo -->
 
     <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#llo"/>
@@ -395,6 +419,12 @@
     
 
 
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#pageNumber -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#pageNumber"/>
+    
+
+
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#productName -->
 
     <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#productName"/>
@@ -434,6 +464,12 @@
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#sireId -->
 
     <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#sireId"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#startDate -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#startDate"/>
     
 
 
@@ -530,6 +566,12 @@
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#validUntil -->
 
     <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#validUntil"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#value -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#value"/>
     
 
 
@@ -805,6 +847,14 @@
     
 
 
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EndDate -->
+
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EndDate">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Date"/>
+    </owl:Class>
+    
+
+
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EndGrazingYear -->
 
     <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EndGrazingYear">
@@ -1021,6 +1071,12 @@
     
 
 
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ItemPerPage -->
+
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ItemPerPage"/>
+    
+
+
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LLO -->
 
     <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LLO">
@@ -1197,6 +1253,12 @@
     
 
 
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#PageNumber -->
+
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#PageNumber"/>
+    
+
+
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ProductName -->
 
     <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ProductName">
@@ -1260,6 +1322,14 @@
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Size -->
 
     <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Size"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#StartDate -->
+
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#StartDate">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Date"/>
+    </owl:Class>
     
 
 
@@ -1398,6 +1468,12 @@
     <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidUntilDate">
         <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Date"/>
     </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Value -->
+
+    <owl:Class rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Value"/>
     
 
 
@@ -1602,6 +1678,14 @@
     
 
 
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateTime"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Description -->
 
     <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Description">
@@ -1630,6 +1714,14 @@
 
     <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayUnit">
         <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DisplayUnit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EndDate -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EndDate">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#EndDate"/>
     </owl:NamedIndividual>
     
 
@@ -1802,6 +1894,14 @@
     
 
 
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ItemPerPage -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ItemPerPage">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ItemPerPage"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LLO -->
 
     <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LLO">
@@ -1954,6 +2054,14 @@
     
 
 
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#PageNumber -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#PageNumber">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#PageNumber"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ProductName -->
 
     <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ProductName">
@@ -2006,6 +2114,14 @@
 
     <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#SireId">
         <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#SireId"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#StartDate -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#StartDate">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#StartDate"/>
     </owl:NamedIndividual>
     
 
@@ -2134,6 +2250,14 @@
 
     <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidUntilDate">
         <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidUntilDate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Value -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Value">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Value"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 

@@ -36,6 +36,9 @@
                 <li><a href="./getMeasurementLocation">getMeasurementLocation</a></li>
                 <li><a href="./getMeasurementType">getMeasurementType</a></li>
                 <li><a href="./getMeasurementTypeLong">getMeasurementTypeLong</a></li>
+                <li><a href="./getMeasurementByCatchmentName">getMeasurementByCatchmentName</a></li>
+                <li><a href="./getMeasurementByDateRange">getMeasurementByDateRange</a></li>
+                <li><a href="./getMeasurementByTypeId">getMeasurementByTypeId</a></li>
             </Ul>
         </div> <!-- content -->
         <div id='footer'>

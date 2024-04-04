@@ -40,6 +40,18 @@
         <servlet-name>getMeasurementTypeLong</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetMeasurementTypeLong</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getMeasurementByCatchmentName</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.GetMeasurementByCatchmentName</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getMeasurementByDateRange</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.GetMeasurementByDateRange</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getMeasurementByTypeId</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.GetMeasurementByTypeId</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>getCatchment</servlet-name>
         <url-pattern>/getCatchment</url-pattern>
@@ -75,6 +87,18 @@
     <servlet-mapping>
         <servlet-name>getMeasurementTypeLong</servlet-name>
         <url-pattern>/getMeasurementTypeLong</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getMeasurementByCatchmentName</servlet-name>
+        <url-pattern>/getMeasurementByCatchmentName</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getMeasurementByDateRange</servlet-name>
+        <url-pattern>/getMeasurementByDateRange</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getMeasurementByTypeId</servlet-name>
+        <url-pattern>/getMeasurementByTypeId</url-pattern>
     </servlet-mapping>
 </web-app>
 

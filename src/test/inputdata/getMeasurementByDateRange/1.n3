@@ -1,0 +1,18 @@
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix nwf:  <http://localhost:8080/ontology/domain-ontology/nwf.owl#> .
+@prefix service: <http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl#> .
+@prefix ex: <http://example.com/person#> .
+
+nwf:Catchment a  service:Input ;
+    nwf:startDate ex:node1 ;
+    nwf:endDate ex:node2 ;
+    nwf:typeId ex:node3 .
+
+ex:node1 a  nwf:StartDate ;
+    nwf:has_value "2019-12-17"^^xsd:string .
+
+ex:node2 a  nwf:EndDate ;
+    nwf:has_value "2019-12-19"^^xsd:string .
+
+ex:node3 a  nwf:TypeId ;
+    nwf:has_value "19"^^xsd:string .

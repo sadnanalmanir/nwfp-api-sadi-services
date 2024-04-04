@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:ns0="http://localhost:8080/ontology/domain-ontology/nwf.owl#">
+
+    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment">
+        <rdf:type rdf:resource="http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl#Input"/>
+        <ns0:startDate>
+            <ns0:StartDate rdf:about="http://example.com/person#node1">
+                <ns0:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-12-17</ns0:has_value>
+            </ns0:StartDate>
+        </ns0:startDate>
+
+        <ns0:endDate>
+            <ns0:EndDate rdf:about="http://example.com/person#node2">
+                <ns0:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-12-19</ns0:has_value>
+            </ns0:EndDate>
+        </ns0:endDate>
+
+        <ns0:typeId>
+            <ns0:TypeId rdf:about="http://example.com/person#node3">
+                <ns0:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">19</ns0:has_value>
+            </ns0:TypeId>
+        </ns0:typeId>
+
+    </rdf:Description>
+
+</rdf:RDF>
