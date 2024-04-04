@@ -83,6 +83,12 @@
     
 
 
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#description -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#description"/>
+    
+
+
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#displayId -->
 
     <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#displayId"/>
@@ -200,6 +206,12 @@
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#rearingLitterSize -->
 
     <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#rearingLitterSize"/>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#severityOrder -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#severityOrder"/>
     
 
 
@@ -1170,10 +1182,26 @@
     
 
 
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DataQuality -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DataQuality">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DataQuality"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateOfBirth -->
 
     <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateOfBirth">
         <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#DateOfBirth"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Description -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Description">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Description"/>
     </owl:NamedIndividual>
     
 
@@ -1342,6 +1370,14 @@
 
     <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#RearingLitterSize">
         <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#RearingLitterSize"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology-data/domain-ontology/nwf.owl#SeverityOrder -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#SeverityOrder">
+        <rdf:type rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#SeverityOrder"/>
     </owl:NamedIndividual>
     
 
