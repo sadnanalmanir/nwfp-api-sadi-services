@@ -58,7 +58,7 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
                 String groupVal = getNullAsEmptyString(element.get("Group"));
                 String systemSetQualityVal = getNullAsEmptyString(element.get("SystemSetQuality"));
 
-
+                // TODO: create the resource only once, take it outside of the while loop
                 Resource Measurement = outputModel.createResource();
                 // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
                 //catchment.addProperty(Vocab.type, Vocab.Catchment);

@@ -34,6 +34,7 @@
                 <li><a href="./getDataQuality">getDataQuality</a></li>
                 <li><a href="./getMeasurementLocation">getMeasurementLocation</a></li>
                 <li><a href="./getMeasurementType">getMeasurementType</a></li>
+                <li><a href="./getMeasurementTypeLong">getMeasurementTypeLong</a></li>
             </Ul>
         </div> <!-- content -->
         <div id='footer'>
