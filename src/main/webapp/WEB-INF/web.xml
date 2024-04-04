@@ -17,6 +17,10 @@
         <servlet-class>uk.ac.rothamsted.ide.GetField</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>getFieldEvent</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.GetFieldEvent</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>getAnimalBasicData</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetAnimalBasicData</servlet-class>
     </servlet>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>getField</servlet-name>
         <url-pattern>/getField</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getFieldEvent</servlet-name>
+        <url-pattern>/getFieldEvent</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getAnimalBasicData</servlet-name>
