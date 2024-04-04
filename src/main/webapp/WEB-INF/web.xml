@@ -9,6 +9,10 @@
         <servlet-class>uk.ac.rothamsted.ide.GetCatchment</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>getCatchmentMeasurementType</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.GetCatchmentMeasurementType</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>getField</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetField</servlet-class>
     </servlet>
@@ -20,9 +24,21 @@
         <servlet-name>getDataQuality</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetDataQuality</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getMeasurementLocation</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.GetMeasurementLocation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getMeasurementType</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.GetMeasurementType</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>getCatchment</servlet-name>
         <url-pattern>/getCatchment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getCatchmentMeasurementType</servlet-name>
+        <url-pattern>/getCatchmentMeasurementType</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getField</servlet-name>
@@ -35,6 +51,14 @@
     <servlet-mapping>
         <servlet-name>getDataQuality</servlet-name>
         <url-pattern>/getDataQuality</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getMeasurementLocation</servlet-name>
+        <url-pattern>/getMeasurementLocation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getMeasurementType</servlet-name>
+        <url-pattern>/getMeasurementType</url-pattern>
     </servlet-mapping>
 </web-app>
 

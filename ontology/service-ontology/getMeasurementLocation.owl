@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://localhost:8080/ontology/service-ontology/getMeasurementLocation.owl#"
+     xml:base="http://localhost:8080/ontology/service-ontology/getMeasurementLocation.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://localhost:8080/ontology/service-ontology/getMeasurementLocation.owl">
+        <owl:versionIRI rdf:resource="http://localhost:8080/ontology/service-ontology/getMeasurementLocation.owl"/>
+        <owl:imports rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl/1.0.0"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#type -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://localhost:8080/ontology/service-ontology/getMeasurementLocation.owl#Input -->
+
+    <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getMeasurementLocation.owl#Input">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Measurement"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/ontology/service-ontology/getMeasurementLocation.owl#Output -->
+
+    <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getMeasurementLocation.owl#Output">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#catchmentDisplayName"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CatchmentDisplayName"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#catchmentName"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#CatchmentName"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#farmletId"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FarmletId"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#farmletName"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FarmletName"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#fieldId"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldId"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#fieldName"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#FieldName"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#height"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Height"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#id"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#Id"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#locationTypeId"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationTypeId"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#locationTypeName"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationTypeName"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#locationX"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationX"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#locationY"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#LocationY"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#measurementLocationName"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#MeasurementLocationName"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#validFrom"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidFromDate"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#validUntil"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#ValidUntilDate"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology-data/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
