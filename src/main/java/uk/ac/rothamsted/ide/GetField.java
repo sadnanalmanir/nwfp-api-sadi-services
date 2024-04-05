@@ -72,7 +72,7 @@ public class GetField extends SimpleSynchronousServiceServlet {
                 field.addProperty(Vocab.id, IdResource);
 
                 Resource DisplayIdResource = outputModel.createResource();
-                DisplayIdResource.addProperty(Vocab.type, Vocab.DisplayName);
+                DisplayIdResource.addProperty(Vocab.type, Vocab.DisplayId);
                 DisplayIdResource.addLiteral(Vocab.has_value, displayIdVal);
                 field.addProperty(Vocab.displayId, DisplayIdResource);
 
@@ -154,7 +154,7 @@ public class GetField extends SimpleSynchronousServiceServlet {
 
         public static final Resource Id = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Id");
         public static final Resource Name = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Name");
-        public static final Resource DisplayName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName");
+        public static final Resource DisplayId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayId");
         public static final Resource ValidFromDate = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate");
         public static final Resource ValidUntilDate = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidUntilDate");
         public static final Resource Field = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Field");
