@@ -8,7 +8,7 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl">
         <owl:versionIRI rdf:resource="http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl"/>
-        <owl:imports rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl/1.0.0"/>
+        <owl:imports rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl"/>
     </owl:Ontology>
     
 
