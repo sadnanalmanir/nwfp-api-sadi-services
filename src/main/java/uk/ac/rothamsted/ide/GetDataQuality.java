@@ -52,24 +52,24 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
                 String descriptionVal = getNullAsEmptyString(element.get("Description"));
                 String severityOrderVal = getNullAsEmptyString(element.get("Severity_Order"));
 
-                Resource DataQuality = outputModel.createResource();
+                Resource dataQuality = outputModel.createResource();
 
                 Resource IdResource = outputModel.createResource();
                 IdResource.addProperty(Vocab.type, Vocab.Id);
                 IdResource.addLiteral(Vocab.has_value, idVal);
-                DataQuality.addProperty(Vocab.id, IdResource);
+                dataQuality.addProperty(Vocab.id, IdResource);
 
                 Resource DescriptionResource = outputModel.createResource();
                 DescriptionResource.addProperty(Vocab.type, Vocab.Description);
                 DescriptionResource.addLiteral(Vocab.has_value, descriptionVal);
-                DataQuality.addProperty(Vocab.description, DescriptionResource);
+                dataQuality.addProperty(Vocab.description, DescriptionResource);
 
                 Resource SeverityOrderResource = outputModel.createResource();
                 SeverityOrderResource.addProperty(Vocab.type, Vocab.SeverityOrder);
                 SeverityOrderResource.addLiteral(Vocab.has_value, severityOrderVal);
-                DataQuality.addProperty(Vocab.severityOrder, SeverityOrderResource);
+                dataQuality.addProperty(Vocab.severityOrder, SeverityOrderResource);
 
-                DataQuality.addProperty(Vocab.type, output);
+                dataQuality.addProperty(Vocab.type, output);
             }
         } catch (Exception e) {
             log.error(e);
