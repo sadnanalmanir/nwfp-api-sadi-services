@@ -62,10 +62,11 @@
 
     <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getCatchment.owl#Input">
         <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
-                <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment"/>
+                </owl:oneOf>
+            </owl:Class>
         </owl:equivalentClass>
     </owl:Class>
     

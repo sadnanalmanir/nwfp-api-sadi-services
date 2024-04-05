@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://localhost:8080/ontology/service-ontology/getField.owl#"
-     xml:base="http://localhost:8080/ontology/service-ontology/getField.owl"
+<rdf:RDF xmlns="http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#"
+     xml:base="http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://localhost:8080/ontology/service-ontology/getField.owl">
-        <owl:versionIRI rdf:resource="http://localhost:8080/ontology/service-ontology/getField.owl"/>
+    <owl:Ontology rdf:about="http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl">
+        <owl:versionIRI rdf:resource="http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl"/>
         <owl:imports rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl"/>
     </owl:Ontology>
     
@@ -41,22 +41,23 @@
     
 
 
-    <!-- http://localhost:8080/ontology/service-ontology/getField.owl#Input -->
+    <!-- http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Input -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getField.owl#Input">
+    <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Input">
         <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
-                <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Animal"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Animal"/>
+                </owl:oneOf>
+            </owl:Class>
         </owl:equivalentClass>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/service-ontology/getField.owl#Output -->
+    <!-- http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Output -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getField.owl#Output">
+    <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Output">
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
