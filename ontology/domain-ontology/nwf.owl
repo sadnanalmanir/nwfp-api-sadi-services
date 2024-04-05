@@ -167,6 +167,12 @@
     
 
 
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#displayName -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#displayName"/>
+    
+
+
     <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#displayUnit -->
 
     <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#displayUnit"/>
@@ -1035,17 +1041,17 @@
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologialCatchmentArea -->
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalArea -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologialCatchmentArea">
+    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalArea">
         <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Area"/>
     </owl:Class>
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalArea -->
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalCatchmentArea -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalArea">
+    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalCatchmentArea">
         <rdfs:subClassOf rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Area"/>
     </owl:Class>
     
@@ -1856,18 +1862,18 @@
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrolocalCatchmentArea -->
-
-    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrolocalCatchmentArea">
-        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologialCatchmentArea"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalArea -->
 
     <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalArea">
         <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalArea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalCatchmentArea -->
+
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalCatchmentArea">
+        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalCatchmentArea"/>
     </owl:NamedIndividual>
     
 

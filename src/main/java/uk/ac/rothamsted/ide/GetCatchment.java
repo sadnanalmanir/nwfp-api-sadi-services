@@ -129,8 +129,8 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
         public static final Resource Catchment = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment");
         public static final Resource FencedCatchmentArea = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedCatchmentArea");
         public static final Resource HydrologicalCatchmentArea = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalCatchmentArea");
-        public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Input");
-        public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Output");
+        public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/getCatchment.owl#Input");
+        public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/getCatchment.owl#Output");
 
     }
 
