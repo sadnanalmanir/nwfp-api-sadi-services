@@ -59,7 +59,7 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
                 in.close();
                 log.info("Done.");
                 conn.disconnect();
-                log.info("Connection closed.");
+                log.info("URL Connection closed.");
                 //log.info("URL Content... \n" + response.toString());
 
                 JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
@@ -119,9 +119,10 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
                     catchment.addProperty(Vocab.fencedCatchmentArea, FencedCatchmentAreaResource);
 
                     catchment.addProperty(Vocab.type, output);
-
-                    log.info("Service successfully executed");
                 }
+                log.info("Service successfully executed");
+            } else {
+                log.info("Connection to " + endPoint + " failed");
             }
         } catch (Exception e) {
             log.info(e);

@@ -31,7 +31,7 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
     public void processInput(Resource input, Resource output) {
 
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
-
+        log.info("*** SADI Service ***");
         log.info("Invoking SADI service: getAnimalBasicData");
         Model outputModel = output.getModel();
 
@@ -62,7 +62,7 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
                 in.close();
                 log.info("Done.");
                 conn.disconnect();
-                log.info("Connection closed.");
+                log.info("URL Connection closed.");
                 //log.info("URL Content... \n" + response.toString());
 
                 JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
@@ -198,9 +198,8 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
                     AnimalResource.addProperty(Vocab.breedingAnimal, BreedingAnimalResource);
 
                     AnimalResource.addProperty(Vocab.type, output);
-
-                    log.info("Service successfully executed");
                 }
+                log.info("Service successfully executed");
             } else {
                 log.info("Connection to " + endPoint + " failed");
             }

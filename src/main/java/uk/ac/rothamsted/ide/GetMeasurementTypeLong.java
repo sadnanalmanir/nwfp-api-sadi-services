@@ -62,7 +62,7 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
                 in.close();
                 log.info("Done.");
                 conn.disconnect();
-                log.info("Connection closed.");
+                log.info("URL Connection closed.");
                 //log.info("URL Content... \n" + response.toString());
 
                 JsonObject jsonObject = new Gson().fromJson(response.toString(), JsonObject.class);
@@ -130,9 +130,10 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
                         Measurement.addProperty(Vocab.systemSetQuality, SystemSetQualityResource);
 
                         Measurement.addProperty(Vocab.type, output);
-
-                        log.info("Service successfully executed");
                     }
+                    log.info("Service successfully executed");
+                } else {
+                    log.info("Connection to " + endPoint + " failed");
                 }
             }
         } catch (Exception e) {

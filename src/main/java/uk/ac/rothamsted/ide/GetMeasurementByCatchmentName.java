@@ -114,7 +114,8 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
 
                 log.info("Service successfully executed");
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             log.info(e);
         }
 

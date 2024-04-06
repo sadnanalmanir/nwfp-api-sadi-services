@@ -62,7 +62,7 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
                 in.close();
                 log.info("Done.");
                 conn.disconnect();
-                log.info("Connection closed.");
+                log.info("URL Connection closed.");
                 //log.info("URL Content... \n" + response.toString());
 
                 JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
@@ -112,11 +112,7 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
                     String farmletNewVal = getNullAsEmptyString(element.get("Farmlet_new"));
                     String farmletOldVal = getNullAsEmptyString(element.get("Farmlet_old"));
 
-
                     Resource Field = outputModel.createResource();
-                    // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
-                    //catchment.addProperty(Vocab.type, Vocab.Catchment);
-
 
                     Resource IdResource = outputModel.createResource();
                     IdResource.addProperty(Vocab.type, Vocab.Id);
@@ -294,9 +290,11 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
                     Field.addProperty(Vocab.oldFarmlet, FarmletOldResource);
 
                     Field.addProperty(Vocab.type, output);
-
-                    log.info("Service successfully executed");
                 }
+                log.info("Service successfully executed");
+            }
+            else {
+                log.info("Connection to " + endPoint + " failed");
             }
         } catch (Exception e) {
             log.info(e);
