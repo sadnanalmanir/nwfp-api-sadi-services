@@ -14,8 +14,11 @@ import org.sadiframework.service.annotations.*;
 import org.sadiframework.service.simple.SimpleSynchronousServiceServlet;
 
 import javax.net.ssl.HttpsURLConnection;
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
 
@@ -34,83 +37,121 @@ public class GetMeasurementByDateRange extends SimpleSynchronousServiceServlet {
 
         log.info("Invoking SADI service:  getMeasurementByDateRange");
         Model outputModel = output.getModel();
-        String startDateValue = input.getPropertyResourceValue(Vocab.startDate).getRequiredProperty(Vocab.has_value).getString();
-        String endDateValue = input.getPropertyResourceValue(Vocab.endDate).getRequiredProperty(Vocab.has_value).getString();
-        String typeIdValue = input.getPropertyResourceValue(Vocab.typeId).getRequiredProperty(Vocab.has_value).getString();
+
+        String startDateValue = input.getPropertyResourceValue(GetMeasurementByDateRange.Vocab.startDate).getRequiredProperty(GetMeasurementByDateRange.Vocab.has_value).getString();
+        if (startDateValue == null | startDateValue == ""){
+            log.info("Failed to extract start date from: "
+                    + input.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.startDate.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.has_value.getLocalName());
+            throw new IllegalArgumentException("Failed to extract start date from: "
+                    + input.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.startDate.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.has_value.getLocalName());
+        }
+        String endDateValue = input.getPropertyResourceValue(GetMeasurementByDateRange.Vocab.endDate).getRequiredProperty(GetMeasurementByDateRange.Vocab.has_value).getString();
+        if (endDateValue == null){
+            log.info("Failed to extract end date from: "
+                    + input.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.endDate.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.has_value.getLocalName());
+            throw new IllegalArgumentException("Failed to extract end date from: "
+                    + input.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.endDate.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.has_value.getLocalName());
+        }
+        String typeIdValue = input.getPropertyResourceValue(GetMeasurementByDateRange.Vocab.typeId).getRequiredProperty(GetMeasurementByDateRange.Vocab.has_value).getString();
+        if (typeIdValue == null){
+            log.info("Failed to extract start type id from: "
+                    + input.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.typeId.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.has_value.getLocalName());
+            throw new IllegalArgumentException("Failed to extract start type id from: "
+                    + input.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.typeId.getLocalName() + " -> " + GetMeasurementByDateRange.Vocab.has_value.getLocalName());
+        }
         String body = "{\n" +
                 "    \"startDate\": \"" +startDateValue+ "\",\n" +
                 "    \"endDate\": \""+endDateValue+"\",\n" +
                 "    \"typeId\": "+typeIdValue+"\n" +
                 "}";
-        log.info("Retrieved from HYDRA inputs: " +body);
+        log.info("Data to send via POST method: " +body);
+
 
 
         try {
+            String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByDateRange";
+            URL url = new URL(endPoint);
+            HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+            conn.setDoOutput(true);
+            conn.setConnectTimeout(2000);
+            conn.setReadTimeout(5000);
 
-            URL url = new URL("https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByDateRange");
-            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setDoOutput(true);
-            connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
-            //connection.setConnectTimeout(3000);
-            //connection.setReadTimeout(10000);
-
-            try(DataOutputStream dataOutputStream = new DataOutputStream(connection.getOutputStream())) {
-                dataOutputStream.writeBytes(body);
+            try(OutputStream os = conn.getOutputStream()) {
+                byte[] inputToSend = body.getBytes("utf-8");
+                os.write(inputToSend, 0, inputToSend.length);
             }
 
-            log.info("Response code: " + connection.getResponseCode());
+            int status = conn.getResponseCode();
+            log.info("Response Code: " + status);
 
-            InputStreamReader reader = new InputStreamReader(connection.getInputStream());
-            JsonArray jsonArray = new Gson().fromJson(reader, JsonArray.class);
-            reader.close();
+            if (status == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                String responseLine;
+                StringBuffer response = new StringBuffer();
+                log.info("Reading response...");
+                while ((responseLine = in.readLine()) != null) {
+                    response.append(responseLine);
+                }
+                in.close();
+                log.info("Done.");
+                conn.disconnect();
+                log.info("URL Connection closed.");
+                //log.info("URL Content... \n" + response.toString());
 
-            Iterator<JsonElement> elementIterator = jsonArray.iterator();
-            JsonObject element;
+                JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
 
-            while (elementIterator.hasNext()) {
+                Iterator<JsonElement> elementIterator = jsonArray.iterator();
+                JsonObject element;
 
-                element = elementIterator.next().getAsJsonObject();
+                while (elementIterator.hasNext()) {
 
-                String dateTimeVal = getNullAsEmptyString(element.get("DateTime"));
-                float valueVal = element.get("Value").getAsFloat();
-                String measurementTypeDisplayNameVal = getNullAsEmptyString(element.get("MeasTypeDisplayName"));
-                String locationNameVal = getNullAsEmptyString(element.get("LocationName"));
-                String catchmentDisplayNameVal = getNullAsEmptyString(element.get("CatchDisplayName"));
-                String dataQualityVal = getNullAsEmptyString(element.get("dataQuality"));
+                    element = elementIterator.next().getAsJsonObject();
 
-                Resource DateTimeResource = outputModel.createResource();
-                DateTimeResource.addProperty(Vocab.type, Vocab.DateTime);
-                DateTimeResource.addLiteral(Vocab.has_value, dateTimeVal);
-                output.addProperty(Vocab.dateTime, DateTimeResource);
+                    String dateTimeVal = getNullAsEmptyString(element.get("DateTime"));
+                    String valueVal = getNullAsEmptyString(element.get("Value"));
+                    String measurementTypeDisplayNameVal = getNullAsEmptyString(element.get("MeasTypeDisplayName"));
+                    String locationNameVal = getNullAsEmptyString(element.get("LocationName"));
+                    String catchmentDisplayNameVal = getNullAsEmptyString(element.get("CatchDisplayName"));
+                    String dataQualityVal = getNullAsEmptyString(element.get("dataQuality"));
 
-                Resource ValueResource = outputModel.createResource();
-                ValueResource.addProperty(Vocab.type, Vocab.Value);
-                ValueResource.addLiteral(Vocab.has_value, valueVal);
-                output.addProperty(Vocab.value, ValueResource);
+                    Resource DateTimeResource = outputModel.createResource();
+                    DateTimeResource.addProperty(Vocab.type, Vocab.DateTime);
+                    DateTimeResource.addLiteral(Vocab.has_value, dateTimeVal);
+                    output.addProperty(Vocab.dateTime, DateTimeResource);
 
-                Resource MeasurementTypeDisplayNameResource = outputModel.createResource();
-                MeasurementTypeDisplayNameResource.addProperty(Vocab.type, Vocab.MeasurementTypeDisplayName);
-                MeasurementTypeDisplayNameResource.addLiteral(Vocab.has_value, measurementTypeDisplayNameVal);
-                output.addProperty(Vocab.measurementTypeDisplayName, MeasurementTypeDisplayNameResource);
+                    Resource ValueResource = outputModel.createResource();
+                    ValueResource.addProperty(Vocab.type, Vocab.Value);
+                    ValueResource.addLiteral(Vocab.has_value, valueVal);
+                    output.addProperty(Vocab.value, ValueResource);
 
-                Resource LocationNameResource = outputModel.createResource();
-                LocationNameResource.addProperty(Vocab.type, Vocab.LocationName);
-                LocationNameResource.addLiteral(Vocab.has_value, locationNameVal);
-                output.addProperty(Vocab.locationName, LocationNameResource);
+                    Resource MeasurementTypeDisplayNameResource = outputModel.createResource();
+                    MeasurementTypeDisplayNameResource.addProperty(Vocab.type, Vocab.MeasurementTypeDisplayName);
+                    MeasurementTypeDisplayNameResource.addLiteral(Vocab.has_value, measurementTypeDisplayNameVal);
+                    output.addProperty(Vocab.measurementTypeDisplayName, MeasurementTypeDisplayNameResource);
 
-                Resource CatchmentDisplayNameResource = outputModel.createResource();
-                CatchmentDisplayNameResource.addProperty(Vocab.type, Vocab.CatchmentDisplayName);
-                CatchmentDisplayNameResource.addLiteral(Vocab.has_value, catchmentDisplayNameVal);
-                output.addProperty(Vocab.catchmentDisplayName, CatchmentDisplayNameResource);
+                    Resource LocationNameResource = outputModel.createResource();
+                    LocationNameResource.addProperty(Vocab.type, Vocab.LocationName);
+                    LocationNameResource.addLiteral(Vocab.has_value, locationNameVal);
+                    output.addProperty(Vocab.locationName, LocationNameResource);
 
-                Resource DataQualityResource = outputModel.createResource();
-                DataQualityResource.addProperty(Vocab.type, Vocab.DataQuality);
-                DataQualityResource.addLiteral(Vocab.has_value, dataQualityVal);
-                output.addProperty(Vocab.dataQuality, DataQualityResource);
+                    Resource CatchmentDisplayNameResource = outputModel.createResource();
+                    CatchmentDisplayNameResource.addProperty(Vocab.type, Vocab.CatchmentDisplayName);
+                    CatchmentDisplayNameResource.addLiteral(Vocab.has_value, catchmentDisplayNameVal);
+                    output.addProperty(Vocab.catchmentDisplayName, CatchmentDisplayNameResource);
+
+                    Resource DataQualityResource = outputModel.createResource();
+                    DataQualityResource.addProperty(Vocab.type, Vocab.DataQuality);
+                    DataQualityResource.addLiteral(Vocab.has_value, dataQualityVal);
+                    output.addProperty(Vocab.dataQuality, DataQualityResource);
+                }
+
 
                 log.info("Service successfully executed");
+            }else if (status > 299){
+                log.info("Error executing the POST method at " + endPoint);
             }
         } catch (Exception e) {
             log.info(e);
