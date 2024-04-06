@@ -33,7 +33,7 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
 
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
 
-        log.info("Service invoked: getMeasurementByTypeId");
+        log.info("Invoking SADI service:  getMeasurementByTypeId");
         Model outputModel = output.getModel();
         String itemPerPageValue = input.getPropertyResourceValue(Vocab.itemPerPage).getRequiredProperty(Vocab.has_value).getString();
         if (itemPerPageValue == null) {
@@ -151,7 +151,7 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
 
             }
         } catch (Exception e) {
-            log.error(e);
+            log.info(e);
         }
 
 

@@ -13,7 +13,9 @@ import org.apache.log4j.PropertyConfigurator;
 import org.sadiframework.service.annotations.*;
 import org.sadiframework.service.simple.SimpleSynchronousServiceServlet;
 
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
 
@@ -30,105 +32,129 @@ public class GetField extends SimpleSynchronousServiceServlet {
 
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
 
-        log.info("Service invoked: getField");
+        log.info("Invoking SADI service:  getField");
         Model outputModel = output.getModel();
 
         try {
+            String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getFields";
+            URL url = new URL(endPoint);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            // set connection timeout to 2 seconds
+            conn.setConnectTimeout(5000);
+            // set content reading timeout to 5 seconds
+            conn.setReadTimeout(5000);
+            //conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+            conn.addRequestProperty("User-Agent", "Mozilla");
+            log.info("Request URL: " + url);
 
-            URL url = new URL("https://nwfp.rothamsted.ac.uk:8443/getFields");
+            int status = conn.getResponseCode();
+            log.info("Response Code: " + status);
 
-            InputStreamReader reader = new InputStreamReader(url.openStream());
-            JsonArray jsonArray = new Gson().fromJson(reader, JsonArray.class);
-            reader.close();
+            if (status == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+                log.info("Reading response...");
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                log.info("Done.");
+                conn.disconnect();
+                log.info("Connection closed.");
+                //log.info("URL Content... \n" + response.toString());
 
-            Iterator<JsonElement> elementIterator = jsonArray.iterator();
-            JsonObject element;
-
-            while (elementIterator.hasNext()) {
-
-                element = elementIterator.next().getAsJsonObject();
-
-                String idVal = getNullAsEmptyString(element.get("Id"));
-                String displayIdVal = getNullAsEmptyString(element.get("DisplayId"));
-                String nameVal = getNullAsEmptyString(element.get("Name"));
-                String validFromVal = getNullAsEmptyString(element.get("ValidFrom"));
-                String validUntilVal = getNullAsEmptyString(element.get("ValidUntil"));
-                String cuttingAreaVal = getNullAsEmptyString(element.get("CuttingArea"));
-                String fencedAreaVal = getNullAsEmptyString(element.get("FencedArea"));
-                String organicSpreadingAreaVal = getNullAsEmptyString(element.get("OrganicSpreadingArea"));
-                String inorganicSpreadingAreaVal = getNullAsEmptyString(element.get("InorganicSpreadingArea"));
-                String catchment_idVal = getNullAsEmptyString(element.get("Catchment_Id"));
-                String hydrologicalAreaVal = getNullAsEmptyString(element.get("HydrologicalArea"));
-
-
-                Resource field = outputModel.createResource();
-                // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
-                //catchment.addProperty(Vocab.type, Vocab.Catchment);
-
-
-                Resource IdResource = outputModel.createResource();
-                IdResource.addProperty(Vocab.type, Vocab.Id);
-                IdResource.addLiteral(Vocab.has_value, idVal);
-                field.addProperty(Vocab.id, IdResource);
-
-                Resource DisplayIdResource = outputModel.createResource();
-                DisplayIdResource.addProperty(Vocab.type, Vocab.DisplayId);
-                DisplayIdResource.addLiteral(Vocab.has_value, displayIdVal);
-                field.addProperty(Vocab.displayId, DisplayIdResource);
-
-                Resource NameResource = outputModel.createResource();
-                NameResource.addProperty(Vocab.type, Vocab.Name);
-                NameResource.addLiteral(Vocab.has_value, nameVal);
-                field.addProperty(Vocab.name, NameResource);
-
-                Resource ValidFromResource = outputModel.createResource();
-                ValidFromResource.addProperty(Vocab.type, Vocab.ValidFromDate);
-                ValidFromResource.addLiteral(Vocab.has_value, validFromVal);
-                field.addProperty(Vocab.validFrom, ValidFromResource);
-
-                Resource ValidUntilResource = outputModel.createResource();
-                ValidUntilResource.addProperty(Vocab.type, Vocab.ValidUntilDate);
-                ValidUntilResource.addLiteral(Vocab.has_value, validUntilVal);
-                field.addProperty(Vocab.validUntil, ValidUntilResource);
-
-                Resource CuttingAreaResource = outputModel.createResource();
-                CuttingAreaResource.addProperty(Vocab.type, Vocab.CuttingArea);
-                CuttingAreaResource.addLiteral(Vocab.has_value, cuttingAreaVal);
-                field.addProperty(Vocab.cuttingArea, CuttingAreaResource);
-
-                Resource FencedAreaResource = outputModel.createResource();
-                FencedAreaResource.addProperty(Vocab.type, Vocab.FencedArea);
-                FencedAreaResource.addLiteral(Vocab.has_value, fencedAreaVal);
-                field.addProperty(Vocab.fencedArea, FencedAreaResource);
-
-                Resource OrganicSpreadingAreaResource = outputModel.createResource();
-                OrganicSpreadingAreaResource.addProperty(Vocab.type, Vocab.OrganicSpreadingArea);
-                OrganicSpreadingAreaResource.addLiteral(Vocab.has_value, organicSpreadingAreaVal);
-                field.addProperty(Vocab.organicSpreadingArea, OrganicSpreadingAreaResource);
-
-                Resource InorganicSpreadingAreaResource = outputModel.createResource();
-                InorganicSpreadingAreaResource.addProperty(Vocab.type, Vocab.InorganicSpreadingArea);
-                InorganicSpreadingAreaResource.addLiteral(Vocab.has_value, inorganicSpreadingAreaVal);
-                field.addProperty(Vocab.inorganicSpreadingArea, InorganicSpreadingAreaResource);
-
-                Resource CatchmentIdResource = outputModel.createResource();
-                CatchmentIdResource.addProperty(Vocab.type, Vocab.CatchmentId);
-                CatchmentIdResource.addLiteral(Vocab.has_value, catchment_idVal);
-                field.addProperty(Vocab.catchmentId, CatchmentIdResource);
-
-                Resource HydrologicalAreaResource = outputModel.createResource();
-                HydrologicalAreaResource.addProperty(Vocab.type, Vocab.HydrologicalArea);
-                HydrologicalAreaResource.addLiteral(Vocab.has_value, hydrologicalAreaVal);
-                field.addProperty(Vocab.hydrologicalArea, HydrologicalAreaResource);
+                JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
 
 
-                field.addProperty(Vocab.type, output);
+                Iterator<JsonElement> elementIterator = jsonArray.iterator();
+                JsonObject element;
 
+                while (elementIterator.hasNext()) {
+
+                    element = elementIterator.next().getAsJsonObject();
+
+                    String idVal = getNullAsEmptyString(element.get("Id"));
+                    String displayIdVal = getNullAsEmptyString(element.get("DisplayId"));
+                    String nameVal = getNullAsEmptyString(element.get("Name"));
+                    String validFromVal = getNullAsEmptyString(element.get("ValidFrom"));
+                    String validUntilVal = getNullAsEmptyString(element.get("ValidUntil"));
+                    String cuttingAreaVal = getNullAsEmptyString(element.get("CuttingArea"));
+                    String fencedAreaVal = getNullAsEmptyString(element.get("FencedArea"));
+                    String organicSpreadingAreaVal = getNullAsEmptyString(element.get("OrganicSpreadingArea"));
+                    String inorganicSpreadingAreaVal = getNullAsEmptyString(element.get("InorganicSpreadingArea"));
+                    String catchment_idVal = getNullAsEmptyString(element.get("Catchment_Id"));
+                    String hydrologicalAreaVal = getNullAsEmptyString(element.get("HydrologicalArea"));
+
+
+                    Resource field = outputModel.createResource();
+                    // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
+                    //catchment.addProperty(Vocab.type, Vocab.Catchment);
+
+
+                    Resource IdResource = outputModel.createResource();
+                    IdResource.addProperty(Vocab.type, Vocab.Id);
+                    IdResource.addLiteral(Vocab.has_value, idVal);
+                    field.addProperty(Vocab.id, IdResource);
+
+                    Resource DisplayIdResource = outputModel.createResource();
+                    DisplayIdResource.addProperty(Vocab.type, Vocab.DisplayId);
+                    DisplayIdResource.addLiteral(Vocab.has_value, displayIdVal);
+                    field.addProperty(Vocab.displayId, DisplayIdResource);
+
+                    Resource NameResource = outputModel.createResource();
+                    NameResource.addProperty(Vocab.type, Vocab.Name);
+                    NameResource.addLiteral(Vocab.has_value, nameVal);
+                    field.addProperty(Vocab.name, NameResource);
+
+                    Resource ValidFromResource = outputModel.createResource();
+                    ValidFromResource.addProperty(Vocab.type, Vocab.ValidFromDate);
+                    ValidFromResource.addLiteral(Vocab.has_value, validFromVal);
+                    field.addProperty(Vocab.validFrom, ValidFromResource);
+
+                    Resource ValidUntilResource = outputModel.createResource();
+                    ValidUntilResource.addProperty(Vocab.type, Vocab.ValidUntilDate);
+                    ValidUntilResource.addLiteral(Vocab.has_value, validUntilVal);
+                    field.addProperty(Vocab.validUntil, ValidUntilResource);
+
+                    Resource CuttingAreaResource = outputModel.createResource();
+                    CuttingAreaResource.addProperty(Vocab.type, Vocab.CuttingArea);
+                    CuttingAreaResource.addLiteral(Vocab.has_value, cuttingAreaVal);
+                    field.addProperty(Vocab.cuttingArea, CuttingAreaResource);
+
+                    Resource FencedAreaResource = outputModel.createResource();
+                    FencedAreaResource.addProperty(Vocab.type, Vocab.FencedArea);
+                    FencedAreaResource.addLiteral(Vocab.has_value, fencedAreaVal);
+                    field.addProperty(Vocab.fencedArea, FencedAreaResource);
+
+                    Resource OrganicSpreadingAreaResource = outputModel.createResource();
+                    OrganicSpreadingAreaResource.addProperty(Vocab.type, Vocab.OrganicSpreadingArea);
+                    OrganicSpreadingAreaResource.addLiteral(Vocab.has_value, organicSpreadingAreaVal);
+                    field.addProperty(Vocab.organicSpreadingArea, OrganicSpreadingAreaResource);
+
+                    Resource InorganicSpreadingAreaResource = outputModel.createResource();
+                    InorganicSpreadingAreaResource.addProperty(Vocab.type, Vocab.InorganicSpreadingArea);
+                    InorganicSpreadingAreaResource.addLiteral(Vocab.has_value, inorganicSpreadingAreaVal);
+                    field.addProperty(Vocab.inorganicSpreadingArea, InorganicSpreadingAreaResource);
+
+                    Resource CatchmentIdResource = outputModel.createResource();
+                    CatchmentIdResource.addProperty(Vocab.type, Vocab.CatchmentId);
+                    CatchmentIdResource.addLiteral(Vocab.has_value, catchment_idVal);
+                    field.addProperty(Vocab.catchmentId, CatchmentIdResource);
+
+                    Resource HydrologicalAreaResource = outputModel.createResource();
+                    HydrologicalAreaResource.addProperty(Vocab.type, Vocab.HydrologicalArea);
+                    HydrologicalAreaResource.addLiteral(Vocab.has_value, hydrologicalAreaVal);
+                    field.addProperty(Vocab.hydrologicalArea, HydrologicalAreaResource);
+
+                    field.addProperty(Vocab.type, output);
+
+                    log.info("Service successfully executed");
+                }
             }
-
-
         } catch (Exception e) {
-            System.out.println(e);
+            log.info(e);
         }
 
 

@@ -13,7 +13,9 @@ import org.apache.log4j.PropertyConfigurator;
 import org.sadiframework.service.annotations.*;
 import org.sadiframework.service.simple.SimpleSynchronousServiceServlet;
 
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
 
@@ -30,96 +32,111 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
 
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
 
-        log.info("Service invoked: getMeasurementTypeLong");
+        log.info("Invoking SADI service:  getMeasurementTypeLong");
         Model outputModel = output.getModel();
 
         try {
+            String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypesLong";
+            URL url = new URL(endPoint);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            // set connection timeout to 2 seconds
+            conn.setConnectTimeout(5000);
+            // set content reading timeout to 5 seconds
+            conn.setReadTimeout(5000);
+            //conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+            conn.addRequestProperty("User-Agent", "Mozilla");
+            log.info("Request URL: " + url);
 
-            URL url = new URL("https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypesLong");
+            int status = conn.getResponseCode();
+            log.info("Response Code: " + status);
 
-            InputStreamReader reader = new InputStreamReader(url.openStream());
+            if (status == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+                log.info("Reading response...");
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                log.info("Done.");
+                conn.disconnect();
+                log.info("Connection closed.");
+                //log.info("URL Content... \n" + response.toString());
 
-            JsonObject jsonObject = new Gson().fromJson(reader, JsonObject.class);
-            JsonArray idsJsonArray= jsonObject.get("Ids").getAsJsonArray();
-            JsonArray namesJsonArray= jsonObject.get("Names").getAsJsonArray();
-            JsonArray displayNamesJsonArray= jsonObject.get("DisplayNames").getAsJsonArray();
-            JsonArray unitsJsonArray= jsonObject.get("Units").getAsJsonArray();
-            JsonArray displayUnitsJsonArray= jsonObject.get("DisplayUnits").getAsJsonArray();
-            JsonArray systemSetQualityJsonArray= jsonObject.get("SystemSetQuality").getAsJsonArray();
-            reader.close();
+                JsonObject jsonObject = new Gson().fromJson(response.toString(), JsonObject.class);
+                JsonArray idsJsonArray= jsonObject.get("Ids").getAsJsonArray();
+                JsonArray namesJsonArray= jsonObject.get("Names").getAsJsonArray();
+                JsonArray displayNamesJsonArray= jsonObject.get("DisplayNames").getAsJsonArray();
+                JsonArray unitsJsonArray= jsonObject.get("Units").getAsJsonArray();
+                JsonArray displayUnitsJsonArray= jsonObject.get("DisplayUnits").getAsJsonArray();
+                JsonArray systemSetQualityJsonArray= jsonObject.get("SystemSetQuality").getAsJsonArray();
 
+                if (idsJsonArray.size() == namesJsonArray.size()
+                        && idsJsonArray.size() == displayNamesJsonArray.size()
+                        && idsJsonArray.size() == unitsJsonArray.size()
+                        && idsJsonArray.size() == displayUnitsJsonArray.size()
+                        && idsJsonArray.size() == systemSetQualityJsonArray.size()
+                ) {
+                    for (int i=0; i<idsJsonArray.size();i++) {
+                        log.info("Ids: " + getNullAsEmptyString(idsJsonArray.get(i))
+                                + " | Names: " + getNullAsEmptyString(namesJsonArray.get(i))
+                                + " | DisplayNames: " + getNullAsEmptyString(displayNamesJsonArray.get(i))
+                                + " | Units: " + getNullAsEmptyString(unitsJsonArray.get(i))
+                                + " | DisplayUnits: " + getNullAsEmptyString(displayUnitsJsonArray.get(i))
+                                + " | SystemSetQuality: " + getNullAsEmptyString(systemSetQualityJsonArray.get(i))
+                        );
 
-            if (idsJsonArray.size() == namesJsonArray.size()
-                    && idsJsonArray.size() == displayNamesJsonArray.size()
-                    && idsJsonArray.size() == unitsJsonArray.size()
-                    && idsJsonArray.size() == displayUnitsJsonArray.size()
-                    && idsJsonArray.size() == systemSetQualityJsonArray.size()
-            ) {
-                for (int i=0; i<idsJsonArray.size();i++) {
-                    log.info("Ids: " + getNullAsEmptyString(idsJsonArray.get(i))
-                            + " | Names: " + getNullAsEmptyString(namesJsonArray.get(i))
-                            + " | DisplayNames: " + getNullAsEmptyString(displayNamesJsonArray.get(i))
-                            + " | Units: " + getNullAsEmptyString(unitsJsonArray.get(i))
-                            + " | DisplayUnits: " + getNullAsEmptyString(displayUnitsJsonArray.get(i))
-                            + " | SystemSetQuality: " + getNullAsEmptyString(systemSetQualityJsonArray.get(i))
-                    );
-
-                    String idVal = getNullAsEmptyString(idsJsonArray.get(i));
-                    String nameVal = getNullAsEmptyString(namesJsonArray.get(i));
-                    String displayNameVal = getNullAsEmptyString(displayNamesJsonArray.get(i));
-                    String unitVal = getNullAsEmptyString(unitsJsonArray.get(i));
-                    String displayUnitVal = getNullAsEmptyString(displayUnitsJsonArray.get(i));
-                    String systemSetQualityVal = getNullAsEmptyString(systemSetQualityJsonArray.get(i));
-
-
-                    Resource Measurement = outputModel.createResource();
-                    // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
-                    //catchment.addProperty(Vocab.type, Vocab.Catchment);
-
-
-                    Resource IdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.Id);
-                    IdResource.addLiteral(Vocab.has_value, idVal);
-                    Measurement.addProperty(Vocab.id, IdResource);
-
-                    Resource NameResource = outputModel.createResource();
-                    NameResource.addProperty(Vocab.type, Vocab.Name);
-                    NameResource.addLiteral(Vocab.has_value, nameVal);
-                    Measurement.addProperty(Vocab.name, NameResource);
-
-                    Resource DisplayNameResource = outputModel.createResource();
-                    DisplayNameResource.addProperty(Vocab.type, Vocab.DisplayName);
-                    DisplayNameResource.addLiteral(Vocab.has_value, displayNameVal);
-                    Measurement.addProperty(Vocab.displayName, DisplayNameResource);
-
-                    Resource UnitResource = outputModel.createResource();
-                    UnitResource.addProperty(Vocab.type, Vocab.Unit);
-                    UnitResource.addLiteral(Vocab.has_value, unitVal);
-                    Measurement.addProperty(Vocab.unit, UnitResource);
-
-                    Resource DisplayUnitResource = outputModel.createResource();
-                    DisplayUnitResource.addProperty(Vocab.type, Vocab.DisplayUnit);
-                    DisplayUnitResource.addLiteral(Vocab.has_value, displayUnitVal);
-                    Measurement.addProperty(Vocab.displayUnit, DisplayUnitResource);
-
-                    Resource SystemSetQualityResource = outputModel.createResource();
-                    SystemSetQualityResource.addProperty(Vocab.type, Vocab.SystemSetQuality);
-                    SystemSetQualityResource.addLiteral(Vocab.has_value, systemSetQualityVal);
-                    Measurement.addProperty(Vocab.systemSetQuality, SystemSetQualityResource);
-
-                    Measurement.addProperty(Vocab.type, output);
+                        String idVal = getNullAsEmptyString(idsJsonArray.get(i));
+                        String nameVal = getNullAsEmptyString(namesJsonArray.get(i));
+                        String displayNameVal = getNullAsEmptyString(displayNamesJsonArray.get(i));
+                        String unitVal = getNullAsEmptyString(unitsJsonArray.get(i));
+                        String displayUnitVal = getNullAsEmptyString(displayUnitsJsonArray.get(i));
+                        String systemSetQualityVal = getNullAsEmptyString(systemSetQualityJsonArray.get(i));
 
 
+                        Resource Measurement = outputModel.createResource();
+                        // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
 
+                        Resource IdResource = outputModel.createResource();
+                        IdResource.addProperty(Vocab.type, Vocab.Id);
+                        IdResource.addLiteral(Vocab.has_value, idVal);
+                        Measurement.addProperty(Vocab.id, IdResource);
 
+                        Resource NameResource = outputModel.createResource();
+                        NameResource.addProperty(Vocab.type, Vocab.Name);
+                        NameResource.addLiteral(Vocab.has_value, nameVal);
+                        Measurement.addProperty(Vocab.name, NameResource);
 
+                        Resource DisplayNameResource = outputModel.createResource();
+                        DisplayNameResource.addProperty(Vocab.type, Vocab.DisplayName);
+                        DisplayNameResource.addLiteral(Vocab.has_value, displayNameVal);
+                        Measurement.addProperty(Vocab.displayName, DisplayNameResource);
 
+                        Resource UnitResource = outputModel.createResource();
+                        UnitResource.addProperty(Vocab.type, Vocab.Unit);
+                        UnitResource.addLiteral(Vocab.has_value, unitVal);
+                        Measurement.addProperty(Vocab.unit, UnitResource);
 
+                        Resource DisplayUnitResource = outputModel.createResource();
+                        DisplayUnitResource.addProperty(Vocab.type, Vocab.DisplayUnit);
+                        DisplayUnitResource.addLiteral(Vocab.has_value, displayUnitVal);
+                        Measurement.addProperty(Vocab.displayUnit, DisplayUnitResource);
 
+                        Resource SystemSetQualityResource = outputModel.createResource();
+                        SystemSetQualityResource.addProperty(Vocab.type, Vocab.SystemSetQuality);
+                        SystemSetQualityResource.addLiteral(Vocab.has_value, systemSetQualityVal);
+                        Measurement.addProperty(Vocab.systemSetQuality, SystemSetQualityResource);
+
+                        Measurement.addProperty(Vocab.type, output);
+
+                        log.info("Service successfully executed");
+                    }
                 }
             }
         } catch (Exception e) {
-            log.error(e);
+            log.info(e);
         }
 
 

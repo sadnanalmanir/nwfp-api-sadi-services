@@ -32,7 +32,7 @@ public class GetMeasurementByDateRange extends SimpleSynchronousServiceServlet {
 
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
 
-        log.info("Service invoked: getMeasurementByDateRange");
+        log.info("Invoking SADI service:  getMeasurementByDateRange");
         Model outputModel = output.getModel();
         String startDateValue = input.getPropertyResourceValue(Vocab.startDate).getRequiredProperty(Vocab.has_value).getString();
         String endDateValue = input.getPropertyResourceValue(Vocab.endDate).getRequiredProperty(Vocab.has_value).getString();
@@ -110,9 +110,10 @@ public class GetMeasurementByDateRange extends SimpleSynchronousServiceServlet {
                 DataQualityResource.addLiteral(Vocab.has_value, dataQualityVal);
                 output.addProperty(Vocab.dataQuality, DataQualityResource);
 
+                log.info("Service successfully executed");
             }
         } catch (Exception e) {
-            log.error(e);
+            log.info(e);
         }
 
 

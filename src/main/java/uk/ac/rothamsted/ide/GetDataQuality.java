@@ -13,7 +13,9 @@ import org.apache.log4j.PropertyConfigurator;
 import org.sadiframework.service.annotations.*;
 import org.sadiframework.service.simple.SimpleSynchronousServiceServlet;
 
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
 
@@ -30,46 +32,74 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
 
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
 
-        log.info("Service invoked: getDataQuality");
+        log.info("Invoking SADI service:  getDataQuality");
         Model outputModel = output.getModel();
 
         try {
+            String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getDataQualities";
+            URL url = new URL(endPoint);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            // set connection timeout to 2 seconds
+            conn.setConnectTimeout(5000);
+            // set content reading timeout to 5 seconds
+            conn.setReadTimeout(5000);
+            //conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+            conn.addRequestProperty("User-Agent", "Mozilla");
+            log.info("Request URL: " + url);
 
-            URL url = new URL("https://nwfp.rothamsted.ac.uk:8443/getDataQualities");
+            int status = conn.getResponseCode();
+            log.info("Response Code: " + status);
 
-            InputStreamReader reader = new InputStreamReader(url.openStream());
-            JsonArray jsonArray = new Gson().fromJson(reader, JsonArray.class);
-            reader.close();
+            if (status == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+                log.info("Reading response...");
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                log.info("Done.");
+                conn.disconnect();
+                log.info("Connection closed.");
+                //log.info("URL Content... \n" + response.toString());
 
-            Iterator<JsonElement> elementIterator = jsonArray.iterator();
-            JsonObject element;
+                JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
 
-            while (elementIterator.hasNext()) {
 
-                element = elementIterator.next().getAsJsonObject();
+                Iterator<JsonElement> elementIterator = jsonArray.iterator();
+                JsonObject element;
 
-                String idVal = getNullAsEmptyString(element.get("Id"));
-                String descriptionVal = getNullAsEmptyString(element.get("Description"));
-                String severityOrderVal = getNullAsEmptyString(element.get("Severity_Order"));
+                while (elementIterator.hasNext()) {
 
-                Resource dataQuality = outputModel.createResource();
+                    element = elementIterator.next().getAsJsonObject();
 
-                Resource IdResource = outputModel.createResource();
-                IdResource.addProperty(Vocab.type, Vocab.Id);
-                IdResource.addLiteral(Vocab.has_value, idVal);
-                dataQuality.addProperty(Vocab.id, IdResource);
+                    String idVal = getNullAsEmptyString(element.get("Id"));
+                    String descriptionVal = getNullAsEmptyString(element.get("Description"));
+                    String severityOrderVal = getNullAsEmptyString(element.get("Severity_Order"));
 
-                Resource DescriptionResource = outputModel.createResource();
-                DescriptionResource.addProperty(Vocab.type, Vocab.Description);
-                DescriptionResource.addLiteral(Vocab.has_value, descriptionVal);
-                dataQuality.addProperty(Vocab.description, DescriptionResource);
+                    Resource dataQuality = outputModel.createResource();
 
-                Resource SeverityOrderResource = outputModel.createResource();
-                SeverityOrderResource.addProperty(Vocab.type, Vocab.SeverityOrder);
-                SeverityOrderResource.addLiteral(Vocab.has_value, severityOrderVal);
-                dataQuality.addProperty(Vocab.severityOrder, SeverityOrderResource);
+                    Resource IdResource = outputModel.createResource();
+                    IdResource.addProperty(Vocab.type, Vocab.Id);
+                    IdResource.addLiteral(Vocab.has_value, idVal);
+                    dataQuality.addProperty(Vocab.id, IdResource);
 
-                dataQuality.addProperty(Vocab.type, output);
+                    Resource DescriptionResource = outputModel.createResource();
+                    DescriptionResource.addProperty(Vocab.type, Vocab.Description);
+                    DescriptionResource.addLiteral(Vocab.has_value, descriptionVal);
+                    dataQuality.addProperty(Vocab.description, DescriptionResource);
+
+                    Resource SeverityOrderResource = outputModel.createResource();
+                    SeverityOrderResource.addProperty(Vocab.type, Vocab.SeverityOrder);
+                    SeverityOrderResource.addLiteral(Vocab.has_value, severityOrderVal);
+                    dataQuality.addProperty(Vocab.severityOrder, SeverityOrderResource);
+
+                    dataQuality.addProperty(Vocab.type, output);
+
+                    log.info("Service successfully executed");
+                }
             }
         } catch (Exception e) {
             log.error(e);

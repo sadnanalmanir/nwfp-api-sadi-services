@@ -32,7 +32,7 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
 
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
 
-        log.info("Service invoked: getMeasurementByCatchmentName");
+        log.info("Invoking SADI service:  getMeasurementByCatchmentName");
         Model outputModel = output.getModel();
         String startDateValue = input.getPropertyResourceValue(Vocab.startDate).getRequiredProperty(Vocab.has_value).getString();
         String endDateValue = input.getPropertyResourceValue(Vocab.endDate).getRequiredProperty(Vocab.has_value).getString();
@@ -112,9 +112,10 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
                 DataQualityResource.addLiteral(Vocab.has_value, dataQualityVal);
                 output.addProperty(Vocab.dataQuality, DataQualityResource);
 
+                log.info("Service successfully executed");
             }
         } catch (Exception e) {
-            log.error(e);
+            log.info(e);
         }
 
 
