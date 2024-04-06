@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Iterator;
 
 @Name("getMeasurementLocation")
-@Description("Get all measurement locations")
+@Description("NWFP rest API: Get measurement locations")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getMeasurementLocation.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getMeasurementLocation.owl#Output")

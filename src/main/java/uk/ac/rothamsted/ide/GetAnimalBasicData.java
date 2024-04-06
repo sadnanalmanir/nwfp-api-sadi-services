@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Iterator;
 
 @Name("getAnimalBasicData")
-@Description("Get basic animal data")
+@Description("NWFP rest API: Get basic animal data")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Output")

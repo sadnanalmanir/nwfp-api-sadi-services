@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Iterator;
 
 @Name("getMeasurementTypeLong")
-@Description("Get all measurement types")
+@Description("NWFP rest API: Get measurement types")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getMeasurementTypeLong.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getMeasurementTypeLong.owl#Output")

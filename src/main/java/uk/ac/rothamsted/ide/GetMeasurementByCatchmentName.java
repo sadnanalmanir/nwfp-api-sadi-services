@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Iterator;
 
 @Name("getMeasurementByCatchmentName")
-@Description("Get all measurement types")
+@Description("NWFP rest API: Get measurement types used in the catchments")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getMeasurementByCatchmentName.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getMeasurementByCatchmentName.owl#Output")

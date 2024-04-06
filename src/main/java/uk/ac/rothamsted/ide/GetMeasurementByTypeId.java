@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 @Name("getMeasurementByTypeId")
-@Description("Get measurement attributes based on the date ranges with single id support")
+@Description("NWFP rest API: Get measurement information based on the date ranges with single id support")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl#Output")

@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Iterator;
 
 @Name("getDataQuality")
-@Description("Get all catchments and their properties")
+@Description("NWFP rest API: Get information about data qualities")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getDataQuality.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getDataQuality.owl#Output")

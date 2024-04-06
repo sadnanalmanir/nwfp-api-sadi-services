@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.Iterator;
 
 @Name("getCatchment")
-@Description("Get information about catchments")
+@Description("NWFP rest API: Get information about catchments")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getCatchment.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getCatchment.owl#Output")

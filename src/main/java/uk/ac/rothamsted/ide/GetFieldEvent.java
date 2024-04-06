@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Iterator;
 
 @Name("getFieldEvent")
-@Description("Get all catchments and their properties")
+@Description("NWFP rest API: Get events in the fields")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getFieldEvent.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getFieldEvent.owl#Output")
