@@ -71,7 +71,7 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
 
 
         try {
-            String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByDateRange";
+            String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByTypeId";
             URL url = new URL(endPoint);
             HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
