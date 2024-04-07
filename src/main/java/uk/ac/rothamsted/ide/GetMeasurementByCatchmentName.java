@@ -35,6 +35,7 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
 
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
 
+        log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getMeasurementByCatchmentName");
         Model outputModel = output.getModel();
 
@@ -83,8 +84,8 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setRequestProperty("User-Agent", "Mozilla/5.0");
             conn.setDoOutput(true);
-            conn.setConnectTimeout(2000);
-            conn.setReadTimeout(5000);
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(20000);
 
             try(OutputStream os = conn.getOutputStream()) {
                 byte[] inputToSend = body.getBytes("utf-8");

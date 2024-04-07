@@ -43,7 +43,7 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
             // set connection timeout to 2 seconds
             conn.setConnectTimeout(5000);
             // set content reading timeout to 5 seconds
-            conn.setReadTimeout(5000);
+            conn.setReadTimeout(20000);
             //conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
             conn.addRequestProperty("User-Agent", "Mozilla");
             log.info("Request URL: " + url);
@@ -200,8 +200,8 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
                     AnimalResource.addProperty(Vocab.type, output);
                 }
                 log.info("Service successfully executed");
-            } else {
-                log.info("Connection to " + endPoint + " failed");
+            } else if (status > 299){
+                log.info("Error executing the GET method at " + endPoint);
             }
         } catch (Exception e) {
             log.info(e);

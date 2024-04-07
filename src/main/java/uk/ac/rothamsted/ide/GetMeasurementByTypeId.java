@@ -36,6 +36,7 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
 
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
 
+        log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getMeasurementByTypeId");
         Model outputModel = output.getModel();
         String itemPerPageValue = input.getPropertyResourceValue(Vocab.itemPerPage).getRequiredProperty(Vocab.has_value).getString();
@@ -76,8 +77,8 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setRequestProperty("User-Agent", "Mozilla/5.0");
             conn.setDoOutput(true);
-            conn.setConnectTimeout(2000);
-            conn.setReadTimeout(5000);
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(20000);
 
             try(OutputStream os = conn.getOutputStream()) {
                 byte[] inputToSend = body.getBytes("utf-8");
@@ -164,11 +165,9 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
                         }
                     }
                 }
+            } else if (status > 299){
+                log.info("Error executing the POST method at " + endPoint);
             }
-
-
-
-
         } catch (Exception e) {
             log.info(e);
         }
