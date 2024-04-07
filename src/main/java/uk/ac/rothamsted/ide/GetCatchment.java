@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
+import java.nio.charset.StandardCharsets;
 
 @Name("getCatchment")
 @Description("NWFP rest API: Get information about catchments")
@@ -30,14 +31,13 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
 
         log.info("*** SADI Service ***");
-        log.info("Invoking SADI service: getCatchments");
+        log.info("Invoking SADI service: getCatchment");
         Model outputModel = output.getModel();
 
         try {
             String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getCatchments";
             URL url = new URL(endPoint);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
             // set connection timeout to 2 seconds
             conn.setConnectTimeout(5000);
             // set content reading timeout to 5 seconds
@@ -47,12 +47,13 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
             log.info("Request URL: " + url);
 
             int status = conn.getResponseCode();
-            log.info("Response Code: " + status);
+            
 
             if (status == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                log.info("'GET' Request is Successful. Http Status Code: " + status);
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
                 String inputLine;
-                StringBuffer response = new StringBuffer();
+                StringBuilder response = new StringBuilder();
                 log.info("Reading response...");
                 while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine);
@@ -121,7 +122,7 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
 
                     catchment.addProperty(Vocab.type, output);
                 }
-                log.info("Service successfully executed");
+                log.info("getCatchment service completed.");
             } else if (status > 299){
                 log.info("Error executing the GET method at " + endPoint);
             }

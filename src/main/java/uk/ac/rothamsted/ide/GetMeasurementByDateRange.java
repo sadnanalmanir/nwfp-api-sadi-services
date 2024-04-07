@@ -15,12 +15,12 @@ import org.sadiframework.service.simple.SimpleSynchronousServiceServlet;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
+import java.nio.charset.StandardCharsets;
 
 @Name("getMeasurementByDateRange")
 @Description("NWFP rest API: Get measurement information based on the date ranges with single id support")
@@ -86,12 +86,12 @@ public class GetMeasurementByDateRange extends SimpleSynchronousServiceServlet {
             }
 
             int status = conn.getResponseCode();
-            log.info("Response Code: " + status);
 
             if (status == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                log.info("'POST' Request is Successful. Http Status Code: " + status);
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
                 String responseLine;
-                StringBuffer response = new StringBuffer();
+                StringBuilder response = new StringBuilder();
                 log.info("Reading response...");
                 while ((responseLine = in.readLine()) != null) {
                     response.append(responseLine);
@@ -150,7 +150,7 @@ public class GetMeasurementByDateRange extends SimpleSynchronousServiceServlet {
                 }
 
 
-                log.info("Service successfully executed");
+                log.info("getMeasurementByDateRange service completed.");
             }else if (status > 299){
                 log.info("Error executing the POST method at " + endPoint);
             }

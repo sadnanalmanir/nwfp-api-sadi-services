@@ -22,6 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Set;
+import java.nio.charset.StandardCharsets;
 
 @Name("getMeasurementByTypeId")
 @Description("NWFP rest API: Get measurement information based on the date ranges with single id support")
@@ -86,12 +87,12 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
             }
 
             int status = conn.getResponseCode();
-            log.info("Response Code: " + status);
 
             if (status == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                log.info("'POST' Request is Successful. Http Status Code: " + status);
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
                 String responseLine;
-                StringBuffer response = new StringBuffer();
+                StringBuilder response = new StringBuilder();
                 log.info("Reading response...");
                 while ((responseLine = in.readLine()) != null) {
                     response.append(responseLine);

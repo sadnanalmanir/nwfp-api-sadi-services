@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
+import java.nio.charset.StandardCharsets;
 
 @Name("getCatchmentMeasurementType")
 @Description("NWFP rest API: Get measurement types of the catchments")
@@ -33,7 +34,7 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
 
         log.info("*** SADI Service ***");
-        log.info("Invoking SADI service:  getCatchmentMeasurementTypes");
+        log.info("Invoking SADI service:  getCatchmentMeasurementType");
         Model outputModel = output.getModel();
 
         try {
@@ -50,12 +51,12 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
             log.info("Request URL: " + url);
 
             int status = conn.getResponseCode();
-            log.info("Response Code: " + status);
 
             if (status == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                log.info("'GET' Request is Successful. Http Status Code: " + status);
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
                 String inputLine;
-                StringBuffer response = new StringBuffer();
+                StringBuilder response = new StringBuilder();
                 log.info("Reading response...");
                 while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine);
@@ -138,7 +139,7 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
 
                     Catchment.addProperty(Vocab.type, output);
                 }
-                log.info("Service successfully executed");
+                log.info("getCatchmentMeasurementType service completed.");
             } else if (status > 299){
                 log.info("Error executing the GET method at " + endPoint);
             }
