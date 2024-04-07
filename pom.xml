@@ -51,6 +51,11 @@
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.ipsnp.hydra</groupId>
+            <artifactId>rule_engine</artifactId>
+            <version>1.25-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 
