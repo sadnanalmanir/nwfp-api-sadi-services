@@ -127,7 +127,7 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
                             while (queryResultsIterator.hasNext()) {
                                 queryResult = queryResultsIterator.next().getAsJsonObject();
                                 String dateTimeVal = getNullAsEmptyString(queryResult.get("DateTime"));
-                                float valueVal = queryResult.get("Value").getAsFloat();
+                                String valueVal = getNullAsEmptyString(queryResult.get("Value"));
                                 String measurementTypeDisplayNameVal = getNullAsEmptyString(queryResult.get("MeasTypeDisplayName"));
                                 String locationNameVal = getNullAsEmptyString(queryResult.get("LocationName"));
                                 String catchmentDisplayNameVal = getNullAsEmptyString(queryResult.get("CatchDisplayName"));
