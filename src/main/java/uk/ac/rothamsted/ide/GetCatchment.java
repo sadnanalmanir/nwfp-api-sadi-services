@@ -86,9 +86,9 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
 
 
                     Resource IdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.Id);
+                    IdResource.addProperty(Vocab.type, Vocab.CatchmentId);
                     IdResource.addLiteral(Vocab.has_value, idVal);
-                    catchment.addProperty(Vocab.id, IdResource);
+                    catchment.addProperty(Vocab.catchmentId, IdResource);
 
                     Resource NameResource = outputModel.createResource();
                     NameResource.addProperty(Vocab.type, Vocab.Name);
@@ -136,7 +136,7 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
     public static final class Vocab {
         private static final Model m_model = ModelFactory.createDefaultModel();
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property id = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#id");
+        public static final Property catchmentId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentId");
         public static final Property name = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#name");
         public static final Property displayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#displayName");
         public static final Property validFrom = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#validFrom");
@@ -146,7 +146,7 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
 
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
 
-        public static final Resource Id = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Id");
+        public static final Resource CatchmentId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentId");
         public static final Resource Name = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Name");
         public static final Resource DisplayName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName");
         public static final Resource ValidFromDate = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate");
