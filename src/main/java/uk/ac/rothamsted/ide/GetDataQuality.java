@@ -81,24 +81,24 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
                     String descriptionVal = getNullAsEmptyString(element.get("Description"));
                     String severityOrderVal = getNullAsEmptyString(element.get("Severity_Order"));
 
-                    Resource dataQuality = outputModel.createResource();
+                    Resource dataQualityRes = outputModel.createResource();
 
                     Resource IdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.Id);
+                    IdResource.addProperty(Vocab.type, Vocab.DataQualityId);
                     IdResource.addLiteral(Vocab.has_value, idVal);
-                    dataQuality.addProperty(Vocab.id, IdResource);
+                    dataQualityRes.addProperty(Vocab.dataQualityId, IdResource);
 
                     Resource DescriptionResource = outputModel.createResource();
                     DescriptionResource.addProperty(Vocab.type, Vocab.Description);
                     DescriptionResource.addLiteral(Vocab.has_value, descriptionVal);
-                    dataQuality.addProperty(Vocab.description, DescriptionResource);
+                    dataQualityRes.addProperty(Vocab.description, DescriptionResource);
 
                     Resource SeverityOrderResource = outputModel.createResource();
                     SeverityOrderResource.addProperty(Vocab.type, Vocab.SeverityOrder);
                     SeverityOrderResource.addLiteral(Vocab.has_value, severityOrderVal);
-                    dataQuality.addProperty(Vocab.severityOrder, SeverityOrderResource);
+                    dataQualityRes.addProperty(Vocab.severityOrder, SeverityOrderResource);
 
-                    dataQuality.addProperty(Vocab.type, output);
+                    dataQualityRes.addProperty(Vocab.type, output);
                 }
                 log.info("getDataQuality service completed.");
             } else if (status > 299){
@@ -113,16 +113,15 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
         private static final Model m_model = ModelFactory.createDefaultModel();
         // Object properties
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property id = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#id");
+        public static final Property dataQualityId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#dataQualityId");
         public static final Property description = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#description");
         public static final Property severityOrder = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#severityOrder");
         // Data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
         // Resources
-        public static final Resource Id = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Id");
         public static final Resource Description = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Description");
         public static final Resource SeverityOrder = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#SeverityOrder");
-        public static final Resource DataQuality = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DataQuality");
+        public static final Resource DataQualityId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DataQualityId");
 
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/getDataQuality.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/getDataQuality.owl#Output");
