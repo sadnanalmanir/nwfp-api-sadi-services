@@ -96,9 +96,9 @@ public class GetField extends SimpleSynchronousServiceServlet {
 
 
                     Resource IdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.Id);
+                    IdResource.addProperty(Vocab.type, Vocab.FieldId);
                     IdResource.addLiteral(Vocab.has_value, idVal);
-                    field.addProperty(Vocab.id, IdResource);
+                    field.addProperty(Vocab.fieldId, IdResource);
 
                     Resource DisplayIdResource = outputModel.createResource();
                     DisplayIdResource.addProperty(Vocab.type, Vocab.DisplayId);
@@ -166,7 +166,7 @@ public class GetField extends SimpleSynchronousServiceServlet {
     public static final class Vocab {
         private static final Model m_model = ModelFactory.createDefaultModel();
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property id = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#id");
+        public static final Property fieldId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#fieldId");
         public static final Property displayId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#displayId");
         public static final Property name = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#name");
         public static final Property validFrom = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#validFrom");
@@ -181,12 +181,11 @@ public class GetField extends SimpleSynchronousServiceServlet {
 
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
 
-        public static final Resource Id = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Id");
+        public static final Resource FieldId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldId");
         public static final Resource Name = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Name");
         public static final Resource DisplayId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayId");
         public static final Resource ValidFromDate = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate");
         public static final Resource ValidUntilDate = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidUntilDate");
-        public static final Resource Field = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Field");
         public static final Resource CuttingArea = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#CuttingArea");
         public static final Resource FencedArea = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#FencedArea");
         public static final Resource OrganicSpreadingArea = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#OrganicSpreadingArea");

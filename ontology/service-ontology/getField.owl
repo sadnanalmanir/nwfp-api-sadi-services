@@ -47,7 +47,7 @@
         <owl:equivalentClass>
             <owl:Class>
                 <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Field"/>
+                    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldId"/>
                 </owl:oneOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -134,13 +134,13 @@
                         </owl:someValuesFrom>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#hydrologicalArea"/>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#fieldId"/>
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
-                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalArea"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldId"/>
                                     </owl:Restriction>
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
@@ -152,13 +152,13 @@
                         </owl:someValuesFrom>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#id"/>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#hydrologicalArea"/>
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
-                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Id"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#HydrologicalArea"/>
                                     </owl:Restriction>
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
