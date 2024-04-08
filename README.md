@@ -30,7 +30,7 @@ deploy the ontologies, and the services on Tomcat server at http://localhost:808
 $ git clone https://github.com/sadnanalmanir/nwfp-api-sadi-services.git 
 ```
 
-### Move into the project directory
+### Move into the repository
 ```shell
 $ cd nwfp-api-sadi-services
 ```
