@@ -83,3 +83,10 @@ $ curl -H 'Content-Type: text/rdf' -H 'Accept: text/rdf' --data @./src/test/inpu
 ```shell
 $ curl -H 'Content-Type: text/rdf+n3' -H 'Accept: text/rdf+n3' --data @./src/test/inputdata/getCatchment/1.n3 http://localhost:8080/nwfp-api-sadi-services/getCatchment
 ```
+
+
+### Service failing
+
+#### getFieldEvent
+- Unable to return results when rdf data is used sa input
+- Error message shown as `reactor.netty.http.client.PrematureCloseException: Connection prematurely closed DURING response`

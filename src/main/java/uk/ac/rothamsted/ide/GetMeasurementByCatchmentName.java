@@ -85,8 +85,8 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setRequestProperty("User-Agent", "Mozilla/5.0");
             conn.setDoOutput(true);
-            conn.setConnectTimeout(5000);
-            conn.setReadTimeout(20000);
+            //conn.setConnectTimeout(5000);
+            //conn.setReadTimeout(20000);
 
             try(OutputStream os = conn.getOutputStream()) {
                 byte[] inputToSend = body.getBytes("utf-8");
