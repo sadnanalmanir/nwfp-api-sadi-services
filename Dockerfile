@@ -20,7 +20,7 @@ FROM tomcat:9
 # expose port 8080
 EXPOSE 8080
 
-# deploy domain ontology, service ontologies, and input files onto tomcat server
+# deploy domain ontology, and service ontologies to the local tomcat server
 COPY ontology $CATALINA_HOME/webapps/ontology
 
 # deploy the compiled archive onto tomcat server

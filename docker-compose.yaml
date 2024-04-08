@@ -1,7 +1,7 @@
 version: '3.6'
 
 services:
-  sadi:
+  nwfp-api-sadi-services:
     build:
       context: .
       dockerfile: Dockerfile
