@@ -1,5 +1,5 @@
 # nwfp-api-sadi-services
-SADI Services exposing RESTful API endpoints of the North Wyke Farm Platform Data 
+SADI Services exposing RESTful API [endpoints](https://red-crescent-623716.postman.co/documentation/7453000-ae05790f-8bea-4c3c-8b9c-006ebab9e13e) of the [North Wyke Farm Platform](https://nwfp.rothamsted.ac.uk/) Data 
 
 
 ## SADI service: getCatchment
