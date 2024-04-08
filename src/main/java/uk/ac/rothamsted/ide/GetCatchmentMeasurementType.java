@@ -87,7 +87,7 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
                     String concentrationNameAndUnitVal = getNullAsEmptyString(element.get("concName_and_unit"));
 
 
-                    Resource Catchment = outputModel.createResource();
+                    Resource catchmentIdResource = outputModel.createResource();
                     // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
                     //catchment.addProperty(Vocab.type, Vocab.Catchment);
 
@@ -95,49 +95,49 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
                     Resource CatchmentIdResource = outputModel.createResource();
                     CatchmentIdResource.addProperty(Vocab.type, Vocab.CatchmentId);
                     CatchmentIdResource.addLiteral(Vocab.has_value, catchmentIdVal);
-                    Catchment.addProperty(Vocab.catchmentId, CatchmentIdResource);
+                    catchmentIdResource.addProperty(Vocab.catchmentId, CatchmentIdResource);
 
                     Resource CatchmentNameResource = outputModel.createResource();
                     CatchmentNameResource.addProperty(Vocab.type, Vocab.CatchmentName);
                     CatchmentNameResource.addLiteral(Vocab.has_value, catchmentNameVal);
-                    Catchment.addProperty(Vocab.catchmentName, CatchmentNameResource);
+                    catchmentIdResource.addProperty(Vocab.catchmentName, CatchmentNameResource);
 
                     Resource MeasurementTypeDisplayNameResource = outputModel.createResource();
                     MeasurementTypeDisplayNameResource.addProperty(Vocab.type, Vocab.MeasurementTypeDisplayName);
                     MeasurementTypeDisplayNameResource.addLiteral(Vocab.has_value, measurementTypeDisplayNameVal);
-                    Catchment.addProperty(Vocab.measurementTypeDisplayName, MeasurementTypeDisplayNameResource);
+                    catchmentIdResource.addProperty(Vocab.measurementTypeDisplayName, MeasurementTypeDisplayNameResource);
 
                     Resource LocationIdResource = outputModel.createResource();
                     LocationIdResource.addProperty(Vocab.type, Vocab.LocationId);
                     LocationIdResource.addLiteral(Vocab.has_value, locationIdVal);
-                    Catchment.addProperty(Vocab.locationId, LocationIdResource);
+                    catchmentIdResource.addProperty(Vocab.locationId, LocationIdResource);
 
                     Resource LocationNameResource = outputModel.createResource();
                     LocationNameResource.addProperty(Vocab.type, Vocab.LocationName);
                     LocationNameResource.addLiteral(Vocab.has_value, locationNameVal);
-                    Catchment.addProperty(Vocab.locationName, LocationNameResource);
+                    catchmentIdResource.addProperty(Vocab.locationName, LocationNameResource);
 
                     Resource LocationTypeIdResource = outputModel.createResource();
                     LocationTypeIdResource.addProperty(Vocab.type, Vocab.LocationTypeId);
                     LocationTypeIdResource.addLiteral(Vocab.has_value, locationTypeIdVal);
-                    Catchment.addProperty(Vocab.locationTypeId, LocationTypeIdResource);
+                    catchmentIdResource.addProperty(Vocab.locationTypeId, LocationTypeIdResource);
 
                     Resource LocationTypeNameResource = outputModel.createResource();
                     LocationTypeNameResource.addProperty(Vocab.type, Vocab.LocationTypeName);
                     LocationTypeNameResource.addLiteral(Vocab.has_value, locationTypeNameVal);
-                    Catchment.addProperty(Vocab.locationTypeName, LocationTypeNameResource);
+                    catchmentIdResource.addProperty(Vocab.locationTypeName, LocationTypeNameResource);
 
                     Resource TypeIdResource = outputModel.createResource();
-                    TypeIdResource.addProperty(Vocab.type, Vocab.TypeId);
+                    TypeIdResource.addProperty(Vocab.type, Vocab.MeasurementTypeId);
                     TypeIdResource.addLiteral(Vocab.has_value, typeIdVal);
-                    Catchment.addProperty(Vocab.typeId, TypeIdResource);
+                    catchmentIdResource.addProperty(Vocab.measurementTypeId, TypeIdResource);
 
                     Resource ConcentrationNameAndUnitResource = outputModel.createResource();
                     ConcentrationNameAndUnitResource.addProperty(Vocab.type, Vocab.ConcentrationNameAndUnit);
                     ConcentrationNameAndUnitResource.addLiteral(Vocab.has_value, concentrationNameAndUnitVal);
-                    Catchment.addProperty(Vocab.concentrationNameAndUnit, ConcentrationNameAndUnitResource);
+                    catchmentIdResource.addProperty(Vocab.concentrationNameAndUnit, ConcentrationNameAndUnitResource);
 
-                    Catchment.addProperty(Vocab.type, output);
+                    catchmentIdResource.addProperty(Vocab.type, output);
                 }
                 log.info("getCatchmentMeasurementType service completed.");
             } else if (status > 299){
@@ -161,7 +161,7 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
         public static final Resource LocationName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationName");
         public static final Resource LocationTypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationTypeId");
         public static final Resource LocationTypeName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationTypeName");
-        public static final Resource TypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#TypeId");
+        public static final Resource MeasurementTypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeId");
         public static final Resource ConcentrationNameAndUnit = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ConcentrationNameAndUnit");
 
 
@@ -172,7 +172,7 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
         public static final Property locationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationName");
         public static final Property locationTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationTypeId");
         public static final Property locationTypeName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationTypeName");
-        public static final Property typeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#typeId");
+        public static final Property measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementTypeId");
         public static final Property concentrationNameAndUnit = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#concentrationNameAndUnit");
 
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/getCatchmentMeasurementType.owl#Input");
