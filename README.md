@@ -76,6 +76,10 @@ $ curl -H 'Content-Type: text/rdf+n3' -H 'Accept: text/rdf+n3' --data @PATH_TO_N
 For instance, use the following commands to test the getCatchment service
 ```shell
 $ curl http://localhost:8080/nwfp-api-sadi-services/getCatchment
+```
+```shell
 $ curl -H 'Content-Type: text/rdf' -H 'Accept: text/rdf' --data @./src/test/inputdata/getCatchment/1.rdf http://localhost:8080/nwfp-api-sadi-services/getCatchment
+```
+```shell
 $ curl -H 'Content-Type: text/rdf+n3' -H 'Accept: text/rdf+n3' --data @./src/test/inputdata/getCatchment/1.n3 http://localhost:8080/nwfp-api-sadi-services/getCatchment
 ```
