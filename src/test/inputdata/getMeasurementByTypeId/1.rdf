@@ -16,11 +16,11 @@
             </ns0:EndDate>
         </ns0:endDate>
 
-        <ns0:typeId>
-            <ns0:TypeId rdf:about="http://example.com/person#node3">
+        <ns0:measurementTypeId>
+            <ns0:MeasurementTypeId rdf:about="http://example.com/person#node3">
                 <ns0:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">25</ns0:has_value>
-            </ns0:TypeId>
-        </ns0:typeId>
+            </ns0:MeasurementTypeId>
+        </ns0:measurementTypeId>
 
     </rdf:Description>
 

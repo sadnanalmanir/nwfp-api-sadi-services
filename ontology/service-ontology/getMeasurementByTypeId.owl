@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl#"
-     xml:base="http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl"
+<rdf:RDF xmlns="http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl#"
+     xml:base="http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl">
-        <owl:versionIRI rdf:resource="http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl"/>
+    <owl:Ontology rdf:about="http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl">
+        <owl:versionIRI rdf:resource="http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl"/>
         <owl:imports rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl"/>
     </owl:Ontology>
     
@@ -41,9 +41,9 @@
     
 
 
-    <!-- http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl#Input -->
+    <!-- http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl#Input -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl#Input">
+    <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl#Input">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -55,6 +55,23 @@
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
                                         <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#ItemPerPage"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementTypeId"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeId"/>
                                     </owl:Restriction>
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
@@ -82,23 +99,6 @@
                         </owl:someValuesFrom>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#typeId"/>
-                        <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
-                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#TypeId"/>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
-                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                                    </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                    <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
                         <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment"/>
                     </owl:Restriction>
@@ -109,9 +109,9 @@
     
 
 
-    <!-- http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl#Output -->
+    <!-- http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl#Output -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl#Output">
+    <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl#Output">
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">

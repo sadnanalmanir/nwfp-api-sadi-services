@@ -54,12 +54,12 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
             throw new IllegalArgumentException("Failed to extract page number from: "
                     + input.getLocalName() + " -> " + Vocab.pageNumber.getLocalName() + " -> " + GetMeasurementByTypeId.Vocab.has_value.getLocalName());
         }
-        String typeIdValue = input.getPropertyResourceValue(Vocab.typeId).getRequiredProperty(Vocab.has_value).getString();
+        String typeIdValue = input.getPropertyResourceValue(Vocab.measurementTypeId).getRequiredProperty(Vocab.has_value).getString();
         if (typeIdValue == null | typeIdValue == ""){
             log.info("Failed to extract type id from: "
-                    + input.getLocalName() + " -> " + Vocab.typeId.getLocalName() + " -> " + GetMeasurementByTypeId.Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.measurementTypeId.getLocalName() + " -> " + GetMeasurementByTypeId.Vocab.has_value.getLocalName());
             throw new IllegalArgumentException("Failed to extract type id from: "
-                    + input.getLocalName() + " -> " + Vocab.type.getLocalName() + " -> " + GetMeasurementByTypeId.Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.measurementTypeId.getLocalName() + " -> " + GetMeasurementByTypeId.Vocab.has_value.getLocalName());
         }
         String body = "{\n" +
                 "    \"numPerPage\": " + itemPerPageValue + ",\n" +
@@ -186,7 +186,7 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
         public static final Property itemPerPage = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#itemPerPage");
         public static final Property pageNumber = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#pageNumber");
-        public static final Property typeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#typeId");
+        public static final Property measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementTypeId");
 
         public static final Property dateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#dateTime");
         public static final Property value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#value");
@@ -199,7 +199,7 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
         // resources
         public static final Resource ItemPerPage = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ItemPerPage");
         public static final Resource PageNumber = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#PageNumber");
-        public static final Resource TypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#TypeId");
+        public static final Resource MeasurementTypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeId");
 
         public static final Resource DateTime = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime");
         public static final Resource Value = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Value");

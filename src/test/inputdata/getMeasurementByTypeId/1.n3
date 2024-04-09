@@ -6,7 +6,7 @@
 nwf:Catchment a  service:Input ;
     nwf:itemPerPage ex:node1 ;
     nwf:pageNumber ex:node2 ;
-    nwf:typeId ex:node3 .
+    nwf:measurementTypeId ex:node3 .
 
 ex:node1 a  nwf:ItemPerPage ;
     nwf:has_value "50"^^xsd:string .
@@ -14,5 +14,5 @@ ex:node1 a  nwf:ItemPerPage ;
 ex:node2 a  nwf:PageNumber ;
     nwf:has_value "4"^^xsd:string .
 
-ex:node3 a  nwf:TypeId ;
+ex:node3 a  nwf:MeasurementTypeId ;
     nwf:has_value "25"^^xsd:string .
