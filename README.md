@@ -85,10 +85,10 @@ $ curl -H 'Content-Type: text/rdf+n3' -H 'Accept: text/rdf+n3' --data @./src/tes
 ```
 
 
-### Service failing
+### ServiceS failing to respond
 #### getMeasurmentByTypeId
-- The endpoint does not seem to return results for the `queryResults`
-- Response from the API endpoint contain [{"totalPages":1883678},{"queryResults":[]}]
+- The endpoint fails to return contents for the `queryResults` key
+- Response from the API endpoint contains [{"totalPages":1883678},{"queryResults":[]}]
 #### getFieldEvent
-- Sometimes, the service fails to return results when rdf data is used sa input
-- Error message shown as `reactor.netty.http.client.PrematureCloseException: Connection prematurely closed DURING response`
+- Sometimes, the service fails to return results when RDF data is used sa input
+- Error message is shown as `reactor.netty.http.client.PrematureCloseException: Connection prematurely closed DURING response`
