@@ -37,6 +37,7 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
         try {
             String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getCatchments";
             URL url = new URL(endPoint);
+            long startTime = System.currentTimeMillis();
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             // set connection timeout to 2 seconds
             //conn.setConnectTimeout(5000);
@@ -62,7 +63,10 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
                 log.info("Done.");
                 conn.disconnect();
                 log.info("URL Connection closed.");
-                //log.info("URL Content... \n" + response.toString());
+                long endTime = System.currentTimeMillis();
+                log.info("Round trip response time = " + (endTime - startTime) + " ms");
+
+                log.info("API Response Data: " + response);
 
                 JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
@@ -77,8 +81,8 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
                     String displayNameVal = element.get("DisplayName").getAsString();
                     String validFromVal = getNullAsEmptyString(element.get("ValidFrom"));
                     String validUntilVal = getNullAsEmptyString(element.get("ValidUntil"));
-                    float hydrologicalCatchmentAreaVal = element.get("HydrologicalCatchmentArea").getAsFloat();
-                    float fencedCatchmentAreaVal = element.get("FencedCatchmentArea").getAsFloat();
+                    String hydrologicalCatchmentAreaVal = getNullAsEmptyString(element.get("HydrologicalCatchmentArea"));
+                    String fencedCatchmentAreaVal = getNullAsEmptyString(element.get("FencedCatchmentArea"));
 
                     Resource catchment = outputModel.createResource();
                     // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui

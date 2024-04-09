@@ -72,6 +72,7 @@ public class GetMeasurementByDateRange extends SimpleSynchronousServiceServlet {
         try {
             String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByDateRange";
             URL url = new URL(endPoint);
+            long startTime = System.currentTimeMillis();
             HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
@@ -100,7 +101,10 @@ public class GetMeasurementByDateRange extends SimpleSynchronousServiceServlet {
                 log.info("Done.");
                 conn.disconnect();
                 log.info("URL Connection closed.");
-                //log.info("URL Content... \n" + response.toString());
+                long endTime = System.currentTimeMillis();
+                log.info("Round trip response time = " + (endTime - startTime) + " ms");
+
+                log.info("API Response Data: " + response);
 
                 JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
 

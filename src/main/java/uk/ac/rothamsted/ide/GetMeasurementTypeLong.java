@@ -40,6 +40,7 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
         try {
             String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypesLong";
             URL url = new URL(endPoint);
+            long startTime = System.currentTimeMillis();
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             // set connection timeout to 2 seconds
@@ -65,7 +66,10 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
                 log.info("Done.");
                 conn.disconnect();
                 log.info("URL Connection closed.");
-                //log.info("URL Content... \n" + response.toString());
+                long endTime = System.currentTimeMillis();
+                log.info("Round trip response time = " + (endTime - startTime) + " ms");
+
+                log.info("API Response Data: " + response);
 
                 JsonObject jsonObject = new Gson().fromJson(response.toString(), JsonObject.class);
                 JsonArray idsJsonArray= jsonObject.get("Ids").getAsJsonArray();

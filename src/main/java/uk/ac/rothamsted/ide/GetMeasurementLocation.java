@@ -40,6 +40,7 @@ public class GetMeasurementLocation extends SimpleSynchronousServiceServlet {
         try {
             String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getMeasurementLocations";
             URL url = new URL(endPoint);
+            long startTime = System.currentTimeMillis();
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             // set connection timeout to 2 seconds
@@ -65,7 +66,10 @@ public class GetMeasurementLocation extends SimpleSynchronousServiceServlet {
                 log.info("Done.");
                 conn.disconnect();
                 log.info("URL Connection closed.");
-                //log.info("URL Content... \n" + response.toString());
+                long endTime = System.currentTimeMillis();
+                log.info("Round trip response time = " + (endTime - startTime) + " ms");
+
+                log.info("API Response Data: " + response);
 
                 JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
 
