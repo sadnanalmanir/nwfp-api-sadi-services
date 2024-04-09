@@ -7,7 +7,7 @@ nwf:Catchment a  service:Input ;
     nwf:startDate ex:node1 ;
     nwf:endDate ex:node2 ;
     nwf:catchmentName ex:node3 ;
-    nwf:typeId ex:node4 .
+    nwf:measurementTypeId ex:node4 .
 
 ex:node1 a  nwf:StartDate ;
     nwf:has_value "2019-12-17"^^xsd:string .

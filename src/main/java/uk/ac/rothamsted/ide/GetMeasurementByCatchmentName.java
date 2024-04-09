@@ -61,12 +61,12 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
             throw new IllegalArgumentException("Failed to extract catchment name from: "
                     + input.getLocalName() + " -> " + Vocab.catchmentName.getLocalName() + " -> " + Vocab.has_value.getLocalName());
         }
-        String typeIdValue = input.getPropertyResourceValue(Vocab.typeId).getRequiredProperty(Vocab.has_value).getString();
+        String typeIdValue = input.getPropertyResourceValue(Vocab.measurementTypeId).getRequiredProperty(Vocab.has_value).getString();
         if (typeIdValue == null){
             log.info("Failed to extract start type id from: "
-                    + input.getLocalName() + " -> " + Vocab.typeId.getLocalName() + " -> " + Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.measurementTypeId.getLocalName() + " -> " + Vocab.has_value.getLocalName());
             throw new IllegalArgumentException("Failed to extract start type id from: "
-                    + input.getLocalName() + " -> " + Vocab.typeId.getLocalName() + " -> " + Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.measurementTypeId.getLocalName() + " -> " + Vocab.has_value.getLocalName());
         }
         String body = "{\n" +
                 "    \"startDate\": \"" +startDateValue+ "\",\n" +
@@ -125,7 +125,7 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
                     element = elementIterator.next().getAsJsonObject();
 
                     String dateTimeVal = getNullAsEmptyString(element.get("DateTime"));
-                    float valueVal = element.get("Value").getAsFloat();
+                    String valueVal = getNullAsEmptyString(element.get("Value"));
                     String measurementTypeDisplayNameVal = getNullAsEmptyString(element.get("MeasTypeDisplayName"));
                     String locationNameVal = getNullAsEmptyString(element.get("LocationName"));
                     String catchmentDisplayNameVal = getNullAsEmptyString(element.get("CatchDisplayName"));
@@ -180,7 +180,7 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
         public static final Property startDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#startDate");
         public static final Property endDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#endDate");
-        public static final Property typeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#typeId");
+        public static final Property measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementTypeId");
         public static final Property catchmentName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentName");
         public static final Property dateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#dateTime");
         public static final Property value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#value");
@@ -193,7 +193,7 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
         // resources
         public static final Resource StartDate = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#StartDate");
         public static final Resource EndDate = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#EndDate");
-        public static final Resource TypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#TypeId");
+        public static final Resource MeasurementTypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeId");
         public static final Resource CatchmentName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentName");
         public static final Resource DateTime = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime");
         public static final Resource Value = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Value");
