@@ -104,9 +104,9 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
                     Resource AnimalResource = outputModel.createResource();
 
                     Resource IdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.Id);
+                    IdResource.addProperty(Vocab.type, Vocab.AnimalBasicDataId);
                     IdResource.addLiteral(Vocab.has_value, idVal);
-                    AnimalResource.addProperty(Vocab.id, IdResource);
+                    AnimalResource.addProperty(Vocab.animalBasicDataId, IdResource);
 
                     Resource OfficialTagResource = outputModel.createResource();
                     IdResource.addProperty(Vocab.type, Vocab.OfficialTag);
@@ -220,7 +220,7 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
         private static final Model m_model = ModelFactory.createDefaultModel();
         // Object properties
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property id = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#id");
+        public static final Property animalBasicDataId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#animalBasicDataId");
         public static final Property officialTag = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#officialTag");
         public static final Property managementTag = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#managementTag");
         public static final Property breed = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#breed");
@@ -243,7 +243,7 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
         // data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
         // Resources
-        public static final Resource Id = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Id");
+        public static final Resource AnimalBasicDataId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#AnimalBasicDataId");
         public static final Resource OfficialTag = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#OfficialTag");
         public static final Resource ManagementTag = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ManagementTag");
         public static final Resource Breed = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Breed");
