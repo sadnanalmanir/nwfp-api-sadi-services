@@ -106,9 +106,9 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
                         // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
 
                         Resource IdResource = outputModel.createResource();
-                        IdResource.addProperty(Vocab.type, Vocab.Id);
+                        IdResource.addProperty(Vocab.type, Vocab.MeasurementTypeId);
                         IdResource.addLiteral(Vocab.has_value, idVal);
-                        Measurement.addProperty(Vocab.id, IdResource);
+                        Measurement.addProperty(Vocab.measurementTypeId, IdResource);
 
                         Resource NameResource = outputModel.createResource();
                         NameResource.addProperty(Vocab.type, Vocab.Name);
@@ -152,7 +152,7 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
     public static final class Vocab {
         private static final Model m_model = ModelFactory.createDefaultModel();
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property id = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#id");
+        public static final Property measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementTypeId");
         public static final Property displayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#displayName");
         public static final Property name = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#name");
         public static final Property unit = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#unit");
@@ -161,7 +161,7 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
 
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
 
-        public static final Resource Id = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Id");
+        public static final Resource MeasurementTypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeId");
         public static final Resource Name = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Name");
         public static final Resource DisplayName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName");
         public static final Resource Unit = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Unit");
