@@ -137,9 +137,9 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
                     output.addProperty(Vocab.dateTime, DateTimeResource);
 
                     Resource ValueResource = outputModel.createResource();
-                    ValueResource.addProperty(Vocab.type, Vocab.Value);
+                    ValueResource.addProperty(Vocab.type, Vocab.MeasurementValue);
                     ValueResource.addLiteral(Vocab.has_value, valueVal);
-                    output.addProperty(Vocab.value, ValueResource);
+                    output.addProperty(Vocab.measurementValue, ValueResource);
 
                     Resource MeasurementTypeDisplayNameResource = outputModel.createResource();
                     MeasurementTypeDisplayNameResource.addProperty(Vocab.type, Vocab.MeasurementTypeDisplayName);
