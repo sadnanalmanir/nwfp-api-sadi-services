@@ -599,9 +599,9 @@
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#value -->
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementValue -->
 
-    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#value"/>
+    <owl:ObjectProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementValue"/>
     
 
 
@@ -1541,9 +1541,9 @@
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Value -->
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementValue -->
 
-    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Value"/>
+    <owl:Class rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementValue"/>
     
 
 
@@ -2372,10 +2372,10 @@
     
 
 
-    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#Value -->
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementValue -->
 
-    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Value">
-        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Value"/>
+    <owl:NamedIndividual rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementValue">
+        <rdf:type rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementValue"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 

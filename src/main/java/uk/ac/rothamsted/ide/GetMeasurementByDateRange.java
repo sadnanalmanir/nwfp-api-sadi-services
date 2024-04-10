@@ -174,7 +174,7 @@ public class GetMeasurementByDateRange extends SimpleSynchronousServiceServlet {
         public static final Property measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementTypeId");
         public static final Property catchmentName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentName");
         public static final Property dateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#dateTime");
-        public static final Property value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#value");
+        public static final Property value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementValue");
         public static final Property measurementTypeDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementTypeDisplayName");
         public static final Property locationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationName");
         public static final Property catchmentDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentDisplayName");
@@ -187,7 +187,7 @@ public class GetMeasurementByDateRange extends SimpleSynchronousServiceServlet {
         public static final Resource MeasurementTypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeId");
         public static final Resource CatchmentName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentName");
         public static final Resource DateTime = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DateTime");
-        public static final Resource Value = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Value");
+        public static final Resource Value = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementValue");
         public static final Resource MeasurementTypeDisplayName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeDisplayName");
         public static final Resource LocationName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#LocationName");
         public static final Resource CatchmentDisplayName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentDisplayName");
