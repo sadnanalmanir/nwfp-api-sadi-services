@@ -5,6 +5,10 @@
 <web-app>
     <display-name>North Wyke Farm Platform SADI Services</display-name>
     <servlet>
+        <servlet-name>allCatchments</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.AllCatchments</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>getCatchment</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetCatchment</servlet-class>
     </servlet>
@@ -52,6 +56,10 @@
         <servlet-name>getMeasurementByTypeId</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetMeasurementByTypeId</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>allCatchments</servlet-name>
+        <url-pattern>/allCatchments</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getCatchment</servlet-name>
         <url-pattern>/getCatchment</url-pattern>

@@ -27,6 +27,7 @@
         <div id='content'>
             <h2>SADI Services</h2>
             <ul>
+                <li><a href="./allCatchments">allCatchments</a></li>
                 <li><a href="./getCatchment">getCatchment</a></li>
                 <li><a href="./getCatchmentMeasurementType">getCatchmentMeasurementType</a></li>
                 <li><a href="./getField">getField</a></li>
