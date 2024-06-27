@@ -4,5 +4,3 @@
 
 nwf:Catchment a  service:Input ;
               nwf:has_CatchmentId "1"^^xsd:string .
-nwf:Catchment a  service:Input ;
-              nwf:has_CatchmentId "2"^^xsd:string .

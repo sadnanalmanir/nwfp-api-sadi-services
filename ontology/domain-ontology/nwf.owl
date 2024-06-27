@@ -624,6 +624,10 @@
 
     <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_CatchmentId"/>
 
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#has_FieldId -->
+
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_FieldId"/>
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //

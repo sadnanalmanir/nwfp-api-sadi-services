@@ -17,6 +17,10 @@
         <servlet-class>uk.ac.rothamsted.ide.GetCatchmentMeasurementType</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>allFields</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.AllFields</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>getField</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetField</servlet-class>
     </servlet>
@@ -67,6 +71,10 @@
     <servlet-mapping>
         <servlet-name>getCatchmentMeasurementType</servlet-name>
         <url-pattern>/getCatchmentMeasurementType</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>allFields</servlet-name>
+        <url-pattern>/allFields</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getField</servlet-name>
