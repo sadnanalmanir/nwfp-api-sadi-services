@@ -2,4 +2,5 @@
 @prefix nwf:  <http://localhost:8080/ontology/domain-ontology/nwf.owl#> .
 @prefix service: <http://localhost:8080/ontology/service-ontology/getMeasurementType.owl#> .
 
-nwf:Measurement a  service:Input .
+nwf:Measurement a  service:Input ;
+              nwf:has_MeasurementTypeId "1"^^xsd:string .

@@ -25,24 +25,48 @@
         <servlet-class>uk.ac.rothamsted.ide.GetField</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>allFieldEvents</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.AllFieldEvents</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>getFieldEvent</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetFieldEvent</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>allAnimalBasicData</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.AllAnimalBasicData</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>getAnimalBasicData</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetAnimalBasicData</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>allDataQualities</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.AllDataQualities</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>getDataQuality</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetDataQuality</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>allMeasurementLocations</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.AllMeasurementLocations</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>getMeasurementLocation</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetMeasurementLocation</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>allMeasurementTypes</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.AllMeasurementTypes</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>getMeasurementType</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetMeasurementType</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>allMeasurementTypesLong</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.AllMeasurementTypesLong</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>getMeasurementTypeLong</servlet-name>
@@ -81,24 +105,48 @@
         <url-pattern>/getField</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>allFieldEvents</servlet-name>
+        <url-pattern>/allFieldEvents</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>getFieldEvent</servlet-name>
         <url-pattern>/getFieldEvent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>allAnimalBasicData</servlet-name>
+        <url-pattern>/allAnimalBasicData</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getAnimalBasicData</servlet-name>
         <url-pattern>/getAnimalBasicData</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>allDataQualities</servlet-name>
+        <url-pattern>/allDataQualities</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>getDataQuality</servlet-name>
         <url-pattern>/getDataQuality</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>allMeasurementLocations</servlet-name>
+        <url-pattern>/allMeasurementLocations</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getMeasurementLocation</servlet-name>
         <url-pattern>/getMeasurementLocation</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>allMeasurementTypes</servlet-name>
+        <url-pattern>/allMeasurementTypes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>getMeasurementType</servlet-name>
         <url-pattern>/getMeasurementType</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>allMeasurementTypesLong</servlet-name>
+        <url-pattern>/allMeasurementTypesLong</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getMeasurementTypeLong</servlet-name>

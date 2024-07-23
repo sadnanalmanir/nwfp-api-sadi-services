@@ -35,6 +35,8 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getMeasurementTypeLong");
+        // Extract the measurementTypeLongId from the input RDF:
+        String measurementTypeLongId = input.getRequiredProperty(Vocab.has_MeasurementTypeLongId).getString();
         Model outputModel = output.getModel();
 
         try {
@@ -101,41 +103,42 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
                         String displayUnitVal = getNullAsEmptyString(displayUnitsJsonArray.get(i));
                         String systemSetQualityVal = getNullAsEmptyString(systemSetQualityJsonArray.get(i));
 
+                        if (idVal.equals(measurementTypeLongId)) {
+                            Resource Measurement = outputModel.createResource();
+                            // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
 
-                        Resource Measurement = outputModel.createResource();
-                        // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
+                            //Resource IdResource = outputModel.createResource();
+                            //IdResource.addProperty(Vocab.type, Vocab.MeasurementTypeId);
+                            //IdResource.addLiteral(Vocab.has_value, idVal);
+                            //Measurement.addProperty(Vocab.measurementTypeId, IdResource);
 
-                        Resource IdResource = outputModel.createResource();
-                        IdResource.addProperty(Vocab.type, Vocab.MeasurementTypeId);
-                        IdResource.addLiteral(Vocab.has_value, idVal);
-                        Measurement.addProperty(Vocab.measurementTypeId, IdResource);
+                            Resource NameResource = outputModel.createResource();
+                            NameResource.addProperty(Vocab.type, Vocab.Name);
+                            NameResource.addLiteral(Vocab.has_value, nameVal);
+                            Measurement.addProperty(Vocab.name, NameResource);
 
-                        Resource NameResource = outputModel.createResource();
-                        NameResource.addProperty(Vocab.type, Vocab.Name);
-                        NameResource.addLiteral(Vocab.has_value, nameVal);
-                        Measurement.addProperty(Vocab.name, NameResource);
+                            Resource DisplayNameResource = outputModel.createResource();
+                            DisplayNameResource.addProperty(Vocab.type, Vocab.DisplayName);
+                            DisplayNameResource.addLiteral(Vocab.has_value, displayNameVal);
+                            Measurement.addProperty(Vocab.displayName, DisplayNameResource);
 
-                        Resource DisplayNameResource = outputModel.createResource();
-                        DisplayNameResource.addProperty(Vocab.type, Vocab.DisplayName);
-                        DisplayNameResource.addLiteral(Vocab.has_value, displayNameVal);
-                        Measurement.addProperty(Vocab.displayName, DisplayNameResource);
+                            Resource UnitResource = outputModel.createResource();
+                            UnitResource.addProperty(Vocab.type, Vocab.Unit);
+                            UnitResource.addLiteral(Vocab.has_value, unitVal);
+                            Measurement.addProperty(Vocab.unit, UnitResource);
 
-                        Resource UnitResource = outputModel.createResource();
-                        UnitResource.addProperty(Vocab.type, Vocab.Unit);
-                        UnitResource.addLiteral(Vocab.has_value, unitVal);
-                        Measurement.addProperty(Vocab.unit, UnitResource);
+                            Resource DisplayUnitResource = outputModel.createResource();
+                            DisplayUnitResource.addProperty(Vocab.type, Vocab.DisplayUnit);
+                            DisplayUnitResource.addLiteral(Vocab.has_value, displayUnitVal);
+                            Measurement.addProperty(Vocab.displayUnit, DisplayUnitResource);
 
-                        Resource DisplayUnitResource = outputModel.createResource();
-                        DisplayUnitResource.addProperty(Vocab.type, Vocab.DisplayUnit);
-                        DisplayUnitResource.addLiteral(Vocab.has_value, displayUnitVal);
-                        Measurement.addProperty(Vocab.displayUnit, DisplayUnitResource);
+                            Resource SystemSetQualityResource = outputModel.createResource();
+                            SystemSetQualityResource.addProperty(Vocab.type, Vocab.SystemSetQuality);
+                            SystemSetQualityResource.addLiteral(Vocab.has_value, systemSetQualityVal);
+                            Measurement.addProperty(Vocab.systemSetQuality, SystemSetQualityResource);
 
-                        Resource SystemSetQualityResource = outputModel.createResource();
-                        SystemSetQualityResource.addProperty(Vocab.type, Vocab.SystemSetQuality);
-                        SystemSetQualityResource.addLiteral(Vocab.has_value, systemSetQualityVal);
-                        Measurement.addProperty(Vocab.systemSetQuality, SystemSetQualityResource);
-
-                        Measurement.addProperty(Vocab.type, output);
+                            Measurement.addProperty(Vocab.type, output);
+                        }
                     }
                     log.info("getMeasurementTypeLong service completed.");
                 }
@@ -160,6 +163,7 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
         public static final Property systemSetQuality = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#systemSetQuality");
 
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
+        public static final Property has_MeasurementTypeLongId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_MeasurementTypeLongId");
 
         public static final Resource MeasurementTypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeId");
         public static final Resource Name = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Name");

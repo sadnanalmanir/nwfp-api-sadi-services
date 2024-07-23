@@ -35,6 +35,8 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getFieldEvent");
+        // Extract the catchment id from the input RDF:
+        String fieldEventId = input.getRequiredProperty(Vocab.has_FieldEventId).getString();
         Model outputModel = output.getModel();
 
         try {
@@ -120,182 +122,185 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
 
                     Resource FieldEventIdRes = outputModel.createResource();
 
-                    Resource IdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.FieldEventId);
-                    IdResource.addLiteral(Vocab.has_value, idVal);
-                    FieldEventIdRes.addProperty(Vocab.fieldEventId, IdResource);
+                    //Resource IdResource = outputModel.createResource();
+                    //IdResource.addProperty(Vocab.type, Vocab.FieldEventId);
+                    //IdResource.addLiteral(Vocab.has_value, idVal);
+                    //FieldEventIdRes.addProperty(Vocab.fieldEventId, IdResource);
 
-                    Resource DatasetVersionIdResource = outputModel.createResource();
-                    DatasetVersionIdResource.addProperty(Vocab.type, Vocab.DatasetVersionId);
-                    DatasetVersionIdResource.addLiteral(Vocab.has_value, datasetVersionIdVal);
-                    FieldEventIdRes.addProperty(Vocab.datasetVersionId, DatasetVersionIdResource);
+                    if (idVal.equals(fieldEventId)) {
 
-                    Resource CatchmentNameResource = outputModel.createResource();
-                    CatchmentNameResource.addProperty(Vocab.type, Vocab.CatchmentDisplayName);
-                    CatchmentNameResource.addLiteral(Vocab.has_value, catchmentDisplayNameVal);
-                    FieldEventIdRes.addProperty(Vocab.catchmentDisplayName, CatchmentNameResource);
+                        Resource DatasetVersionIdResource = outputModel.createResource();
+                        DatasetVersionIdResource.addProperty(Vocab.type, Vocab.DatasetVersionId);
+                        DatasetVersionIdResource.addLiteral(Vocab.has_value, datasetVersionIdVal);
+                        FieldEventIdRes.addProperty(Vocab.datasetVersionId, DatasetVersionIdResource);
 
-                    Resource EventDateResource = outputModel.createResource();
-                    EventDateResource.addProperty(Vocab.type, Vocab.EventDate);
-                    EventDateResource.addLiteral(Vocab.has_value, eventDateVal);
-                    FieldEventIdRes.addProperty(Vocab.eventDate, EventDateResource);
+                        Resource CatchmentNameResource = outputModel.createResource();
+                        CatchmentNameResource.addProperty(Vocab.type, Vocab.CatchmentDisplayName);
+                        CatchmentNameResource.addLiteral(Vocab.has_value, catchmentDisplayNameVal);
+                        FieldEventIdRes.addProperty(Vocab.catchmentDisplayName, CatchmentNameResource);
 
-                    Resource TimeInResource = outputModel.createResource();
-                    TimeInResource.addProperty(Vocab.type, Vocab.TimeIn);
-                    TimeInResource.addLiteral(Vocab.has_value, timeInVal);
-                    FieldEventIdRes.addProperty(Vocab.timeIn, TimeInResource);
+                        Resource EventDateResource = outputModel.createResource();
+                        EventDateResource.addProperty(Vocab.type, Vocab.EventDate);
+                        EventDateResource.addLiteral(Vocab.has_value, eventDateVal);
+                        FieldEventIdRes.addProperty(Vocab.eventDate, EventDateResource);
 
-                    Resource TimeOutResource = outputModel.createResource();
-                    TimeOutResource.addProperty(Vocab.type, Vocab.TimeOut);
-                    TimeOutResource.addLiteral(Vocab.has_value, timeOutVal);
-                    FieldEventIdRes.addProperty(Vocab.timeOut, TimeOutResource);
+                        Resource TimeInResource = outputModel.createResource();
+                        TimeInResource.addProperty(Vocab.type, Vocab.TimeIn);
+                        TimeInResource.addLiteral(Vocab.has_value, timeInVal);
+                        FieldEventIdRes.addProperty(Vocab.timeIn, TimeInResource);
 
-                    Resource TimeInFieldResource = outputModel.createResource();
-                    TimeInFieldResource.addProperty(Vocab.type, Vocab.TimeInField);
-                    TimeInFieldResource.addLiteral(Vocab.has_value, timeInFieldVal);
-                    FieldEventIdRes.addProperty(Vocab.timeInField, TimeInFieldResource);
+                        Resource TimeOutResource = outputModel.createResource();
+                        TimeOutResource.addProperty(Vocab.type, Vocab.TimeOut);
+                        TimeOutResource.addLiteral(Vocab.has_value, timeOutVal);
+                        FieldEventIdRes.addProperty(Vocab.timeOut, TimeOutResource);
 
-                    Resource ApplicationTypeNameResource = outputModel.createResource();
-                    ApplicationTypeNameResource.addProperty(Vocab.type, Vocab.ApplicationTypeName);
-                    ApplicationTypeNameResource.addLiteral(Vocab.has_value, applicationTypeNameVal);
-                    FieldEventIdRes.addProperty(Vocab.applicationTypeName, ApplicationTypeNameResource);
+                        Resource TimeInFieldResource = outputModel.createResource();
+                        TimeInFieldResource.addProperty(Vocab.type, Vocab.TimeInField);
+                        TimeInFieldResource.addLiteral(Vocab.has_value, timeInFieldVal);
+                        FieldEventIdRes.addProperty(Vocab.timeInField, TimeInFieldResource);
 
-                    Resource FieldNameResource = outputModel.createResource();
-                    FieldNameResource.addProperty(Vocab.type, Vocab.FieldName);
-                    FieldNameResource.addLiteral(Vocab.has_value, fieldNameVal);
-                    FieldEventIdRes.addProperty(Vocab.fieldName, FieldNameResource);
+                        Resource ApplicationTypeNameResource = outputModel.createResource();
+                        ApplicationTypeNameResource.addProperty(Vocab.type, Vocab.ApplicationTypeName);
+                        ApplicationTypeNameResource.addLiteral(Vocab.has_value, applicationTypeNameVal);
+                        FieldEventIdRes.addProperty(Vocab.applicationTypeName, ApplicationTypeNameResource);
 
-                    Resource TempField_NameResource = outputModel.createResource();
-                    TempField_NameResource.addProperty(Vocab.type, Vocab.TempField_Name);
-                    TempField_NameResource.addLiteral(Vocab.has_value, tempFieldNameVal);
-                    FieldEventIdRes.addProperty(Vocab.tempFieldName, TempField_NameResource);
+                        Resource FieldNameResource = outputModel.createResource();
+                        FieldNameResource.addProperty(Vocab.type, Vocab.FieldName);
+                        FieldNameResource.addLiteral(Vocab.has_value, fieldNameVal);
+                        FieldEventIdRes.addProperty(Vocab.fieldName, FieldNameResource);
 
-                    Resource TotalApplicationResource = outputModel.createResource();
-                    TotalApplicationResource.addProperty(Vocab.type, Vocab.TotalApplication);
-                    TotalApplicationResource.addLiteral(Vocab.has_value, totalApplicationVal);
-                    FieldEventIdRes.addProperty(Vocab.totalApplication, TotalApplicationResource);
+                        Resource TempField_NameResource = outputModel.createResource();
+                        TempField_NameResource.addProperty(Vocab.type, Vocab.TempField_Name);
+                        TempField_NameResource.addLiteral(Vocab.has_value, tempFieldNameVal);
+                        FieldEventIdRes.addProperty(Vocab.tempFieldName, TempField_NameResource);
 
-                    Resource ApplicationInfoResource = outputModel.createResource();
-                    ApplicationInfoResource.addProperty(Vocab.type, Vocab.ApplicationInfo);
-                    ApplicationInfoResource.addLiteral(Vocab.has_value, applicationInfoVal);
-                    FieldEventIdRes.addProperty(Vocab.applicationInfo, ApplicationInfoResource);
+                        Resource TotalApplicationResource = outputModel.createResource();
+                        TotalApplicationResource.addProperty(Vocab.type, Vocab.TotalApplication);
+                        TotalApplicationResource.addLiteral(Vocab.has_value, totalApplicationVal);
+                        FieldEventIdRes.addProperty(Vocab.totalApplication, TotalApplicationResource);
 
-                    Resource ApplicationRateResource = outputModel.createResource();
-                    ApplicationRateResource.addProperty(Vocab.type, Vocab.ApplicationRate);
-                    ApplicationRateResource.addLiteral(Vocab.has_value, applicationRateVal);
-                    FieldEventIdRes.addProperty(Vocab.applicationRate, ApplicationRateResource);
+                        Resource ApplicationInfoResource = outputModel.createResource();
+                        ApplicationInfoResource.addProperty(Vocab.type, Vocab.ApplicationInfo);
+                        ApplicationInfoResource.addLiteral(Vocab.has_value, applicationInfoVal);
+                        FieldEventIdRes.addProperty(Vocab.applicationInfo, ApplicationInfoResource);
 
-                    Resource FieldIdResource = outputModel.createResource();
-                    FieldIdResource.addProperty(Vocab.type, Vocab.FieldId);
-                    FieldIdResource.addLiteral(Vocab.has_value, fieldIdVal);
-                    FieldEventIdRes.addProperty(Vocab.fieldId, FieldIdResource);
+                        Resource ApplicationRateResource = outputModel.createResource();
+                        ApplicationRateResource.addProperty(Vocab.type, Vocab.ApplicationRate);
+                        ApplicationRateResource.addLiteral(Vocab.has_value, applicationRateVal);
+                        FieldEventIdRes.addProperty(Vocab.applicationRate, ApplicationRateResource);
 
-                    Resource TractorIdResource = outputModel.createResource();
-                    TractorIdResource.addProperty(Vocab.type, Vocab.TractorId);
-                    TractorIdResource.addLiteral(Vocab.has_value, tractorIdVal);
-                    FieldEventIdRes.addProperty(Vocab.tractorId, TractorIdResource);
+                        Resource FieldIdResource = outputModel.createResource();
+                        FieldIdResource.addProperty(Vocab.type, Vocab.FieldId);
+                        FieldIdResource.addLiteral(Vocab.has_value, fieldIdVal);
+                        FieldEventIdRes.addProperty(Vocab.fieldId, FieldIdResource);
 
-                    Resource StartTractorHoursResource = outputModel.createResource();
-                    StartTractorHoursResource.addProperty(Vocab.type, Vocab.StartTractorHours);
-                    StartTractorHoursResource.addLiteral(Vocab.has_value, startTractorHoursVal);
-                    FieldEventIdRes.addProperty(Vocab.startTractorHours, StartTractorHoursResource);
+                        Resource TractorIdResource = outputModel.createResource();
+                        TractorIdResource.addProperty(Vocab.type, Vocab.TractorId);
+                        TractorIdResource.addLiteral(Vocab.has_value, tractorIdVal);
+                        FieldEventIdRes.addProperty(Vocab.tractorId, TractorIdResource);
 
-                    Resource EndTractorHoursResource = outputModel.createResource();
-                    EndTractorHoursResource.addProperty(Vocab.type, Vocab.EndTractorHours);
-                    EndTractorHoursResource.addLiteral(Vocab.has_value, endTractorHoursVal);
-                    FieldEventIdRes.addProperty(Vocab.endTractorHours, EndTractorHoursResource);
+                        Resource StartTractorHoursResource = outputModel.createResource();
+                        StartTractorHoursResource.addProperty(Vocab.type, Vocab.StartTractorHours);
+                        StartTractorHoursResource.addLiteral(Vocab.has_value, startTractorHoursVal);
+                        FieldEventIdRes.addProperty(Vocab.startTractorHours, StartTractorHoursResource);
 
-                    Resource TotalTractorHoursResource = outputModel.createResource();
-                    TotalTractorHoursResource.addProperty(Vocab.type, Vocab.TotalTractorHours);
-                    TotalTractorHoursResource.addLiteral(Vocab.has_value, totalTractorHoursVal);
-                    FieldEventIdRes.addProperty(Vocab.totalTractorHours, TotalTractorHoursResource);
+                        Resource EndTractorHoursResource = outputModel.createResource();
+                        EndTractorHoursResource.addProperty(Vocab.type, Vocab.EndTractorHours);
+                        EndTractorHoursResource.addLiteral(Vocab.has_value, endTractorHoursVal);
+                        FieldEventIdRes.addProperty(Vocab.endTractorHours, EndTractorHoursResource);
 
-                    Resource FieldOperationIdResource = outputModel.createResource();
-                    FieldOperationIdResource.addProperty(Vocab.type, Vocab.FieldOperationId);
-                    FieldOperationIdResource.addLiteral(Vocab.has_value, fieldOperationIdVal);
-                    FieldEventIdRes.addProperty(Vocab.fieldOperationId, FieldOperationIdResource);
+                        Resource TotalTractorHoursResource = outputModel.createResource();
+                        TotalTractorHoursResource.addProperty(Vocab.type, Vocab.TotalTractorHours);
+                        TotalTractorHoursResource.addLiteral(Vocab.has_value, totalTractorHoursVal);
+                        FieldEventIdRes.addProperty(Vocab.totalTractorHours, TotalTractorHoursResource);
 
-                    Resource FieldApplicationIdResource = outputModel.createResource();
-                    FieldApplicationIdResource.addProperty(Vocab.type, Vocab.FieldApplicationId);
-                    FieldApplicationIdResource.addLiteral(Vocab.has_value, fieldApplicationIdVal);
-                    FieldEventIdRes.addProperty(Vocab.fieldApplicationId, FieldApplicationIdResource);
+                        Resource FieldOperationIdResource = outputModel.createResource();
+                        FieldOperationIdResource.addProperty(Vocab.type, Vocab.FieldOperationId);
+                        FieldOperationIdResource.addLiteral(Vocab.has_value, fieldOperationIdVal);
+                        FieldEventIdRes.addProperty(Vocab.fieldOperationId, FieldOperationIdResource);
 
-                    Resource ApplicationBatchNumberResource = outputModel.createResource();
-                    ApplicationBatchNumberResource.addProperty(Vocab.type, Vocab.ApplicationBatchNumber);
-                    ApplicationBatchNumberResource.addLiteral(Vocab.has_value, applicationBatchNumberVal);
-                    FieldEventIdRes.addProperty(Vocab.applicationBatchNumber, ApplicationBatchNumberResource);
+                        Resource FieldApplicationIdResource = outputModel.createResource();
+                        FieldApplicationIdResource.addProperty(Vocab.type, Vocab.FieldApplicationId);
+                        FieldApplicationIdResource.addLiteral(Vocab.has_value, fieldApplicationIdVal);
+                        FieldEventIdRes.addProperty(Vocab.fieldApplicationId, FieldApplicationIdResource);
 
-                    Resource ProductNameResource = outputModel.createResource();
-                    ProductNameResource.addProperty(Vocab.type, Vocab.ProductName);
-                    ProductNameResource.addLiteral(Vocab.has_value, productNameVal);
-                    FieldEventIdRes.addProperty(Vocab.productName, ProductNameResource);
+                        Resource ApplicationBatchNumberResource = outputModel.createResource();
+                        ApplicationBatchNumberResource.addProperty(Vocab.type, Vocab.ApplicationBatchNumber);
+                        ApplicationBatchNumberResource.addLiteral(Vocab.has_value, applicationBatchNumberVal);
+                        FieldEventIdRes.addProperty(Vocab.applicationBatchNumber, ApplicationBatchNumberResource);
 
-                    Resource ManufacturerResource = outputModel.createResource();
-                    ManufacturerResource.addProperty(Vocab.type, Vocab.Manufacturer);
-                    ManufacturerResource.addLiteral(Vocab.has_value, manufacturerVal);
-                    FieldEventIdRes.addProperty(Vocab.manufacturer, ManufacturerResource);
+                        Resource ProductNameResource = outputModel.createResource();
+                        ProductNameResource.addProperty(Vocab.type, Vocab.ProductName);
+                        ProductNameResource.addLiteral(Vocab.has_value, productNameVal);
+                        FieldEventIdRes.addProperty(Vocab.productName, ProductNameResource);
 
-                    Resource TemporaryFieldIdResource = outputModel.createResource();
-                    TemporaryFieldIdResource.addProperty(Vocab.type, Vocab.TemporaryFieldId);
-                    TemporaryFieldIdResource.addLiteral(Vocab.has_value, temporaryFieldIdVal);
-                    FieldEventIdRes.addProperty(Vocab.temporaryFieldId, TemporaryFieldIdResource);
+                        Resource ManufacturerResource = outputModel.createResource();
+                        ManufacturerResource.addProperty(Vocab.type, Vocab.Manufacturer);
+                        ManufacturerResource.addLiteral(Vocab.has_value, manufacturerVal);
+                        FieldEventIdRes.addProperty(Vocab.manufacturer, ManufacturerResource);
 
-                    Resource CatchmentIdResource = outputModel.createResource();
-                    CatchmentIdResource.addProperty(Vocab.type, Vocab.CatchmentName);
-                    CatchmentIdResource.addLiteral(Vocab.has_value, catchmentNameVal);
-                    FieldEventIdRes.addProperty(Vocab.catchmentName, CatchmentIdResource);
+                        Resource TemporaryFieldIdResource = outputModel.createResource();
+                        TemporaryFieldIdResource.addProperty(Vocab.type, Vocab.TemporaryFieldId);
+                        TemporaryFieldIdResource.addLiteral(Vocab.has_value, temporaryFieldIdVal);
+                        FieldEventIdRes.addProperty(Vocab.temporaryFieldId, TemporaryFieldIdResource);
 
-                    Resource Operation_nameResource = outputModel.createResource();
-                    Operation_nameResource.addProperty(Vocab.type, Vocab.OperationName);
-                    Operation_nameResource.addLiteral(Vocab.has_value, operationNameVal);
-                    FieldEventIdRes.addProperty(Vocab.operation_name, Operation_nameResource);
+                        Resource CatchmentIdResource = outputModel.createResource();
+                        CatchmentIdResource.addProperty(Vocab.type, Vocab.CatchmentName);
+                        CatchmentIdResource.addLiteral(Vocab.has_value, catchmentNameVal);
+                        FieldEventIdRes.addProperty(Vocab.catchmentName, CatchmentIdResource);
 
-                    Resource OperationGroupResource = outputModel.createResource();
-                    OperationGroupResource.addProperty(Vocab.type, Vocab.OperationGroup);
-                    OperationGroupResource.addLiteral(Vocab.has_value, operationGroupVal);
-                    FieldEventIdRes.addProperty(Vocab.operationGroup, OperationGroupResource);
+                        Resource Operation_nameResource = outputModel.createResource();
+                        Operation_nameResource.addProperty(Vocab.type, Vocab.OperationName);
+                        Operation_nameResource.addLiteral(Vocab.has_value, operationNameVal);
+                        FieldEventIdRes.addProperty(Vocab.operation_name, Operation_nameResource);
 
-                    Resource ApplicationNameResource = outputModel.createResource();
-                    ApplicationNameResource.addProperty(Vocab.type, Vocab.ApplicationName);
-                    ApplicationNameResource.addLiteral(Vocab.has_value, applicationNameVal);
-                    FieldEventIdRes.addProperty(Vocab.applicationName, ApplicationNameResource);
+                        Resource OperationGroupResource = outputModel.createResource();
+                        OperationGroupResource.addProperty(Vocab.type, Vocab.OperationGroup);
+                        OperationGroupResource.addLiteral(Vocab.has_value, operationGroupVal);
+                        FieldEventIdRes.addProperty(Vocab.operationGroup, OperationGroupResource);
 
-                    Resource ApplicationInfoAppsResource = outputModel.createResource();
-                    ApplicationInfoAppsResource.addProperty(Vocab.type, Vocab.ApplicationInfoApps);
-                    ApplicationInfoAppsResource.addLiteral(Vocab.has_value, applicationInfoAppsVal);
-                    FieldEventIdRes.addProperty(Vocab.applicationInfoApps, ApplicationInfoAppsResource);
+                        Resource ApplicationNameResource = outputModel.createResource();
+                        ApplicationNameResource.addProperty(Vocab.type, Vocab.ApplicationName);
+                        ApplicationNameResource.addLiteral(Vocab.has_value, applicationNameVal);
+                        FieldEventIdRes.addProperty(Vocab.applicationName, ApplicationNameResource);
 
-                    Resource FormatNameResource = outputModel.createResource();
-                    FormatNameResource.addProperty(Vocab.type, Vocab.FormatName);
-                    FormatNameResource.addLiteral(Vocab.has_value, formatNameVal);
-                    FieldEventIdRes.addProperty(Vocab.formatName, FormatNameResource);
+                        Resource ApplicationInfoAppsResource = outputModel.createResource();
+                        ApplicationInfoAppsResource.addProperty(Vocab.type, Vocab.ApplicationInfoApps);
+                        ApplicationInfoAppsResource.addLiteral(Vocab.has_value, applicationInfoAppsVal);
+                        FieldEventIdRes.addProperty(Vocab.applicationInfoApps, ApplicationInfoAppsResource);
 
-                    Resource RangeEndDateTimeResource = outputModel.createResource();
-                    RangeEndDateTimeResource.addProperty(Vocab.type, Vocab.RangeEndDateTime);
-                    RangeEndDateTimeResource.addLiteral(Vocab.has_value, rangeEndDateTimeVal);
-                    FieldEventIdRes.addProperty(Vocab.rangeEndDateTime, RangeEndDateTimeResource);
+                        Resource FormatNameResource = outputModel.createResource();
+                        FormatNameResource.addProperty(Vocab.type, Vocab.FormatName);
+                        FormatNameResource.addLiteral(Vocab.has_value, formatNameVal);
+                        FieldEventIdRes.addProperty(Vocab.formatName, FormatNameResource);
 
-                    Resource RangeStartDateTimeResource = outputModel.createResource();
-                    RangeStartDateTimeResource.addProperty(Vocab.type, Vocab.RangeStartDateTime);
-                    RangeStartDateTimeResource.addLiteral(Vocab.has_value, rangeStartDateTimeVal);
-                    FieldEventIdRes.addProperty(Vocab.rangeStartDateTime, RangeStartDateTimeResource);
+                        Resource RangeEndDateTimeResource = outputModel.createResource();
+                        RangeEndDateTimeResource.addProperty(Vocab.type, Vocab.RangeEndDateTime);
+                        RangeEndDateTimeResource.addLiteral(Vocab.has_value, rangeEndDateTimeVal);
+                        FieldEventIdRes.addProperty(Vocab.rangeEndDateTime, RangeEndDateTimeResource);
 
-                    Resource TempFieldIdResource = outputModel.createResource();
-                    TempFieldIdResource.addProperty(Vocab.type, Vocab.TempFieldId);
-                    TempFieldIdResource.addLiteral(Vocab.has_value, tempFieldIdVal);
-                    FieldEventIdRes.addProperty(Vocab.tempFieldId, TempFieldIdResource);
+                        Resource RangeStartDateTimeResource = outputModel.createResource();
+                        RangeStartDateTimeResource.addProperty(Vocab.type, Vocab.RangeStartDateTime);
+                        RangeStartDateTimeResource.addLiteral(Vocab.has_value, rangeStartDateTimeVal);
+                        FieldEventIdRes.addProperty(Vocab.rangeStartDateTime, RangeStartDateTimeResource);
 
-                    Resource FarmletNewResource = outputModel.createResource();
-                    FarmletNewResource.addProperty(Vocab.type, Vocab.NewFarmlet);
-                    FarmletNewResource.addLiteral(Vocab.has_value, farmletNewVal);
-                    FieldEventIdRes.addProperty(Vocab.newFarmlet, FarmletNewResource);
+                        Resource TempFieldIdResource = outputModel.createResource();
+                        TempFieldIdResource.addProperty(Vocab.type, Vocab.TempFieldId);
+                        TempFieldIdResource.addLiteral(Vocab.has_value, tempFieldIdVal);
+                        FieldEventIdRes.addProperty(Vocab.tempFieldId, TempFieldIdResource);
 
-                    Resource FarmletOldResource = outputModel.createResource();
-                    FarmletOldResource.addProperty(Vocab.type, Vocab.OldFarmlet);
-                    FarmletOldResource.addLiteral(Vocab.has_value, farmletOldVal);
-                    FieldEventIdRes.addProperty(Vocab.oldFarmlet, FarmletOldResource);
+                        Resource FarmletNewResource = outputModel.createResource();
+                        FarmletNewResource.addProperty(Vocab.type, Vocab.NewFarmlet);
+                        FarmletNewResource.addLiteral(Vocab.has_value, farmletNewVal);
+                        FieldEventIdRes.addProperty(Vocab.newFarmlet, FarmletNewResource);
 
-                    FieldEventIdRes.addProperty(Vocab.type, output);
+                        Resource FarmletOldResource = outputModel.createResource();
+                        FarmletOldResource.addProperty(Vocab.type, Vocab.OldFarmlet);
+                        FarmletOldResource.addLiteral(Vocab.has_value, farmletOldVal);
+                        FieldEventIdRes.addProperty(Vocab.oldFarmlet, FarmletOldResource);
+
+                        FieldEventIdRes.addProperty(Vocab.type, output);
+                    }
                 }
                 log.info("getFieldEvent service completed.");
             } else if (status > 299){
@@ -350,7 +355,7 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
         public static final Property oldFarmlet = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#oldFarmlet");
         // data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
-
+        public static final Property has_FieldEventId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_FieldEventId");
         // resources
         public static final Resource FieldEventId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldEventId");
         public static final Resource DatasetVersionId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DatasetVersionId");

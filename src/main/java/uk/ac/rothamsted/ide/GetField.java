@@ -36,7 +36,7 @@ public class GetField extends SimpleSynchronousServiceServlet {
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getField");
         // Extract the field id from the input RDF:
-        String fieldId = input.getRequiredProperty(GetField.Vocab.has_FieldId).getString();
+        String fieldId = input.getRequiredProperty(Vocab.has_FieldId).getString();
         Model outputModel = output.getModel();
 
         try {
@@ -96,6 +96,7 @@ public class GetField extends SimpleSynchronousServiceServlet {
                     String hydrologicalAreaVal = getNullAsEmptyString(element.get("HydrologicalArea"));
 
                     if (idVal.equals(fieldId)) {
+
                         Resource field = outputModel.createResource();
 
                         Resource DisplayIdResource = outputModel.createResource();

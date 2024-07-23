@@ -32,11 +32,17 @@
                 <li><a href="./getCatchmentMeasurementType">getCatchmentMeasurementType</a></li>
                 <li><a href="./allFields">allFields</a></li>
                 <li><a href="./getField">getField</a></li>
+                <li><a href="./allFieldEvents">allFieldEvents</a></li>
                 <li><a href="./getFieldEvent">getFieldEvent</a></li>
+                <li><a href="./allAnimalBasicData">allAnimalBasicData</a></li>
                 <li><a href="./getAnimalBasicData">getAnimalBasicData</a></li>
+                <li><a href="./allDataQualities">allDataQualities</a></li>
                 <li><a href="./getDataQuality">getDataQuality</a></li>
+                <li><a href="./allMeasurementLocations">allMeasurementLocations</a></li>
                 <li><a href="./getMeasurementLocation">getMeasurementLocation</a></li>
+                <li><a href="./allMeasurementTypes">allMeasurementTypes</a></li>
                 <li><a href="./getMeasurementType">getMeasurementType</a></li>
+                <li><a href="./allMeasurementTypesLong">allMeasurementTypesLong</a></li>
                 <li><a href="./getMeasurementTypeLong">getMeasurementTypeLong</a></li>
                 <li><a href="./getMeasurementByCatchmentName">getMeasurementByCatchmentName</a></li>
                 <li><a href="./getMeasurementByDateRange">getMeasurementByDateRange</a></li>

@@ -35,6 +35,8 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getDataQuality");
+        // Extract the catchment id from the input RDF:
+        String dataQualityId = input.getRequiredProperty(Vocab.has_DataQualityId).getString();
         Model outputModel = output.getModel();
 
         try {
@@ -87,22 +89,25 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
 
                     Resource dataQualityRes = outputModel.createResource();
 
-                    Resource IdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.DataQualityId);
-                    IdResource.addLiteral(Vocab.has_value, idVal);
-                    dataQualityRes.addProperty(Vocab.dataQualityId, IdResource);
+                    //Resource IdResource = outputModel.createResource();
+                    //IdResource.addProperty(Vocab.type, Vocab.DataQualityId);
+                    //IdResource.addLiteral(Vocab.has_value, idVal);
+                    //dataQualityRes.addProperty(Vocab.dataQualityId, IdResource);
 
-                    Resource DescriptionResource = outputModel.createResource();
-                    DescriptionResource.addProperty(Vocab.type, Vocab.Description);
-                    DescriptionResource.addLiteral(Vocab.has_value, descriptionVal);
-                    dataQualityRes.addProperty(Vocab.description, DescriptionResource);
+                    if (idVal.equals(dataQualityId)) {
 
-                    Resource SeverityOrderResource = outputModel.createResource();
-                    SeverityOrderResource.addProperty(Vocab.type, Vocab.SeverityOrder);
-                    SeverityOrderResource.addLiteral(Vocab.has_value, severityOrderVal);
-                    dataQualityRes.addProperty(Vocab.severityOrder, SeverityOrderResource);
+                        Resource DescriptionResource = outputModel.createResource();
+                        DescriptionResource.addProperty(Vocab.type, Vocab.Description);
+                        DescriptionResource.addLiteral(Vocab.has_value, descriptionVal);
+                        dataQualityRes.addProperty(Vocab.description, DescriptionResource);
 
-                    dataQualityRes.addProperty(Vocab.type, output);
+                        Resource SeverityOrderResource = outputModel.createResource();
+                        SeverityOrderResource.addProperty(Vocab.type, Vocab.SeverityOrder);
+                        SeverityOrderResource.addLiteral(Vocab.has_value, severityOrderVal);
+                        dataQualityRes.addProperty(Vocab.severityOrder, SeverityOrderResource);
+
+                        dataQualityRes.addProperty(Vocab.type, output);
+                    }
                 }
                 log.info("getDataQuality service completed.");
             } else if (status > 299){
@@ -122,6 +127,7 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
         public static final Property severityOrder = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#severityOrder");
         // Data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
+        public static final Property has_DataQualityId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_DataQualityId");
         // Resources
         public static final Resource Description = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Description");
         public static final Resource SeverityOrder = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#SeverityOrder");
