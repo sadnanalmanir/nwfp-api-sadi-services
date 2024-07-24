@@ -13,6 +13,10 @@
         <servlet-class>uk.ac.rothamsted.ide.GetCatchment</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>allCatchmentMeasurementTypes</servlet-name>
+        <servlet-class>uk.ac.rothamsted.ide.AllCatchmentMeasurementTypes</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>getCatchmentMeasurementType</servlet-name>
         <servlet-class>uk.ac.rothamsted.ide.GetCatchmentMeasurementType</servlet-class>
     </servlet>
@@ -91,6 +95,10 @@
     <servlet-mapping>
         <servlet-name>getCatchment</servlet-name>
         <url-pattern>/getCatchment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>allCatchmentMeasurementTypes</servlet-name>
+        <url-pattern>/allCatchmentMeasurementTypes</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getCatchmentMeasurementType</servlet-name>

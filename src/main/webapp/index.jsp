@@ -29,6 +29,7 @@
             <ul>
                 <li><a href="./allCatchments">allCatchments</a></li>
                 <li><a href="./getCatchment">getCatchment</a></li>
+                <li><a href="./allCatchmentMeasurementTypes">allCatchmentMeasurementTypes</a></li>
                 <li><a href="./getCatchmentMeasurementType">getCatchmentMeasurementType</a></li>
                 <li><a href="./allFields">allFields</a></li>
                 <li><a href="./getField">getField</a></li>

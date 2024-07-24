@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:ns0="http://localhost:8080/ontology/domain-ontology/nwf.owl#">
 
-    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment">
+    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Measurement">
         <rdf:type rdf:resource="http://localhost:8080/ontology/service-ontology/getCatchmentMeasurementType.owl#Input"/>
+        <ns0:has_CatchmentMeasurementTypeId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</ns0:has_CatchmentMeasurementTypeId>
     </rdf:Description>
 
 </rdf:RDF>

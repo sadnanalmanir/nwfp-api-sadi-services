@@ -4,17 +4,25 @@ SADI Services exposing RESTful API [endpoints](https://red-crescent-623716.postm
 ## SADI services
 The following table shows the SADI services, their CRUD operations, the endpoints they expose
 
-| SADI Service                  | HTTP Method | Endpoint                                                          |
+| SADI Service                  | HTTP Method | API Endpoint                                                      |
 |-------------------------------|-------------|-------------------------------------------------------------------|
 | allCatchments                 | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchments                  |
 | getCatchment                  | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchments                  |
+| allCatchmentMeasurementTypes  | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchmentMeasurementTypes   |
 | getCatchmentMeasurementType   | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchmentMeasurementTypes   |
+| allFields                     | GET         | https://nwfp.rothamsted.ac.uk:8443/getFields                      |
 | getField                      | GET         | https://nwfp.rothamsted.ac.uk:8443/getFields                      |
+| allFieldEvents                | GET         | https://nwfp.rothamsted.ac.uk:8443/getFieldEvents                 |
 | getFieldEvent                 | GET         | https://nwfp.rothamsted.ac.uk:8443/getFieldEvents                 |
+| allAnimalBasicData            | GET         | https://nwfp.rothamsted.ac.uk:8443/getAnimalBasicData             |
 | getAnimalBasicData            | GET         | https://nwfp.rothamsted.ac.uk:8443/getAnimalBasicData             |
+| allDataQualities              | GET         | https://nwfp.rothamsted.ac.uk:8443/getDataQualities               |
 | getDataQuality                | GET         | https://nwfp.rothamsted.ac.uk:8443/getDataQualities               |
+| allMeasurementLocations       | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementLocations        |
 | getMeasurementLocation        | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementLocations        |
+| allMeasurementTypes           | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypes            |
 | getMeasurementType            | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypes            |
+| allMeasurementTypesLong       | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypesLong        |
 | getMeasurementTypeLong        | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypesLong        |
 | getMeasurementByCatchmentName | POST        | https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByCatchmentName |
 | getMeasurementByDateRange     | POST        | https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByDateRange     |
