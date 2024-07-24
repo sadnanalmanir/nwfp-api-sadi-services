@@ -2,4 +2,5 @@
 @prefix nwf:  <http://localhost:8080/ontology/domain-ontology/nwf.owl#> .
 @prefix service: <http://localhost:8080/ontology/service-ontology/getCatchment.owl#> .
 
-nwf:Catchment a  service:Input .
+nwf:Catchment a  service:Input ;
+              nwf:has_CatchmentId "1"^^xsd:string .

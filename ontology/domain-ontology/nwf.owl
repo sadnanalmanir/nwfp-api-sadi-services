@@ -620,7 +620,41 @@
 
     <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
     
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#has_CatchmentId -->
 
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_CatchmentId"/>
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#has_FieldId -->
+
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_FieldId"/>
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#has_DataQualityId -->
+
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_DataQualityId"/>
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#has_FieldEventId -->
+
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_FieldEventId"/>
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#has_AnimalBasicDataId -->
+
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_AnimalBasicDataId"/>
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#has_MeasurementLocationId -->
+
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_MeasurementLocationId"/>
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#has_MeasurementTypeId -->
+
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_MeasurementTypeId"/>
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#has_MeasurementTypeLongId -->
+
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_MeasurementTypeLongId"/>
+
+    <!-- http://localhost:8080/ontology/domain-ontology/nwf.owl#has_CatchmentMeasurementTypeId -->
+
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_CatchmentMeasurementTypeId"/>
 
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////

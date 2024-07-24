@@ -1,0 +1,27 @@
+### Get the service description
+GET http://localhost:8080/nwfp-api-sadi-services/allFields
+Accept: text/rdf
+
+### POST a dummy input in RDF
+# curl -H 'Content-Type: text/rdf' -H 'Accept: text/rdf' --data @./src/test/inputdata/allFields/1.rdf http://localhost:8080/nwfp-api-sadi-services/allFields
+POST http://localhost:8080/nwfp-api-sadi-services/allFields
+Accept: text/rdf
+Content-Type: text/rdf
+
+# windows path
+#< \\pepper\homestd\My Documents\rothamsted\work\workinprogress\eggplant-sadi-services-project\eggplant-sadi-services\ontology-data\service-data\getVarieties\1.rdf
+# linux path
+< ../../../../../inputdata/allFields/1.rdf
+
+
+### POST a dummy input in n3
+# curl -H 'Content-Type: text/rdf+n3' -H 'Accept: text/rdf+n3' --data @./src/test/inputdata/allFields/1.n3 http://localhost:8080/nwfp-api-sadi-services/allFields
+POST http://localhost:8080/nwfp-api-sadi-services/allFields
+Accept: text/rdf+n3
+Content-Type: text/rdf+n3
+
+# windows path
+#< \\pepper\homestd\My Documents\rothamsted\work\workinprogress\eggplant-sadi-services-project\eggplant-sadi-services\ontology-data\service-data\getVarieties\1.n3
+# linux path
+< ../../../../../inputdata/allFields/1.n3
+

@@ -34,6 +34,8 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service: getAnimalBasicData");
+        // Extract the animalBasicDataId from the input RDF:
+        String animalBasicDataId = input.getRequiredProperty(Vocab.has_AnimalBasicDataId).getString();
         Model outputModel = output.getModel();
 
         try {
@@ -100,110 +102,112 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
                     String animalCategoryNameVal = getNullAsEmptyString(element.get("AnimalCategoryName"));
                     String breedingAnimalVal = getNullAsEmptyString(element.get("BreedingAnimal"));
 
+                    if (idVal.equals(animalBasicDataId)) {
 
-                    Resource AnimalResource = outputModel.createResource();
+                        Resource AnimalResource = outputModel.createResource();
 
-                    Resource IdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.AnimalBasicDataId);
-                    IdResource.addLiteral(Vocab.has_value, idVal);
-                    AnimalResource.addProperty(Vocab.animalBasicDataId, IdResource);
+                        //Resource IdResource = outputModel.createResource();
+                        //IdResource.addProperty(Vocab.type, Vocab.AnimalBasicDataId);
+                        //IdResource.addLiteral(Vocab.has_value, idVal);
+                        //AnimalResource.addProperty(Vocab.animalBasicDataId, IdResource);
 
-                    Resource OfficialTagResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.OfficialTag);
-                    IdResource.addLiteral(Vocab.has_value, officialTagVal);
-                    AnimalResource.addProperty(Vocab.officialTag, OfficialTagResource);
+                        Resource OfficialTagResource = outputModel.createResource();
+                        OfficialTagResource.addProperty(Vocab.type, Vocab.OfficialTag);
+                        OfficialTagResource.addLiteral(Vocab.has_value, officialTagVal);
+                        AnimalResource.addProperty(Vocab.officialTag, OfficialTagResource);
 
-                    Resource ManagementTagResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.ManagementTag);
-                    IdResource.addLiteral(Vocab.has_value, managementTagVal);
-                    AnimalResource.addProperty(Vocab.managementTag, ManagementTagResource);
+                        Resource ManagementTagResource = outputModel.createResource();
+                        ManagementTagResource.addProperty(Vocab.type, Vocab.ManagementTag);
+                        ManagementTagResource.addLiteral(Vocab.has_value, managementTagVal);
+                        AnimalResource.addProperty(Vocab.managementTag, ManagementTagResource);
 
-                    Resource BreedResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.Breed);
-                    IdResource.addLiteral(Vocab.has_value, breedVal);
-                    AnimalResource.addProperty(Vocab.breed, BreedResource);
+                        Resource BreedResource = outputModel.createResource();
+                        BreedResource.addProperty(Vocab.type, Vocab.Breed);
+                        BreedResource.addLiteral(Vocab.has_value, breedVal);
+                        AnimalResource.addProperty(Vocab.breed, BreedResource);
 
-                    Resource DateOfBirthResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.DateOfBirth);
-                    IdResource.addLiteral(Vocab.has_value, dateOfBirthVal);
-                    AnimalResource.addProperty(Vocab.dateOfBirth, DateOfBirthResource);
+                        Resource DateOfBirthResource = outputModel.createResource();
+                        DateOfBirthResource.addProperty(Vocab.type, Vocab.DateOfBirth);
+                        DateOfBirthResource.addLiteral(Vocab.has_value, dateOfBirthVal);
+                        AnimalResource.addProperty(Vocab.dateOfBirth, DateOfBirthResource);
 
-                    Resource GrazingYearResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.GrazingYear);
-                    IdResource.addLiteral(Vocab.has_value, grazingYearVal);
-                    AnimalResource.addProperty(Vocab.grazingYear, GrazingYearResource);
+                        Resource GrazingYearResource = outputModel.createResource();
+                        GrazingYearResource.addProperty(Vocab.type, Vocab.GrazingYear);
+                        GrazingYearResource.addLiteral(Vocab.has_value, grazingYearVal);
+                        AnimalResource.addProperty(Vocab.grazingYear, GrazingYearResource);
 
-                    Resource EndGrazingYearResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.EndGrazingYear);
-                    IdResource.addLiteral(Vocab.has_value, endGrazingYearVal);
-                    AnimalResource.addProperty(Vocab.endGrazingYear, EndGrazingYearResource);
+                        Resource EndGrazingYearResource = outputModel.createResource();
+                        EndGrazingYearResource.addProperty(Vocab.type, Vocab.EndGrazingYear);
+                        EndGrazingYearResource.addLiteral(Vocab.has_value, endGrazingYearVal);
+                        AnimalResource.addProperty(Vocab.endGrazingYear, EndGrazingYearResource);
 
-                    Resource GenderResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.Gender);
-                    IdResource.addLiteral(Vocab.has_value, genderVal);
-                    AnimalResource.addProperty(Vocab.gender, GenderResource);
+                        Resource GenderResource = outputModel.createResource();
+                        GenderResource.addProperty(Vocab.type, Vocab.Gender);
+                        GenderResource.addLiteral(Vocab.has_value, genderVal);
+                        AnimalResource.addProperty(Vocab.gender, GenderResource);
 
-                    Resource FarmletNameResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.FarmletName);
-                    IdResource.addLiteral(Vocab.has_value, farmletNameVal);
-                    AnimalResource.addProperty(Vocab.farmletName, FarmletNameResource);
+                        Resource FarmletNameResource = outputModel.createResource();
+                        FarmletNameResource.addProperty(Vocab.type, Vocab.FarmletName);
+                        FarmletNameResource.addLiteral(Vocab.has_value, farmletNameVal);
+                        AnimalResource.addProperty(Vocab.farmletName, FarmletNameResource);
 
-                    Resource SireIdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.SireId);
-                    IdResource.addLiteral(Vocab.has_value, sireIdVal);
-                    AnimalResource.addProperty(Vocab.sireId, SireIdResource);
+                        Resource SireIdResource = outputModel.createResource();
+                        SireIdResource.addProperty(Vocab.type, Vocab.SireId);
+                        SireIdResource.addLiteral(Vocab.has_value, sireIdVal);
+                        AnimalResource.addProperty(Vocab.sireId, SireIdResource);
 
-                    Resource BirthDamIdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.BirthDamId);
-                    IdResource.addLiteral(Vocab.has_value, birthDamIdVal);
-                    AnimalResource.addProperty(Vocab.birthDamId, BirthDamIdResource);
+                        Resource BirthDamIdResource = outputModel.createResource();
+                        BirthDamIdResource.addProperty(Vocab.type, Vocab.BirthDamId);
+                        BirthDamIdResource.addLiteral(Vocab.has_value, birthDamIdVal);
+                        AnimalResource.addProperty(Vocab.birthDamId, BirthDamIdResource);
 
-                    Resource RearingDamIdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.RearingDamId);
-                    IdResource.addLiteral(Vocab.has_value, rearingDamIdVal);
-                    AnimalResource.addProperty(Vocab.rearingDamId, RearingDamIdResource);
+                        Resource RearingDamIdResource = outputModel.createResource();
+                        RearingDamIdResource.addProperty(Vocab.type, Vocab.RearingDamId);
+                        RearingDamIdResource.addLiteral(Vocab.has_value, rearingDamIdVal);
+                        AnimalResource.addProperty(Vocab.rearingDamId, RearingDamIdResource);
 
-                    Resource BirthLitterSizeResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.BirthLitterSize);
-                    IdResource.addLiteral(Vocab.has_value, birthLitterSizeVal);
-                    AnimalResource.addProperty(Vocab.birthLitterSize, BirthLitterSizeResource);
+                        Resource BirthLitterSizeResource = outputModel.createResource();
+                        BirthLitterSizeResource.addProperty(Vocab.type, Vocab.BirthLitterSize);
+                        BirthLitterSizeResource.addLiteral(Vocab.has_value, birthLitterSizeVal);
+                        AnimalResource.addProperty(Vocab.birthLitterSize, BirthLitterSizeResource);
 
-                    Resource RearingLitterSizeResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.RearingLitterSize);
-                    IdResource.addLiteral(Vocab.has_value, rearingLitterSizeVal);
-                    AnimalResource.addProperty(Vocab.rearingLitterSize, RearingLitterSizeResource);
+                        Resource RearingLitterSizeResource = outputModel.createResource();
+                        RearingLitterSizeResource.addProperty(Vocab.type, Vocab.RearingLitterSize);
+                        RearingLitterSizeResource.addLiteral(Vocab.has_value, rearingLitterSizeVal);
+                        AnimalResource.addProperty(Vocab.rearingLitterSize, RearingLitterSizeResource);
 
-                    Resource AnimalIdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.AnimalId);
-                    IdResource.addLiteral(Vocab.has_value, animalIdVal);
-                    AnimalResource.addProperty(Vocab.animalId, AnimalIdResource);
+                        Resource AnimalIdResource = outputModel.createResource();
+                        AnimalIdResource.addProperty(Vocab.type, Vocab.AnimalId);
+                        AnimalIdResource.addLiteral(Vocab.has_value, animalIdVal);
+                        AnimalResource.addProperty(Vocab.animalId, AnimalIdResource);
 
-                    Resource CommentResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.Comment);
-                    IdResource.addLiteral(Vocab.has_value, commentVal);
-                    AnimalResource.addProperty(Vocab.comment, CommentResource);
+                        Resource CommentResource = outputModel.createResource();
+                        CommentResource.addProperty(Vocab.type, Vocab.Comment);
+                        CommentResource.addLiteral(Vocab.has_value, commentVal);
+                        AnimalResource.addProperty(Vocab.comment, CommentResource);
 
-                    Resource RangeStartDateTimeResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.RangeStartDateTime);
-                    IdResource.addLiteral(Vocab.has_value, rangeStartDateTimeVal);
-                    AnimalResource.addProperty(Vocab.rangeStartDateTime, RangeStartDateTimeResource);
+                        Resource RangeStartDateTimeResource = outputModel.createResource();
+                        RangeStartDateTimeResource.addProperty(Vocab.type, Vocab.RangeStartDateTime);
+                        RangeStartDateTimeResource.addLiteral(Vocab.has_value, rangeStartDateTimeVal);
+                        AnimalResource.addProperty(Vocab.rangeStartDateTime, RangeStartDateTimeResource);
 
-                    Resource RangeEndDateTimeResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.RangeEndDateTime);
-                    IdResource.addLiteral(Vocab.has_value, rangeEndDateTimeVal);
-                    AnimalResource.addProperty(Vocab.rangeEndDateTime, RangeEndDateTimeResource);
+                        Resource RangeEndDateTimeResource = outputModel.createResource();
+                        RangeEndDateTimeResource.addProperty(Vocab.type, Vocab.RangeEndDateTime);
+                        RangeEndDateTimeResource.addLiteral(Vocab.has_value, rangeEndDateTimeVal);
+                        AnimalResource.addProperty(Vocab.rangeEndDateTime, RangeEndDateTimeResource);
 
-                    Resource AnimalCategoryNameResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.AnimalCategoryName);
-                    IdResource.addLiteral(Vocab.has_value, animalCategoryNameVal);
-                    AnimalResource.addProperty(Vocab.animalCategoryName, AnimalCategoryNameResource);
+                        Resource AnimalCategoryNameResource = outputModel.createResource();
+                        AnimalCategoryNameResource.addProperty(Vocab.type, Vocab.AnimalCategoryName);
+                        AnimalCategoryNameResource.addLiteral(Vocab.has_value, animalCategoryNameVal);
+                        AnimalResource.addProperty(Vocab.animalCategoryName, AnimalCategoryNameResource);
 
-                    Resource BreedingAnimalResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.BreedingAnimal);
-                    IdResource.addLiteral(Vocab.has_value, breedingAnimalVal);
-                    AnimalResource.addProperty(Vocab.breedingAnimal, BreedingAnimalResource);
+                        Resource BreedingAnimalResource = outputModel.createResource();
+                        BreedingAnimalResource.addProperty(Vocab.type, Vocab.BreedingAnimal);
+                        BreedingAnimalResource.addLiteral(Vocab.has_value, breedingAnimalVal);
+                        AnimalResource.addProperty(Vocab.breedingAnimal, BreedingAnimalResource);
 
-                    AnimalResource.addProperty(Vocab.type, output);
+                        AnimalResource.addProperty(Vocab.type, output);
+                    }
                 }
                 log.info("getAnimalBasicData service completed.");
             } else if (status > 299){
@@ -242,6 +246,7 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
         public static final Property breedingAnimal = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#breedingAnimal");
         // data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
+        public static final Property has_AnimalBasicDataId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_AnimalBasicDataId");
         // Resources
         public static final Resource AnimalBasicDataId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#AnimalBasicDataId");
         public static final Resource OfficialTag = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#OfficialTag");

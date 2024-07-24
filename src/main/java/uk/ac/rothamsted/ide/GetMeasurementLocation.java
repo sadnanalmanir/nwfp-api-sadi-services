@@ -35,6 +35,8 @@ public class GetMeasurementLocation extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getMeasurementLocation");
+        // Extract the measurementLocationId from the input RDF:
+        String measurementLocationId = input.getRequiredProperty(Vocab.has_MeasurementLocationId).getString();
         Model outputModel = output.getModel();
 
         try {
@@ -98,97 +100,97 @@ public class GetMeasurementLocation extends SimpleSynchronousServiceServlet {
                     String validFromDateVal = getNullAsEmptyString(element.get("ValidFrom"));
                     String validUntilDateVal = getNullAsEmptyString(element.get("ValidUntil"));
 
+                    if (idVal.equals(measurementLocationId)) {
 
-                    Resource Measurement = outputModel.createResource();
-                    // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
-                    //catchment.addProperty(Vocab.type, Vocab.Catchment);
+                        Resource Measurement = outputModel.createResource();
 
+                        //Resource IdResource = outputModel.createResource();
+                        //IdResource.addProperty(Vocab.type, Vocab.MeasurementLocationId);
+                        //IdResource.addLiteral(Vocab.has_value, idVal);
+                        //Measurement.addProperty(Vocab.measurementLocationId, IdResource);
 
-                    Resource IdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.MeasurementLocationId);
-                    IdResource.addLiteral(Vocab.has_value, idVal);
-                    Measurement.addProperty(Vocab.measurementLocationId, IdResource);
+                        Resource MeasurementLocationNameResource = outputModel.createResource();
+                        MeasurementLocationNameResource.addProperty(Vocab.type, Vocab.MeasurementLocationName);
+                        MeasurementLocationNameResource.addLiteral(Vocab.has_value, measurementLocationNameVal);
+                        Measurement.addProperty(Vocab.measurementLocationName, MeasurementLocationNameResource);
 
-                    Resource MeasurementLocationNameResource = outputModel.createResource();
-                    MeasurementLocationNameResource.addProperty(Vocab.type, Vocab.MeasurementLocationName);
-                    MeasurementLocationNameResource.addLiteral(Vocab.has_value, measurementLocationNameVal);
-                    Measurement.addProperty(Vocab.measurementLocationName, MeasurementLocationNameResource);
+                        Resource CatchmentNameResource = outputModel.createResource();
+                        CatchmentNameResource.addProperty(Vocab.type, Vocab.CatchmentName);
+                        CatchmentNameResource.addLiteral(Vocab.has_value, catchmentNameVal);
+                        Measurement.addProperty(Vocab.catchmentName, CatchmentNameResource);
 
-                    Resource CatchmentNameResource = outputModel.createResource();
-                    CatchmentNameResource.addProperty(Vocab.type, Vocab.CatchmentName);
-                    CatchmentNameResource.addLiteral(Vocab.has_value, catchmentNameVal);
-                    Measurement.addProperty(Vocab.catchmentName, CatchmentNameResource);
+                        Resource CatchmentDisplayNameResource = outputModel.createResource();
+                        CatchmentDisplayNameResource.addProperty(Vocab.type, Vocab.CatchmentDisplayName);
+                        CatchmentDisplayNameResource.addLiteral(Vocab.has_value, catchmentDisplayNameVal);
+                        Measurement.addProperty(Vocab.catchmentDisplayName, CatchmentDisplayNameResource);
 
-                    Resource CatchmentDisplayNameResource = outputModel.createResource();
-                    CatchmentDisplayNameResource.addProperty(Vocab.type, Vocab.CatchmentDisplayName);
-                    CatchmentDisplayNameResource.addLiteral(Vocab.has_value, catchmentDisplayNameVal);
-                    Measurement.addProperty(Vocab.catchmentDisplayName, CatchmentDisplayNameResource);
+                        Resource LocationTypeNameResource = outputModel.createResource();
+                        LocationTypeNameResource.addProperty(Vocab.type, Vocab.LocationTypeName);
+                        LocationTypeNameResource.addLiteral(Vocab.has_value, locationTypeNameVal);
+                        Measurement.addProperty(Vocab.locationTypeName, LocationTypeNameResource);
 
-                    Resource LocationTypeNameResource = outputModel.createResource();
-                    LocationTypeNameResource.addProperty(Vocab.type, Vocab.LocationTypeName);
-                    LocationTypeNameResource.addLiteral(Vocab.has_value, locationTypeNameVal);
-                    Measurement.addProperty(Vocab.locationTypeName, LocationTypeNameResource);
+                        Resource LocationXResource = outputModel.createResource();
+                        LocationXResource.addProperty(Vocab.type, Vocab.LocationX);
+                        LocationXResource.addLiteral(Vocab.has_value, locationXVal);
+                        Measurement.addProperty(Vocab.locationX, LocationXResource);
 
-                    Resource LocationXResource = outputModel.createResource();
-                    LocationXResource.addProperty(Vocab.type, Vocab.LocationX);
-                    LocationXResource.addLiteral(Vocab.has_value, locationXVal);
-                    Measurement.addProperty(Vocab.locationX, LocationXResource);
+                        Resource LocationYResource = outputModel.createResource();
+                        LocationYResource.addProperty(Vocab.type, Vocab.LocationY);
+                        LocationYResource.addLiteral(Vocab.has_value, locationYVal);
+                        Measurement.addProperty(Vocab.locationY, LocationYResource);
 
-                    Resource LocationYResource = outputModel.createResource();
-                    LocationYResource.addProperty(Vocab.type, Vocab.LocationY);
-                    LocationYResource.addLiteral(Vocab.has_value, locationYVal);
-                    Measurement.addProperty(Vocab.locationY, LocationYResource);
+                        Resource FarmletNameResource = outputModel.createResource();
+                        FarmletNameResource.addProperty(Vocab.type, Vocab.FarmletName);
+                        FarmletNameResource.addLiteral(Vocab.has_value, farmletNameVal);
+                        Measurement.addProperty(Vocab.farmletName, FarmletNameResource);
 
-                    Resource FarmletNameResource = outputModel.createResource();
-                    FarmletNameResource.addProperty(Vocab.type, Vocab.FarmletName);
-                    FarmletNameResource.addLiteral(Vocab.has_value, farmletNameVal);
-                    Measurement.addProperty(Vocab.farmletName, FarmletNameResource);
+                        Resource FieldNameResource = outputModel.createResource();
+                        FieldNameResource.addProperty(Vocab.type, Vocab.FieldName);
+                        FieldNameResource.addLiteral(Vocab.has_value, fieldNameVal);
+                        Measurement.addProperty(Vocab.fieldName, FieldNameResource);
 
-                    Resource FieldNameResource = outputModel.createResource();
-                    FieldNameResource.addProperty(Vocab.type, Vocab.FieldName);
-                    FieldNameResource.addLiteral(Vocab.has_value, fieldNameVal);
-                    Measurement.addProperty(Vocab.fieldName, FieldNameResource);
+                        Resource CatchmentIdResource = outputModel.createResource();
+                        CatchmentIdResource.addProperty(Vocab.type, Vocab.CatchmentId);
+                        CatchmentIdResource.addLiteral(Vocab.has_value, catchmentIdVal);
+                        Measurement.addProperty(Vocab.catchmentId, CatchmentIdResource);
 
-                    Resource CatchmentIdResource = outputModel.createResource();
-                    CatchmentIdResource.addProperty(Vocab.type, Vocab.CatchmentId);
-                    CatchmentIdResource.addLiteral(Vocab.has_value, catchmentIdVal);
-                    Measurement.addProperty(Vocab.catchmentId, CatchmentIdResource);
+                        Resource FarmletIdResource = outputModel.createResource();
+                        FarmletIdResource.addProperty(Vocab.type, Vocab.FarmletId);
+                        FarmletIdResource.addLiteral(Vocab.has_value, farmletIdVal);
+                        Measurement.addProperty(Vocab.farmletId, FarmletIdResource);
 
-                    Resource FarmletIdResource = outputModel.createResource();
-                    FarmletIdResource.addProperty(Vocab.type, Vocab.FarmletId);
-                    FarmletIdResource.addLiteral(Vocab.has_value, farmletIdVal);
-                    Measurement.addProperty(Vocab.farmletId, FarmletIdResource);
+                        Resource FieldIdResource = outputModel.createResource();
+                        FieldIdResource.addProperty(Vocab.type, Vocab.FieldId);
+                        FieldIdResource.addLiteral(Vocab.has_value, fieldIdVal);
+                        Measurement.addProperty(Vocab.fieldId, FieldIdResource);
 
-                    Resource FieldIdResource = outputModel.createResource();
-                    FieldIdResource.addProperty(Vocab.type, Vocab.FieldId);
-                    FieldIdResource.addLiteral(Vocab.has_value, fieldIdVal);
-                    Measurement.addProperty(Vocab.fieldId, FieldIdResource);
+                        Resource LocationTypeIdResource = outputModel.createResource();
+                        LocationTypeIdResource.addProperty(Vocab.type, Vocab.LocationTypeId);
+                        LocationTypeIdResource.addLiteral(Vocab.has_value, locationTypeIdVal);
+                        Measurement.addProperty(Vocab.locationTypeId, LocationTypeIdResource);
 
-                    Resource LocationTypeIdResource = outputModel.createResource();
-                    LocationTypeIdResource.addProperty(Vocab.type, Vocab.LocationTypeId);
-                    LocationTypeIdResource.addLiteral(Vocab.has_value, locationTypeIdVal);
-                    Measurement.addProperty(Vocab.locationTypeId, LocationTypeIdResource);
+                        Resource HeightResource = outputModel.createResource();
+                        HeightResource.addProperty(Vocab.type, Vocab.Height);
+                        HeightResource.addLiteral(Vocab.has_value, heightVal);
+                        Measurement.addProperty(Vocab.height, HeightResource);
 
-                    Resource HeightResource = outputModel.createResource();
-                    HeightResource.addProperty(Vocab.type, Vocab.Height);
-                    HeightResource.addLiteral(Vocab.has_value, heightVal);
-                    Measurement.addProperty(Vocab.height, HeightResource);
+                        Resource ValidFromDateResource = outputModel.createResource();
+                        ValidFromDateResource.addProperty(Vocab.type, Vocab.ValidFromDate);
+                        ValidFromDateResource.addLiteral(Vocab.has_value, validFromDateVal);
+                        Measurement.addProperty(Vocab.validFromDate, ValidFromDateResource);
 
-                    Resource ValidFromDateResource = outputModel.createResource();
-                    ValidFromDateResource.addProperty(Vocab.type, Vocab.ValidFromDate);
-                    ValidFromDateResource.addLiteral(Vocab.has_value, validFromDateVal);
-                    Measurement.addProperty(Vocab.validFromDate, ValidFromDateResource);
+                        Resource ValidUntilDateResource = outputModel.createResource();
+                        ValidUntilDateResource.addProperty(Vocab.type, Vocab.ValidUntilDate);
+                        ValidUntilDateResource.addLiteral(Vocab.has_value, validUntilDateVal);
+                        Measurement.addProperty(Vocab.validUntilDate, ValidUntilDateResource);
 
-                    Resource ValidUntilDateResource = outputModel.createResource();
-                    ValidUntilDateResource.addProperty(Vocab.type, Vocab.ValidUntilDate);
-                    ValidUntilDateResource.addLiteral(Vocab.has_value, validUntilDateVal);
-                    Measurement.addProperty(Vocab.validUntilDate, ValidUntilDateResource);
+                        Measurement.addProperty(Vocab.type, output);
 
-                    Measurement.addProperty(Vocab.type, output);
+                    }
 
                 }
                 log.info("getMeasurementLocation service completed.");
-            } else if (status > 299){
+            } else if (status > 299) {
                 log.info("Error executing the GET method at " + endPoint);
             }
         } catch (Exception e) {
@@ -219,6 +221,7 @@ public class GetMeasurementLocation extends SimpleSynchronousServiceServlet {
         public static final Property validUntilDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#validUntilDate");
 
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
+        public static final Property has_MeasurementLocationId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_MeasurementLocationId");
 
         public static final Resource MeasurementLocationId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementLocationId");
         public static final Resource MeasurementLocationName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementLocationName");

@@ -46,9 +46,17 @@
     <owl:Class rdf:about="http://localhost:8080/ontology/service-ontology/getField.owl#Input">
         <owl:equivalentClass>
             <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldId"/>
-                </owl:oneOf>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#Field"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_FieldId"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
     </owl:Class>
@@ -63,7 +71,8 @@
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentId"/>
-                        <owl:someValuesFrom>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
@@ -77,11 +86,12 @@
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
-                        </owl:someValuesFrom>
+                        </owl:onClass>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#cuttingArea"/>
-                        <owl:someValuesFrom>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
@@ -95,11 +105,12 @@
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
-                        </owl:someValuesFrom>
+                        </owl:onClass>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#displayId"/>
-                        <owl:someValuesFrom>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
@@ -113,11 +124,12 @@
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
-                        </owl:someValuesFrom>
+                        </owl:onClass>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#fencedArea"/>
-                        <owl:someValuesFrom>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
@@ -131,29 +143,12 @@
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#fieldId"/>
-                        <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
-                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldId"/>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
-                                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                                    </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
-                        </owl:someValuesFrom>
+                        </owl:onClass>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#hydrologicalArea"/>
-                        <owl:someValuesFrom>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
@@ -167,11 +162,12 @@
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
-                        </owl:someValuesFrom>
+                        </owl:onClass>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#inorganicSpreadingArea"/>
-                        <owl:someValuesFrom>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
@@ -185,11 +181,12 @@
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
-                        </owl:someValuesFrom>
+                        </owl:onClass>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#organicSpreadingArea"/>
-                        <owl:someValuesFrom>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
@@ -203,11 +200,12 @@
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
-                        </owl:someValuesFrom>
+                        </owl:onClass>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#validFrom"/>
-                        <owl:someValuesFrom>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
@@ -221,11 +219,12 @@
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
-                        </owl:someValuesFrom>
+                        </owl:onClass>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#validUntil"/>
-                        <owl:someValuesFrom>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
@@ -239,7 +238,7 @@
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
-                        </owl:someValuesFrom>
+                        </owl:onClass>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>

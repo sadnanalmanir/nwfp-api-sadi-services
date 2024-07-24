@@ -4,16 +4,25 @@ SADI Services exposing RESTful API [endpoints](https://red-crescent-623716.postm
 ## SADI services
 The following table shows the SADI services, their CRUD operations, the endpoints they expose
 
-| SADI Service                  | HTTP Method | Endpoint                                                          |
+| SADI Service                  | HTTP Method | API Endpoint                                                      |
 |-------------------------------|-------------|-------------------------------------------------------------------|
+| allCatchments                 | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchments                  |
 | getCatchment                  | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchments                  |
+| allCatchmentMeasurementTypes  | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchmentMeasurementTypes   |
 | getCatchmentMeasurementType   | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchmentMeasurementTypes   |
+| allFields                     | GET         | https://nwfp.rothamsted.ac.uk:8443/getFields                      |
 | getField                      | GET         | https://nwfp.rothamsted.ac.uk:8443/getFields                      |
+| allFieldEvents                | GET         | https://nwfp.rothamsted.ac.uk:8443/getFieldEvents                 |
 | getFieldEvent                 | GET         | https://nwfp.rothamsted.ac.uk:8443/getFieldEvents                 |
+| allAnimalBasicData            | GET         | https://nwfp.rothamsted.ac.uk:8443/getAnimalBasicData             |
 | getAnimalBasicData            | GET         | https://nwfp.rothamsted.ac.uk:8443/getAnimalBasicData             |
+| allDataQualities              | GET         | https://nwfp.rothamsted.ac.uk:8443/getDataQualities               |
 | getDataQuality                | GET         | https://nwfp.rothamsted.ac.uk:8443/getDataQualities               |
+| allMeasurementLocations       | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementLocations        |
 | getMeasurementLocation        | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementLocations        |
+| allMeasurementTypes           | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypes            |
 | getMeasurementType            | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypes            |
+| allMeasurementTypesLong       | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypesLong        |
 | getMeasurementTypeLong        | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypesLong        |
 | getMeasurementByCatchmentName | POST        | https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByCatchmentName |
 | getMeasurementByDateRange     | POST        | https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByDateRange     |
@@ -45,6 +54,7 @@ After the deployment, open the browser to view:
 - SADI services at http://localhost:8080/nwfp-api-sadi-services
 - Domain ontology at http://localhost:8080/ontology/domain-ontology/nwf.owl
 - Service ontologies at
+  - http://localhost:8080/ontology/service-ontology/allCatchments.owl
   - http://localhost:8080/ontology/service-ontology/getCatchment.owl
   - http://localhost:8080/ontology/service-ontology/getCatchmentMeasurementType.owl
   - http://localhost:8080/ontology/service-ontology/getField.owl
@@ -75,13 +85,13 @@ $ curl -H 'Content-Type: text/rdf+n3' -H 'Accept: text/rdf+n3' --data @PATH_TO_N
 
 For instance, use the following commands to test the getCatchment service
 ```shell
-$ curl http://localhost:8080/nwfp-api-sadi-services/getCatchment
+$ curl http://localhost:8080/nwfp-api-sadi-services/allCatchments
 ```
 ```shell
-$ curl -H 'Content-Type: text/rdf' -H 'Accept: text/rdf' --data @./src/test/inputdata/getCatchment/1.rdf http://localhost:8080/nwfp-api-sadi-services/getCatchment
+$ curl -H 'Content-Type: text/rdf' -H 'Accept: text/rdf' --data @./src/test/inputdata/allCatchments/1.rdf http://localhost:8080/nwfp-api-sadi-services/allCatchments
 ```
 ```shell
-$ curl -H 'Content-Type: text/rdf+n3' -H 'Accept: text/rdf+n3' --data @./src/test/inputdata/getCatchment/1.n3 http://localhost:8080/nwfp-api-sadi-services/getCatchment
+$ curl -H 'Content-Type: text/rdf+n3' -H 'Accept: text/rdf+n3' --data @./src/test/inputdata/allCatchments/1.n3 http://localhost:8080/nwfp-api-sadi-services/allCatchments
 ```
 
 

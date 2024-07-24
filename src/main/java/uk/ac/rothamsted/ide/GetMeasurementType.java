@@ -35,6 +35,8 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getMeasurementType");
+        // Extract the measurementTypeId from the input RDF:
+        String measurementTypeId = input.getRequiredProperty(Vocab.has_MeasurementTypeId).getString();
         Model outputModel = output.getModel();
 
         try {
@@ -95,53 +97,56 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
                     // enabling Catchment rdf:type for the root node as instance of {Catchment} does not work on hydra gui
                     //catchment.addProperty(Vocab.type, Vocab.Catchment);
 
+                    if (idVal.equals(measurementTypeId)) {
 
-                    Resource IdResource = outputModel.createResource();
-                    IdResource.addProperty(Vocab.type, Vocab.MeasurementTypeId);
-                    IdResource.addLiteral(Vocab.has_value, idVal);
-                    Measurement.addProperty(Vocab.measurementTypeId, IdResource);
 
-                    Resource DisplayNameResource = outputModel.createResource();
-                    DisplayNameResource.addProperty(Vocab.type, Vocab.DisplayName);
-                    DisplayNameResource.addLiteral(Vocab.has_value, displayNameVal);
-                    Measurement.addProperty(Vocab.displayName, DisplayNameResource);
+                        //Resource IdResource = outputModel.createResource();
+                        //IdResource.addProperty(Vocab.type, Vocab.MeasurementTypeId);
+                        //IdResource.addLiteral(Vocab.has_value, idVal);
+                        //Measurement.addProperty(Vocab.measurementTypeId, IdResource);
 
-                    Resource NameResource = outputModel.createResource();
-                    NameResource.addProperty(Vocab.type, Vocab.Name);
-                    NameResource.addLiteral(Vocab.has_value, nameVal);
-                    Measurement.addProperty(Vocab.name, NameResource);
+                        Resource DisplayNameResource = outputModel.createResource();
+                        DisplayNameResource.addProperty(Vocab.type, Vocab.DisplayName);
+                        DisplayNameResource.addLiteral(Vocab.has_value, displayNameVal);
+                        Measurement.addProperty(Vocab.displayName, DisplayNameResource);
 
-                    Resource UnitResource = outputModel.createResource();
-                    UnitResource.addProperty(Vocab.type, Vocab.Unit);
-                    UnitResource.addLiteral(Vocab.has_value, unitVal);
-                    Measurement.addProperty(Vocab.unit, UnitResource);
+                        Resource NameResource = outputModel.createResource();
+                        NameResource.addProperty(Vocab.type, Vocab.Name);
+                        NameResource.addLiteral(Vocab.has_value, nameVal);
+                        Measurement.addProperty(Vocab.name, NameResource);
 
-                    Resource DisplayUnitResource = outputModel.createResource();
-                    DisplayUnitResource.addProperty(Vocab.type, Vocab.DisplayUnit);
-                    DisplayUnitResource.addLiteral(Vocab.has_value, displayUnitVal);
-                    Measurement.addProperty(Vocab.displayUnit, DisplayUnitResource);
+                        Resource UnitResource = outputModel.createResource();
+                        UnitResource.addProperty(Vocab.type, Vocab.Unit);
+                        UnitResource.addLiteral(Vocab.has_value, unitVal);
+                        Measurement.addProperty(Vocab.unit, UnitResource);
 
-                    Resource LLOResource = outputModel.createResource();
-                    LLOResource.addProperty(Vocab.type, Vocab.LLO);
-                    LLOResource.addLiteral(Vocab.has_value, lLOVal);
-                    Measurement.addProperty(Vocab.lLO, LLOResource);
+                        Resource DisplayUnitResource = outputModel.createResource();
+                        DisplayUnitResource.addProperty(Vocab.type, Vocab.DisplayUnit);
+                        DisplayUnitResource.addLiteral(Vocab.has_value, displayUnitVal);
+                        Measurement.addProperty(Vocab.displayUnit, DisplayUnitResource);
 
-                    Resource ULOResource = outputModel.createResource();
-                    ULOResource.addProperty(Vocab.type, Vocab.ULO);
-                    ULOResource.addLiteral(Vocab.has_value, uLOVal);
-                    Measurement.addProperty(Vocab.uLO, ULOResource);
+                        Resource LLOResource = outputModel.createResource();
+                        LLOResource.addProperty(Vocab.type, Vocab.LLO);
+                        LLOResource.addLiteral(Vocab.has_value, lLOVal);
+                        Measurement.addProperty(Vocab.lLO, LLOResource);
 
-                    Resource GroupResource = outputModel.createResource();
-                    GroupResource.addProperty(Vocab.type, Vocab.Group);
-                    GroupResource.addLiteral(Vocab.has_value, groupVal);
-                    Measurement.addProperty(Vocab.group, GroupResource);
+                        Resource ULOResource = outputModel.createResource();
+                        ULOResource.addProperty(Vocab.type, Vocab.ULO);
+                        ULOResource.addLiteral(Vocab.has_value, uLOVal);
+                        Measurement.addProperty(Vocab.uLO, ULOResource);
 
-                    Resource SystemSetQualityResource = outputModel.createResource();
-                    SystemSetQualityResource.addProperty(Vocab.type, Vocab.SystemSetQuality);
-                    SystemSetQualityResource.addLiteral(Vocab.has_value, systemSetQualityVal);
-                    Measurement.addProperty(Vocab.systemSetQuality, SystemSetQualityResource);
+                        Resource GroupResource = outputModel.createResource();
+                        GroupResource.addProperty(Vocab.type, Vocab.Group);
+                        GroupResource.addLiteral(Vocab.has_value, groupVal);
+                        Measurement.addProperty(Vocab.group, GroupResource);
 
-                    Measurement.addProperty(Vocab.type, output);
+                        Resource SystemSetQualityResource = outputModel.createResource();
+                        SystemSetQualityResource.addProperty(Vocab.type, Vocab.SystemSetQuality);
+                        SystemSetQualityResource.addLiteral(Vocab.has_value, systemSetQualityVal);
+                        Measurement.addProperty(Vocab.systemSetQuality, SystemSetQualityResource);
+
+                        Measurement.addProperty(Vocab.type, output);
+                    }
 
                 }
                 log.info("getMeasurementType service completed.");
@@ -169,6 +174,7 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
         public static final Property systemSetQuality = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#systemSetQuality");
 
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
+        public static final Property has_MeasurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_MeasurementTypeId");
 
         public static final Resource MeasurementTypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeId");
         public static final Resource DisplayName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName");
