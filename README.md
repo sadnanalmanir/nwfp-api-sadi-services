@@ -4,30 +4,29 @@ SADI Services exposing RESTful API [endpoints](https://red-crescent-623716.postm
 ## SADI services
 The following table shows the SADI services, their CRUD operations, the endpoints they expose
 
-| SADI Service                  | HTTP Method | API Endpoint                                                      |
-|-------------------------------|-------------|-------------------------------------------------------------------|
-| allCatchments                 | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchments                  |
-| getCatchment                  | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchments                  |
-| allCatchmentMeasurementTypes  | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchmentMeasurementTypes   |
-| getCatchmentMeasurementType   | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchmentMeasurementTypes   |
-| allFields                     | GET         | https://nwfp.rothamsted.ac.uk:8443/getFields                      |
-| getField                      | GET         | https://nwfp.rothamsted.ac.uk:8443/getFields                      |
-| allFieldEvents                | GET         | https://nwfp.rothamsted.ac.uk:8443/getFieldEvents                 |
-| getFieldEvent                 | GET         | https://nwfp.rothamsted.ac.uk:8443/getFieldEvents                 |
-| allAnimalBasicData            | GET         | https://nwfp.rothamsted.ac.uk:8443/getAnimalBasicData             |
-| getAnimalBasicData            | GET         | https://nwfp.rothamsted.ac.uk:8443/getAnimalBasicData             |
-| allDataQualities              | GET         | https://nwfp.rothamsted.ac.uk:8443/getDataQualities               |
-| getDataQuality                | GET         | https://nwfp.rothamsted.ac.uk:8443/getDataQualities               |
-| allMeasurementLocations       | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementLocations        |
-| getMeasurementLocation        | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementLocations        |
-| allMeasurementTypes           | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypes            |
-| getMeasurementType            | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypes            |
-| allMeasurementTypesLong       | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypesLong        |
-| getMeasurementTypeLong        | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypesLong        |
-| getMeasurementByCatchmentName | POST        | https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByCatchmentName |
-| getMeasurementByDateRange     | POST        | https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByDateRange     |
-| getMeasurementByTypeId        | POST        | https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByDateRange     |
-
+| SADI Service                  | Description                                                                                           | HTTP Method | API Endpoint                                                      |
+|-------------------------------|-------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------|
+| allCatchments                 | List all catchments by their unique identifiers                                                       | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchments                  |
+| getCatchment                  | Get information about the catchments based on the identifier                                          | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchments                  |
+| allCatchmentMeasurementTypes  | List all measurement types of the catchments by their unique identifiers                              | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchmentMeasurementTypes   |
+| getCatchmentMeasurementType   | Get information about the measurements of catchments based on the identifier                          | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchmentMeasurementTypes   |
+| allFields                     | List all fields by their unique identifiers                                                           | GET         | https://nwfp.rothamsted.ac.uk:8443/getFields                      |
+| getField                      | Get information about the fields based on the identifier                                              | GET         | https://nwfp.rothamsted.ac.uk:8443/getFields                      |
+| allFieldEvents                | List all events in the fields by their identifiers                                                    | GET         | https://nwfp.rothamsted.ac.uk:8443/getFieldEvents                 |
+| getFieldEvent                 | Get information about the events in the fields based on the identifier                                | GET         | https://nwfp.rothamsted.ac.uk:8443/getFieldEvents                 |
+| allAnimalBasicData            | List all basic animal data by their unique identifiers                                                | GET         | https://nwfp.rothamsted.ac.uk:8443/getAnimalBasicData             |
+| getAnimalBasicData            | Get information about the basic animal data based on the identifier                                   | GET         | https://nwfp.rothamsted.ac.uk:8443/getAnimalBasicData             |
+| allDataQualities              | List all measures of the quality of data by their unique identifiers                                  | GET         | https://nwfp.rothamsted.ac.uk:8443/getDataQualities               |
+| getDataQuality                | Get information about the measurements of quality of data based on the identifier                     | GET         | https://nwfp.rothamsted.ac.uk:8443/getDataQualities               |
+| allMeasurementLocations       | List all locations of the measurements by their unique identifiers                                    | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementLocations        |
+| getMeasurementLocation        | Get information about the locations of the measurements based on the identifier                       | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementLocations        |
+| allMeasurementTypes           | List all types of the measurements by their unique identifiers                                        | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypes            |
+| getMeasurementType            | Get information about the types of measurements based on the identifier                               | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypes            |
+| allMeasurementTypesLong       | List all types of the measurements in the long-form by their unique identifiers                       | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypesLong        |
+| getMeasurementTypeLong        | Get information about the measurements of catchments based on the identifier                          | GET         | https://nwfp.rothamsted.ac.uk:8443/getMeasurementTypesLong        |
+| getMeasurementByCatchmentName | Get information about the measurements based on the type, start date, end date, and name of catchment | POST        | https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByCatchmentName |
+| getMeasurementByDateRange     | Get information about the measurements based on the type, start and end date                          | POST        | https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByDateRange     |
+| getMeasurementByTypeId        | Get paginated information about the measurements based on type, page, and number of pages             | POST        | https://nwfp.rothamsted.ac.uk:8443/getMeasurementsByDateRange     |
 
 ## How to deploy
 You need to have [docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) 
