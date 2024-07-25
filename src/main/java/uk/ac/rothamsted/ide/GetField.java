@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.nio.charset.StandardCharsets;
 
 @Name("getField")
-@Description("NWFP rest API: Get information about fields")
+@Description("NWFP rest API: Get information about the fields based on the identifier")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getField.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getField.owl#Output")

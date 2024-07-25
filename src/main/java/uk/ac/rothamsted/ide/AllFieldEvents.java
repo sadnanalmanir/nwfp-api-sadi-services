@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
 @Name("allFieldEvents")
-@Description("NWFP rest API: Get all field identifiers")
+@Description("NWFP rest API: List all events in the fields by their identifiers")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/allFieldEvents.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allFieldEvents.owl#Output")

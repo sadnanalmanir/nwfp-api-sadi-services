@@ -20,7 +20,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 @Name("allMeasurementTypesLong")
-@Description("NWFP rest API: Get measurement types in long form")
+@Description("NWFP rest API: List all types of the measurements in the long-form by their unique identifiers")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/allMeasurementTypesLong.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allMeasurementTypesLong.owl#Output")
