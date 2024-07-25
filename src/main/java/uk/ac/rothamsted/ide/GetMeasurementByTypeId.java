@@ -25,7 +25,7 @@ import java.util.Set;
 import java.nio.charset.StandardCharsets;
 
 @Name("getMeasurementByTypeId")
-@Description("NWFP rest API: Get measurement information based on the date ranges with single id support")
+@Description("NWFP rest API: Get paginated information about the measurements based on type, page, and number of pages")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getMeasurementByTypeId.owl#Output")

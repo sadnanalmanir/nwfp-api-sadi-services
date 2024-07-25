@@ -23,7 +23,7 @@ import java.util.Iterator;
 import java.nio.charset.StandardCharsets;
 
 @Name("getMeasurementByDateRange")
-@Description("NWFP rest API: Get measurement information based on the date ranges with single id support")
+@Description("NWFP rest API: Get information about the measurements based on the type, start and end date")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl#Output")

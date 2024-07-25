@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.nio.charset.StandardCharsets;
 
 @Name("getCatchment")
-@Description("NWFP rest API: Get information about catchment based on the id")
+@Description("NWFP rest API: Get information about the catchments based on the identifier")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getCatchment.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getCatchment.owl#Output")

@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
 @Name("allMeasurementLocations")
-@Description("NWFP rest API: Get all field identifiers")
+@Description("NWFP rest API: List all locations of the measurements by their unique identifiers")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/allMeasurementLocations.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allMeasurementLocations.owl#Output")

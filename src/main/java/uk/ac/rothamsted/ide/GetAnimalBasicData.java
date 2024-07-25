@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.nio.charset.StandardCharsets;
 
 @Name("getAnimalBasicData")
-@Description("NWFP rest API: Get basic animal data")
+@Description("NWFP rest API: Get information about the basic animal data based on the identifier")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Output")

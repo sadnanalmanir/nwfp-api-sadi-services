@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
 @Name("allCatchments")
-@Description("NWFP rest API: Get all catchment identifiers")
+@Description("NWFP rest API: List all catchments by their unique identifiers")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/allCatchments.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allCatchments.owl#Output")

@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.nio.charset.StandardCharsets;
 
 @Name("getMeasurementType")
-@Description("NWFP rest API: Get measurement types")
+@Description("NWFP rest API: Get information about the types of measurements based on the identifier")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/getMeasurementType.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getMeasurementType.owl#Output")

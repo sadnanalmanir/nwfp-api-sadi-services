@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
 @Name("allDataQualities")
-@Description("NWFP rest API: Get all field identifiers")
+@Description("NWFP rest API: List all measures of the quality of data by their unique identifiers")
 @ContactEmail("sadnanalmanir@gmail.com")
 @InputClass("http://localhost:8080/ontology/service-ontology/allDataQualities.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allDataQualities.owl#Output")
