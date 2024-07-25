@@ -55,13 +55,21 @@ After the deployment, open the browser to view:
 - Service ontologies at
   - http://localhost:8080/ontology/service-ontology/allCatchments.owl
   - http://localhost:8080/ontology/service-ontology/getCatchment.owl
+  - http://localhost:8080/ontology/service-ontology/allCatchmentMeasurementTypes.owl
   - http://localhost:8080/ontology/service-ontology/getCatchmentMeasurementType.owl
+  - http://localhost:8080/ontology/service-ontology/allFields.owl
   - http://localhost:8080/ontology/service-ontology/getField.owl
+  - http://localhost:8080/ontology/service-ontology/allFieldEvents.owl
   - http://localhost:8080/ontology/service-ontology/getFieldEvent.owl
+  - http://localhost:8080/ontology/service-ontology/allAnimalBasicData.owl
   - http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl
+  - http://localhost:8080/ontology/service-ontology/allDataQualities.owl
   - http://localhost:8080/ontology/service-ontology/getDataQuality.owl
+  - http://localhost:8080/ontology/service-ontology/allMeasurementLocations.owl
   - http://localhost:8080/ontology/service-ontology/getMeasurementLocation.owl
+  - http://localhost:8080/ontology/service-ontology/allMeasurementTypes.owl
   - http://localhost:8080/ontology/service-ontology/getMeasurementType.owl
+  - http://localhost:8080/ontology/service-ontology/allMeasurementTypesLong.owl
   - http://localhost:8080/ontology/service-ontology/getMeasurementTypeLong.owl
   - http://localhost:8080/ontology/service-ontology/getMeasurementByCatchmentName.owl
   - http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl
@@ -94,7 +102,7 @@ $ curl -H 'Content-Type: text/rdf+n3' -H 'Accept: text/rdf+n3' --data @./src/tes
 ```
 
 
-### ServiceS failing to respond
+### Services failing to respond
 #### getMeasurmentByTypeId
 - The endpoint fails to return contents for the `queryResults` key
 - Response from the API endpoint contains [{"totalPages":1883678},{"queryResults":[]}]
