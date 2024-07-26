@@ -97,59 +97,55 @@ public class GetField extends SimpleSynchronousServiceServlet {
 
                     if (idVal.equals(fieldId)) {
 
-                        Resource field = outputModel.createResource();
-
                         Resource DisplayIdResource = outputModel.createResource();
                         DisplayIdResource.addProperty(Vocab.type, Vocab.DisplayId);
                         DisplayIdResource.addLiteral(Vocab.has_value, displayIdVal);
-                        field.addProperty(Vocab.displayId, DisplayIdResource);
+                        output.addProperty(Vocab.displayId, DisplayIdResource);
 
                         Resource NameResource = outputModel.createResource();
                         NameResource.addProperty(Vocab.type, Vocab.Name);
                         NameResource.addLiteral(Vocab.has_value, nameVal);
-                        field.addProperty(Vocab.name, NameResource);
+                        output.addProperty(Vocab.name, NameResource);
 
                         Resource ValidFromResource = outputModel.createResource();
                         ValidFromResource.addProperty(Vocab.type, Vocab.ValidFromDate);
                         ValidFromResource.addLiteral(Vocab.has_value, validFromVal);
-                        field.addProperty(Vocab.validFrom, ValidFromResource);
+                        output.addProperty(Vocab.validFrom, ValidFromResource);
 
                         Resource ValidUntilResource = outputModel.createResource();
                         ValidUntilResource.addProperty(Vocab.type, Vocab.ValidUntilDate);
                         ValidUntilResource.addLiteral(Vocab.has_value, validUntilVal);
-                        field.addProperty(Vocab.validUntil, ValidUntilResource);
+                        output.addProperty(Vocab.validUntil, ValidUntilResource);
 
                         Resource CuttingAreaResource = outputModel.createResource();
                         CuttingAreaResource.addProperty(Vocab.type, Vocab.CuttingArea);
                         CuttingAreaResource.addLiteral(Vocab.has_value, cuttingAreaVal);
-                        field.addProperty(Vocab.cuttingArea, CuttingAreaResource);
+                        output.addProperty(Vocab.cuttingArea, CuttingAreaResource);
 
                         Resource FencedAreaResource = outputModel.createResource();
                         FencedAreaResource.addProperty(Vocab.type, Vocab.FencedArea);
                         FencedAreaResource.addLiteral(Vocab.has_value, fencedAreaVal);
-                        field.addProperty(Vocab.fencedArea, FencedAreaResource);
+                        output.addProperty(Vocab.fencedArea, FencedAreaResource);
 
                         Resource OrganicSpreadingAreaResource = outputModel.createResource();
                         OrganicSpreadingAreaResource.addProperty(Vocab.type, Vocab.OrganicSpreadingArea);
                         OrganicSpreadingAreaResource.addLiteral(Vocab.has_value, organicSpreadingAreaVal);
-                        field.addProperty(Vocab.organicSpreadingArea, OrganicSpreadingAreaResource);
+                        output.addProperty(Vocab.organicSpreadingArea, OrganicSpreadingAreaResource);
 
                         Resource InorganicSpreadingAreaResource = outputModel.createResource();
                         InorganicSpreadingAreaResource.addProperty(Vocab.type, Vocab.InorganicSpreadingArea);
                         InorganicSpreadingAreaResource.addLiteral(Vocab.has_value, inorganicSpreadingAreaVal);
-                        field.addProperty(Vocab.inorganicSpreadingArea, InorganicSpreadingAreaResource);
+                        output.addProperty(Vocab.inorganicSpreadingArea, InorganicSpreadingAreaResource);
 
                         Resource CatchmentIdResource = outputModel.createResource();
                         CatchmentIdResource.addProperty(Vocab.type, Vocab.CatchmentId);
                         CatchmentIdResource.addLiteral(Vocab.has_value, catchment_idVal);
-                        field.addProperty(Vocab.catchmentId, CatchmentIdResource);
+                        output.addProperty(Vocab.catchmentId, CatchmentIdResource);
 
                         Resource HydrologicalAreaResource = outputModel.createResource();
                         HydrologicalAreaResource.addProperty(Vocab.type, Vocab.HydrologicalArea);
                         HydrologicalAreaResource.addLiteral(Vocab.has_value, hydrologicalAreaVal);
-                        field.addProperty(Vocab.hydrologicalArea, HydrologicalAreaResource);
-
-                        field.addProperty(Vocab.type, output);
+                        output.addProperty(Vocab.hydrologicalArea, HydrologicalAreaResource);
                     }
                 }
                 log.info("getField service completed.");
