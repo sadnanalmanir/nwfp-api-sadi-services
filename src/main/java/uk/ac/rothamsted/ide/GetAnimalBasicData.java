@@ -201,8 +201,6 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
                         BreedingAnimalResource.addProperty(Vocab.type, Vocab.BreedingAnimal);
                         BreedingAnimalResource.addLiteral(Vocab.has_value, breedingAnimalVal);
                         output.addProperty(Vocab.has_breedingAnimal, BreedingAnimalResource);
-
-                        break;
                     }
                 }
                 log.info("getAnimalBasicData service completed.");
