@@ -3,4 +3,5 @@
 @prefix service: <http://localhost:8080/ontology/service-ontology/getDataQuality.owl#> .
 
 nwf:DataQuality a  service:Input ;
-              nwf:has_DataQualityId "10"^^xsd:int .
+              nwf:has_dataQualityId [a nwf:DataQualityId ;
+                                       nwf:has_value "10"^^xsd:int ] .

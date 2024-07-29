@@ -29,8 +29,10 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service: getCatchment");
-        // Extract the catchment id from the input RDF:
-        int catchmentId = input.getRequiredProperty(Vocab.catchmentId).getResource().getRequiredProperty(Vocab.has_value).getInt();
+
+        // Extract the catchment identifier from the input RDF
+        int catchmentId = input.getRequiredProperty(Vocab.has_catchmentId).getResource().getRequiredProperty(Vocab.has_value).getInt();
+
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -40,11 +42,11 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
             URL url = new URL(endPoint);
             long startTime = System.currentTimeMillis();
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            // set connection timeout to 2 seconds
-            //conn.setConnectTimeout(5000);
-            // set content reading timeout to 5 seconds
-            //conn.setReadTimeout(20000);
-            //conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+            // set connection timeout to 5 seconds
+            conn.setConnectTimeout(5000);
+            // set content reading timeout to 20 seconds
+            conn.setReadTimeout(20000);
+            conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
             conn.addRequestProperty("User-Agent", "Mozilla");
             log.info("Request URL: " + url);
 
@@ -65,65 +67,56 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
                 log.info("URL Connection closed.");
                 long endTime = System.currentTimeMillis();
                 log.info("Round trip response time = " + (endTime - startTime) + " ms");
-
                 log.info("API Response Data: " + response);
 
+                // Deserialize response data
                 JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
                 while (elementIterator.hasNext()) {
-
                     element = elementIterator.next().getAsJsonObject();
-
+                    // Read current unique identifier value
                     Literal idVal = outputModel.createTypedLiteral(element.get("Id").getAsInt());
-
+                    // check if the current id matches the extracted id
                     if (idVal.getInt() == catchmentId){
-
                         String nameVal = element.get("Name").getAsString();
                         String displayNameVal = element.get("DisplayName").getAsString();
-                        log.info(nameVal + displayNameVal);
-
                         String validFromVal = getNullAsEmptyString(element.get("ValidFrom"));
-                        //String validFromVal = element.get("ValidFrom").getAsString();
-                        log.info(validFromVal);
                         String validUntilVal = getNullAsEmptyString(element.get("ValidUntil"));
-                        //String validUntilVal = element.get("ValidUntil").getAsString();
-                        log.info(validUntilVal);
-
                         String hydrologicalCatchmentAreaVal = getNullAsEmptyString(element.get("HydrologicalCatchmentArea"));
                         String fencedCatchmentAreaVal = getNullAsEmptyString(element.get("FencedCatchmentArea"));
 
-
+                        // populate the output model with instances and literal values
                         Resource NameResource = outputModel.createResource();
                         NameResource.addProperty(Vocab.type, Vocab.Name);
                         NameResource.addLiteral(Vocab.has_value, nameVal);
-                        output.addProperty(Vocab.name, NameResource);
+                        output.addProperty(Vocab.has_name, NameResource);
 
                         Resource DisplayNameResource = outputModel.createResource();
                         DisplayNameResource.addProperty(Vocab.type, Vocab.DisplayName);
                         DisplayNameResource.addLiteral(Vocab.has_value, displayNameVal);
-                        output.addProperty(Vocab.displayName, DisplayNameResource);
+                        output.addProperty(Vocab.has_displayName, DisplayNameResource);
 
                         Resource ValidFromResource = outputModel.createResource();
                         ValidFromResource.addProperty(Vocab.type, Vocab.ValidFromDate);
                         ValidFromResource.addLiteral(Vocab.has_value, validFromVal);
-                        output.addProperty(Vocab.validFrom, ValidFromResource);
+                        output.addProperty(Vocab.is_validFrom, ValidFromResource);
 
                         Resource ValidUntilResource = outputModel.createResource();
                         ValidUntilResource.addProperty(Vocab.type, Vocab.ValidUntilDate);
                         ValidUntilResource.addLiteral(Vocab.has_value, validUntilVal);
-                        output.addProperty(Vocab.validUntil, ValidUntilResource);
+                        output.addProperty(Vocab.is_validUntil, ValidUntilResource);
 
                         Resource HydrologicalCatchmentAreaResource = outputModel.createResource();
                         HydrologicalCatchmentAreaResource.addProperty(Vocab.type, Vocab.HydrologicalCatchmentArea);
                         HydrologicalCatchmentAreaResource.addLiteral(Vocab.has_value, hydrologicalCatchmentAreaVal);
-                        output.addProperty(Vocab.hydrologicalCatchmentArea, HydrologicalCatchmentAreaResource);
+                        output.addProperty(Vocab.has_hydrologicalCatchmentArea, HydrologicalCatchmentAreaResource);
 
                         Resource FencedCatchmentAreaResource = outputModel.createResource();
                         FencedCatchmentAreaResource.addProperty(Vocab.type, Vocab.FencedCatchmentArea);
                         FencedCatchmentAreaResource.addLiteral(Vocab.has_value, fencedCatchmentAreaVal);
-                        output.addProperty(Vocab.fencedCatchmentArea, FencedCatchmentAreaResource);
+                        output.addProperty(Vocab.has_fencedCatchmentArea, FencedCatchmentAreaResource);
                     }
 
                 }
@@ -142,17 +135,16 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
         private static final Model m_model = ModelFactory.createDefaultModel();
         // Object properties
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property catchmentId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentId");
-        public static final Property name = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_name");
-        public static final Property displayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_displayName");
-        public static final Property validFrom = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#is_validFrom");
-        public static final Property validUntil = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#is_validUntil");
-        public static final Property hydrologicalCatchmentArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_hydrologicalCatchmentArea");
-        public static final Property fencedCatchmentArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fencedCatchmentArea");
-
+        public static final Property has_catchmentId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentId");
+        public static final Property has_name = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_name");
+        public static final Property has_displayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_displayName");
+        public static final Property is_validFrom = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#is_validFrom");
+        public static final Property is_validUntil = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#is_validUntil");
+        public static final Property has_hydrologicalCatchmentArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_hydrologicalCatchmentArea");
+        public static final Property has_fencedCatchmentArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fencedCatchmentArea");
+        // Data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
-        public static final Property has_CatchmentId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_CatchmentId");
-
+        // Resources
         public static final Resource Name = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Name");
         public static final Resource DisplayName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName");
         public static final Resource ValidFromDate = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ValidFromDate");

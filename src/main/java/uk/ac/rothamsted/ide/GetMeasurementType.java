@@ -33,7 +33,7 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getMeasurementType");
         // Extract the measurementTypeId from the input RDF:
-        int measurementTypeId = input.getRequiredProperty(Vocab.has_MeasurementTypeId).getInt();
+        int measurementTypeId = input.getRequiredProperty(Vocab.has_measurementTypeId).getResource().getRequiredProperty(Vocab.has_value).getInt();
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -44,11 +44,11 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
             long startTime = System.currentTimeMillis();
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
-            // set connection timeout to 2 seconds
-            //conn.setConnectTimeout(5000);
-            // set content reading timeout to 5 seconds
-            //conn.setReadTimeout(20000);
-            //conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+            // set connection timeout to 5 seconds
+            conn.setConnectTimeout(5000);
+            // set content reading timeout to 20 seconds
+            conn.setReadTimeout(20000);
+            conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
             conn.addRequestProperty("User-Agent", "Mozilla");
             log.info("Request URL: " + url);
 
@@ -69,20 +69,18 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
                 log.info("URL Connection closed.");
                 long endTime = System.currentTimeMillis();
                 log.info("Round trip response time = " + (endTime - startTime) + " ms");
-
                 log.info("API Response Data: " + response);
 
+                // Deserialize response data
                 JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
-
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
                 while (elementIterator.hasNext()) {
-
                     element = elementIterator.next().getAsJsonObject();
-
+                    // Read current unique identifier value
                     Literal idVal = outputModel.createTypedLiteral(element.get("Id").getAsInt());
-
+                    // check if the current id matches the extracted id
                     if (idVal.getInt() == measurementTypeId) {
                         String displayNameVal = getNullAsEmptyString(element.get("DisplayName"));
                         String nameVal = getNullAsEmptyString(element.get("Name"));
@@ -93,53 +91,47 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
                         String groupVal = getNullAsEmptyString(element.get("Group"));
                         String systemSetQualityVal = getNullAsEmptyString(element.get("SystemSetQuality"));
 
-
-                        //Resource IdResource = outputModel.createResource();
-                        //IdResource.addProperty(Vocab.type, Vocab.MeasurementTypeId);
-                        //IdResource.addLiteral(Vocab.has_value, idVal);
-                        //Measurement.addProperty(Vocab.measurementTypeId, IdResource);
-
+                        // populate the output model with instances and literal values
                         Resource DisplayNameResource = outputModel.createResource();
                         DisplayNameResource.addProperty(Vocab.type, Vocab.DisplayName);
                         DisplayNameResource.addLiteral(Vocab.has_value, displayNameVal);
-                        output.addProperty(Vocab.displayName, DisplayNameResource);
+                        output.addProperty(Vocab.has_displayName, DisplayNameResource);
 
                         Resource NameResource = outputModel.createResource();
                         NameResource.addProperty(Vocab.type, Vocab.Name);
                         NameResource.addLiteral(Vocab.has_value, nameVal);
-                        output.addProperty(Vocab.name, NameResource);
+                        output.addProperty(Vocab.has_name, NameResource);
 
                         Resource UnitResource = outputModel.createResource();
                         UnitResource.addProperty(Vocab.type, Vocab.Unit);
                         UnitResource.addLiteral(Vocab.has_value, unitVal);
-                        output.addProperty(Vocab.unit, UnitResource);
+                        output.addProperty(Vocab.has_unit, UnitResource);
 
                         Resource DisplayUnitResource = outputModel.createResource();
                         DisplayUnitResource.addProperty(Vocab.type, Vocab.DisplayUnit);
                         DisplayUnitResource.addLiteral(Vocab.has_value, displayUnitVal);
-                        output.addProperty(Vocab.displayUnit, DisplayUnitResource);
+                        output.addProperty(Vocab.has_displayUnit, DisplayUnitResource);
 
                         Resource LLOResource = outputModel.createResource();
                         LLOResource.addProperty(Vocab.type, Vocab.LLO);
                         LLOResource.addLiteral(Vocab.has_value, lLOVal);
-                        output.addProperty(Vocab.lLO, LLOResource);
+                        output.addProperty(Vocab.has_lLO, LLOResource);
 
                         Resource ULOResource = outputModel.createResource();
                         ULOResource.addProperty(Vocab.type, Vocab.ULO);
                         ULOResource.addLiteral(Vocab.has_value, uLOVal);
-                        output.addProperty(Vocab.uLO, ULOResource);
+                        output.addProperty(Vocab.has_uLO, ULOResource);
 
                         Resource GroupResource = outputModel.createResource();
                         GroupResource.addProperty(Vocab.type, Vocab.Group);
                         GroupResource.addLiteral(Vocab.has_value, groupVal);
-                        output.addProperty(Vocab.group, GroupResource);
+                        output.addProperty(Vocab.has_group, GroupResource);
 
                         Resource SystemSetQualityResource = outputModel.createResource();
                         SystemSetQualityResource.addProperty(Vocab.type, Vocab.SystemSetQuality);
                         SystemSetQualityResource.addLiteral(Vocab.has_value, systemSetQualityVal);
-                        output.addProperty(Vocab.systemSetQuality, SystemSetQualityResource);
+                        output.addProperty(Vocab.has_systemSetQuality, SystemSetQualityResource);
                     }
-
                 }
                 log.info("getMeasurementType service completed.");
             } else if (status > 299){
@@ -156,19 +148,18 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
         private static final Model m_model = ModelFactory.createDefaultModel();
         // Object properties
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeId");
-        public static final Property displayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_displayName");
-        public static final Property name = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_name");
-        public static final Property unit = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_unit");
-        public static final Property displayUnit = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_displayUnit");
-        public static final Property lLO = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#lLO");
-        public static final Property uLO = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#uLO");
-        public static final Property group = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_group");
-        public static final Property systemSetQuality = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_systemSetQuality");
-
+        public static final Property has_measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeId");
+        public static final Property has_displayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_displayName");
+        public static final Property has_name = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_name");
+        public static final Property has_unit = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_unit");
+        public static final Property has_displayUnit = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_displayUnit");
+        public static final Property has_lLO = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#lLO");
+        public static final Property has_uLO = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#uLO");
+        public static final Property has_group = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_group");
+        public static final Property has_systemSetQuality = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_systemSetQuality");
+        // Data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
-        public static final Property has_MeasurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_MeasurementTypeId");
-
+        // Resources
         public static final Resource MeasurementTypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeId");
         public static final Resource DisplayName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DisplayName");
         public static final Resource Name = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Name");
@@ -180,7 +171,6 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
         public static final Resource SystemSetQuality = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#SystemSetQuality");
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/getMeasurementType.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/getMeasurementType.owl#Output");
-
     }
 
     private static String getNullAsEmptyString(JsonElement jsonElement) {

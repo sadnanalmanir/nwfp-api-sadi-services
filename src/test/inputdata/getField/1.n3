@@ -3,4 +3,5 @@
 @prefix service: <http://localhost:8080/ontology/service-ontology/getField.owl#> .
 
 nwf:Field a  service:Input ;
-              nwf:has_FieldId "1"^^xsd:int .
+              nwf:has_fieldId [a nwf:FieldId ;
+                                 nwf:has_value "1"^^xsd:int ] .

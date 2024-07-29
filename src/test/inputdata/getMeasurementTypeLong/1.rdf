@@ -2,9 +2,14 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:ns0="http://localhost:8080/ontology/domain-ontology/nwf.owl#">
 
-    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Measurement">
+    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeLong">
         <rdf:type rdf:resource="http://localhost:8080/ontology/service-ontology/getMeasurementTypeLong.owl#Input"/>
-        <ns0:has_MeasurementTypeLongId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</ns0:has_MeasurementTypeLongId>
+        <ns0:has_measurementTypeLongId>
+            <ns0:MeasurementTypeLongId>
+                <ns0:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</ns0:has_value>
+            </ns0:MeasurementTypeLongId>
+        </ns0:has_measurementTypeLongId>
+
     </rdf:Description>
 
 </rdf:RDF>

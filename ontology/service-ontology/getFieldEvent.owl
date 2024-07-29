@@ -16,12 +16,32 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#qualifiedCardinality -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#qualifiedCardinality"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Object Properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
     
+
+
+
 
 
     <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#type -->
@@ -52,9 +72,23 @@
                         <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldEvent"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_FieldEventId"/>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fieldEventId"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+                        <owl:onClass>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldEventId"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:onClass>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -546,40 +580,6 @@
                         </owl:someValuesFrom>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_temporaryFieldIdhttp://localhost:8080/ontology/domain-ontology/nwf.owl#has_timeIn"/>
-                        <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
-                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#TimeIn"/>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
-                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                                    </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_temporaryFieldIdhttp://localhost:8080/ontology/domain-ontology/nwf.owl#has_timeInField"/>
-                        <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
-                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#TimeInField"/>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
-                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                                    </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                    <owl:Restriction>
                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_timeOut"/>
                         <owl:someValuesFrom>
                             <owl:Class>
@@ -638,6 +638,40 @@
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
                                         <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#TractorId"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_temporaryFieldIdhttp://localhost:8080/ontology/domain-ontology/nwf.owl#has_timeIn"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#TimeIn"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_temporaryFieldIdhttp://localhost:8080/ontology/domain-ontology/nwf.owl#has_timeInField"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                                        <owl:hasValue rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#TimeInField"/>
                                     </owl:Restriction>
                                     <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value"/>
