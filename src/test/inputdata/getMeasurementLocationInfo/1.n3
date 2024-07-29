@@ -1,0 +1,7 @@
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix nwf:  <http://localhost:8080/ontology/domain-ontology/nwf.owl#> .
+@prefix service: <http://localhost:8080/ontology/service-ontology/getMeasurementLocationInfo.owl#> .
+
+nwf:MeasurementLocation a  service:Input ;
+              nwf:has_measurementLocationId [a nwf:MeasurementLocationId ;
+                                                     nwf:has_value "1"^^xsd:int ] .

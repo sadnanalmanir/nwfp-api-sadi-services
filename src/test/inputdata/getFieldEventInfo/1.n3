@@ -1,0 +1,7 @@
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix nwf:  <http://localhost:8080/ontology/domain-ontology/nwf.owl#> .
+@prefix service: <http://localhost:8080/ontology/service-ontology/getFieldEventInfo.owl#> .
+
+nwf:FieldEvent a  service:Input ;
+                 nwf:has_fieldEventId [a nwf:FieldEventId ;
+                                                        nwf:has_value "3213"^^xsd:int ] .
