@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.sadiframework.service.annotations.*;
@@ -36,10 +33,12 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getFieldEvent");
         // Extract the catchment id from the input RDF:
-        String fieldEventId = input.getRequiredProperty(Vocab.has_FieldEventId).getString();
+        int fieldEventId = input.getRequiredProperty(Vocab.has_FieldEventId).getInt();
+        // create instance of the output model
         Model outputModel = output.getModel();
 
         try {
+            // initiate GET request to the endpoint
             String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getFieldEvents";
             URL url = new URL(endPoint);
             long startTime = System.currentTimeMillis();
@@ -53,8 +52,8 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
             conn.addRequestProperty("User-Agent", "Mozilla");
             log.info("Request URL: " + url);
 
+            // gather response from the request
             int status = conn.getResponseCode();
-
             if (status == HttpURLConnection.HTTP_OK) {
                 log.info("'GET' Request is Successful. Http Status Code: " + status);
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
@@ -82,224 +81,221 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
 
                     element = elementIterator.next().getAsJsonObject();
 
-                    String idVal = getNullAsEmptyString(element.get("Id"));
-                    String datasetVersionIdVal = getNullAsEmptyString(element.get("DatasetVersionId"));
-                    // catchment display name
-                    String catchmentDisplayNameVal = getNullAsEmptyString(element.get("catch_name"));
-                    String eventDateVal = getNullAsEmptyString(element.get("EventDate"));
-                    String timeInVal = getNullAsEmptyString(element.get("TimeIn"));
-                    String timeOutVal = getNullAsEmptyString(element.get("TimeOut"));
-                    String timeInFieldVal = getNullAsEmptyString(element.get("TimeInField"));
-                    String applicationTypeNameVal = getNullAsEmptyString(element.get("ApplicationTypeName"));
-                    String fieldNameVal = getNullAsEmptyString(element.get("Field_Name"));
-                    String tempFieldNameVal = getNullAsEmptyString(element.get("TempField_Name"));
-                    String totalApplicationVal = getNullAsEmptyString(element.get("TotalApplication"));
-                    String applicationInfoVal = getNullAsEmptyString(element.get("ApplicationInfo"));
-                    String applicationRateVal = getNullAsEmptyString(element.get("ApplicationRate"));
-                    String fieldIdVal = getNullAsEmptyString(element.get("FieldId"));
-                    String tractorIdVal = getNullAsEmptyString(element.get("TractorId"));
-                    String startTractorHoursVal = getNullAsEmptyString(element.get("StartTractorHours"));
-                    String endTractorHoursVal = getNullAsEmptyString(element.get("EndTractorHours"));
-                    String totalTractorHoursVal = getNullAsEmptyString(element.get("TotalTractorHours"));
-                    String fieldOperationIdVal = getNullAsEmptyString(element.get("FieldOperationId"));
-                    String fieldApplicationIdVal = getNullAsEmptyString(element.get("FieldApplicationId"));
-                    String applicationBatchNumberVal = getNullAsEmptyString(element.get("ApplicationBatchNumber"));
-                    String productNameVal = getNullAsEmptyString(element.get("ProductName"));
-                    String manufacturerVal = getNullAsEmptyString(element.get("Manufacturer"));
-                    String temporaryFieldIdVal = getNullAsEmptyString(element.get("TemporaryFieldId"));
-                    String catchmentNameVal = getNullAsEmptyString(element.get("Catchment_Name"));
-                    String operationNameVal = getNullAsEmptyString(element.get("Operation_name"));
-                    String operationGroupVal = getNullAsEmptyString(element.get("OperationGroup"));
-                    String applicationNameVal = getNullAsEmptyString(element.get("ApplicationName"));
-                    String applicationInfoAppsVal = getNullAsEmptyString(element.get("ApplicationInfoApps"));
-                    String formatNameVal = getNullAsEmptyString(element.get("FormatName"));
-                    String rangeEndDateTimeVal = getNullAsEmptyString(element.get("RangeEndDateTime"));
-                    String rangeStartDateTimeVal = getNullAsEmptyString(element.get("RangeStartDateTime"));
-                    // What is the difference between this id and the previous TemporaryFieldId?
-                    String tempFieldIdVal = getNullAsEmptyString(element.get("TempFieldId"));
-                    String farmletNewVal = getNullAsEmptyString(element.get("Farmlet_new"));
-                    String farmletOldVal = getNullAsEmptyString(element.get("Farmlet_old"));
-
-                    Resource FieldEventIdRes = outputModel.createResource();
+                    Literal idVal = outputModel.createTypedLiteral(element.get("Id").getAsInt());
 
                     //Resource IdResource = outputModel.createResource();
                     //IdResource.addProperty(Vocab.type, Vocab.FieldEventId);
                     //IdResource.addLiteral(Vocab.has_value, idVal);
                     //FieldEventIdRes.addProperty(Vocab.fieldEventId, IdResource);
 
-                    if (idVal.equals(fieldEventId)) {
+                    if (idVal.getInt() == fieldEventId) {
+
+                        String datasetVersionIdVal = getNullAsEmptyString(element.get("DatasetVersionId"));
+                        // catchment display name
+                        String catchmentDisplayNameVal = getNullAsEmptyString(element.get("catch_name"));
+                        String eventDateVal = getNullAsEmptyString(element.get("EventDate"));
+                        String timeInVal = getNullAsEmptyString(element.get("TimeIn"));
+                        String timeOutVal = getNullAsEmptyString(element.get("TimeOut"));
+                        String timeInFieldVal = getNullAsEmptyString(element.get("TimeInField"));
+                        String applicationTypeNameVal = getNullAsEmptyString(element.get("ApplicationTypeName"));
+                        String fieldNameVal = getNullAsEmptyString(element.get("Field_Name"));
+                        String tempFieldNameVal = getNullAsEmptyString(element.get("TempField_Name"));
+                        String totalApplicationVal = getNullAsEmptyString(element.get("TotalApplication"));
+                        String applicationInfoVal = getNullAsEmptyString(element.get("ApplicationInfo"));
+                        String applicationRateVal = getNullAsEmptyString(element.get("ApplicationRate"));
+                        String fieldIdVal = getNullAsEmptyString(element.get("FieldId"));
+                        String tractorIdVal = getNullAsEmptyString(element.get("TractorId"));
+                        String startTractorHoursVal = getNullAsEmptyString(element.get("StartTractorHours"));
+                        String endTractorHoursVal = getNullAsEmptyString(element.get("EndTractorHours"));
+                        String totalTractorHoursVal = getNullAsEmptyString(element.get("TotalTractorHours"));
+                        String fieldOperationIdVal = getNullAsEmptyString(element.get("FieldOperationId"));
+                        String fieldApplicationIdVal = getNullAsEmptyString(element.get("FieldApplicationId"));
+                        String applicationBatchNumberVal = getNullAsEmptyString(element.get("ApplicationBatchNumber"));
+                        String productNameVal = getNullAsEmptyString(element.get("ProductName"));
+                        String manufacturerVal = getNullAsEmptyString(element.get("Manufacturer"));
+                        String temporaryFieldIdVal = getNullAsEmptyString(element.get("TemporaryFieldId"));
+                        String catchmentNameVal = getNullAsEmptyString(element.get("Catchment_Name"));
+                        String operationNameVal = getNullAsEmptyString(element.get("Operation_name"));
+                        String operationGroupVal = getNullAsEmptyString(element.get("OperationGroup"));
+                        String applicationNameVal = getNullAsEmptyString(element.get("ApplicationName"));
+                        String applicationInfoAppsVal = getNullAsEmptyString(element.get("ApplicationInfoApps"));
+                        String formatNameVal = getNullAsEmptyString(element.get("FormatName"));
+                        String rangeEndDateTimeVal = getNullAsEmptyString(element.get("RangeEndDateTime"));
+                        String rangeStartDateTimeVal = getNullAsEmptyString(element.get("RangeStartDateTime"));
+                        // What is the difference between this id and the previous TemporaryFieldId?
+                        String tempFieldIdVal = getNullAsEmptyString(element.get("TempFieldId"));
+                        String farmletNewVal = getNullAsEmptyString(element.get("Farmlet_new"));
+                        String farmletOldVal = getNullAsEmptyString(element.get("Farmlet_old"));
 
                         Resource DatasetVersionIdResource = outputModel.createResource();
                         DatasetVersionIdResource.addProperty(Vocab.type, Vocab.DatasetVersionId);
                         DatasetVersionIdResource.addLiteral(Vocab.has_value, datasetVersionIdVal);
-                        FieldEventIdRes.addProperty(Vocab.datasetVersionId, DatasetVersionIdResource);
+                        output.addProperty(Vocab.datasetVersionId, DatasetVersionIdResource);
 
                         Resource CatchmentNameResource = outputModel.createResource();
                         CatchmentNameResource.addProperty(Vocab.type, Vocab.CatchmentDisplayName);
                         CatchmentNameResource.addLiteral(Vocab.has_value, catchmentDisplayNameVal);
-                        FieldEventIdRes.addProperty(Vocab.catchmentDisplayName, CatchmentNameResource);
+                        output.addProperty(Vocab.catchmentDisplayName, CatchmentNameResource);
 
                         Resource EventDateResource = outputModel.createResource();
                         EventDateResource.addProperty(Vocab.type, Vocab.EventDate);
                         EventDateResource.addLiteral(Vocab.has_value, eventDateVal);
-                        FieldEventIdRes.addProperty(Vocab.eventDate, EventDateResource);
+                        output.addProperty(Vocab.eventDate, EventDateResource);
 
                         Resource TimeInResource = outputModel.createResource();
                         TimeInResource.addProperty(Vocab.type, Vocab.TimeIn);
                         TimeInResource.addLiteral(Vocab.has_value, timeInVal);
-                        FieldEventIdRes.addProperty(Vocab.timeIn, TimeInResource);
+                        output.addProperty(Vocab.timeIn, TimeInResource);
 
                         Resource TimeOutResource = outputModel.createResource();
                         TimeOutResource.addProperty(Vocab.type, Vocab.TimeOut);
                         TimeOutResource.addLiteral(Vocab.has_value, timeOutVal);
-                        FieldEventIdRes.addProperty(Vocab.timeOut, TimeOutResource);
+                        output.addProperty(Vocab.timeOut, TimeOutResource);
 
                         Resource TimeInFieldResource = outputModel.createResource();
                         TimeInFieldResource.addProperty(Vocab.type, Vocab.TimeInField);
                         TimeInFieldResource.addLiteral(Vocab.has_value, timeInFieldVal);
-                        FieldEventIdRes.addProperty(Vocab.timeInField, TimeInFieldResource);
+                        output.addProperty(Vocab.timeInField, TimeInFieldResource);
 
                         Resource ApplicationTypeNameResource = outputModel.createResource();
                         ApplicationTypeNameResource.addProperty(Vocab.type, Vocab.ApplicationTypeName);
                         ApplicationTypeNameResource.addLiteral(Vocab.has_value, applicationTypeNameVal);
-                        FieldEventIdRes.addProperty(Vocab.applicationTypeName, ApplicationTypeNameResource);
+                        output.addProperty(Vocab.applicationTypeName, ApplicationTypeNameResource);
 
                         Resource FieldNameResource = outputModel.createResource();
                         FieldNameResource.addProperty(Vocab.type, Vocab.FieldName);
                         FieldNameResource.addLiteral(Vocab.has_value, fieldNameVal);
-                        FieldEventIdRes.addProperty(Vocab.fieldName, FieldNameResource);
+                        output.addProperty(Vocab.fieldName, FieldNameResource);
 
                         Resource TempField_NameResource = outputModel.createResource();
                         TempField_NameResource.addProperty(Vocab.type, Vocab.TempField_Name);
                         TempField_NameResource.addLiteral(Vocab.has_value, tempFieldNameVal);
-                        FieldEventIdRes.addProperty(Vocab.tempFieldName, TempField_NameResource);
+                        output.addProperty(Vocab.tempFieldName, TempField_NameResource);
 
                         Resource TotalApplicationResource = outputModel.createResource();
                         TotalApplicationResource.addProperty(Vocab.type, Vocab.TotalApplication);
                         TotalApplicationResource.addLiteral(Vocab.has_value, totalApplicationVal);
-                        FieldEventIdRes.addProperty(Vocab.totalApplication, TotalApplicationResource);
+                        output.addProperty(Vocab.totalApplication, TotalApplicationResource);
 
                         Resource ApplicationInfoResource = outputModel.createResource();
                         ApplicationInfoResource.addProperty(Vocab.type, Vocab.ApplicationInfo);
                         ApplicationInfoResource.addLiteral(Vocab.has_value, applicationInfoVal);
-                        FieldEventIdRes.addProperty(Vocab.applicationInfo, ApplicationInfoResource);
+                        output.addProperty(Vocab.applicationInfo, ApplicationInfoResource);
 
                         Resource ApplicationRateResource = outputModel.createResource();
                         ApplicationRateResource.addProperty(Vocab.type, Vocab.ApplicationRate);
                         ApplicationRateResource.addLiteral(Vocab.has_value, applicationRateVal);
-                        FieldEventIdRes.addProperty(Vocab.applicationRate, ApplicationRateResource);
+                        output.addProperty(Vocab.applicationRate, ApplicationRateResource);
 
                         Resource FieldIdResource = outputModel.createResource();
                         FieldIdResource.addProperty(Vocab.type, Vocab.FieldId);
                         FieldIdResource.addLiteral(Vocab.has_value, fieldIdVal);
-                        FieldEventIdRes.addProperty(Vocab.fieldId, FieldIdResource);
+                        output.addProperty(Vocab.fieldId, FieldIdResource);
 
                         Resource TractorIdResource = outputModel.createResource();
                         TractorIdResource.addProperty(Vocab.type, Vocab.TractorId);
                         TractorIdResource.addLiteral(Vocab.has_value, tractorIdVal);
-                        FieldEventIdRes.addProperty(Vocab.tractorId, TractorIdResource);
+                        output.addProperty(Vocab.tractorId, TractorIdResource);
 
                         Resource StartTractorHoursResource = outputModel.createResource();
                         StartTractorHoursResource.addProperty(Vocab.type, Vocab.StartTractorHours);
                         StartTractorHoursResource.addLiteral(Vocab.has_value, startTractorHoursVal);
-                        FieldEventIdRes.addProperty(Vocab.startTractorHours, StartTractorHoursResource);
+                        output.addProperty(Vocab.startTractorHours, StartTractorHoursResource);
 
                         Resource EndTractorHoursResource = outputModel.createResource();
                         EndTractorHoursResource.addProperty(Vocab.type, Vocab.EndTractorHours);
                         EndTractorHoursResource.addLiteral(Vocab.has_value, endTractorHoursVal);
-                        FieldEventIdRes.addProperty(Vocab.endTractorHours, EndTractorHoursResource);
+                        output.addProperty(Vocab.endTractorHours, EndTractorHoursResource);
 
                         Resource TotalTractorHoursResource = outputModel.createResource();
                         TotalTractorHoursResource.addProperty(Vocab.type, Vocab.TotalTractorHours);
                         TotalTractorHoursResource.addLiteral(Vocab.has_value, totalTractorHoursVal);
-                        FieldEventIdRes.addProperty(Vocab.totalTractorHours, TotalTractorHoursResource);
+                        output.addProperty(Vocab.totalTractorHours, TotalTractorHoursResource);
 
                         Resource FieldOperationIdResource = outputModel.createResource();
                         FieldOperationIdResource.addProperty(Vocab.type, Vocab.FieldOperationId);
                         FieldOperationIdResource.addLiteral(Vocab.has_value, fieldOperationIdVal);
-                        FieldEventIdRes.addProperty(Vocab.fieldOperationId, FieldOperationIdResource);
+                        output.addProperty(Vocab.fieldOperationId, FieldOperationIdResource);
 
                         Resource FieldApplicationIdResource = outputModel.createResource();
                         FieldApplicationIdResource.addProperty(Vocab.type, Vocab.FieldApplicationId);
                         FieldApplicationIdResource.addLiteral(Vocab.has_value, fieldApplicationIdVal);
-                        FieldEventIdRes.addProperty(Vocab.fieldApplicationId, FieldApplicationIdResource);
+                        output.addProperty(Vocab.fieldApplicationId, FieldApplicationIdResource);
 
                         Resource ApplicationBatchNumberResource = outputModel.createResource();
                         ApplicationBatchNumberResource.addProperty(Vocab.type, Vocab.ApplicationBatchNumber);
                         ApplicationBatchNumberResource.addLiteral(Vocab.has_value, applicationBatchNumberVal);
-                        FieldEventIdRes.addProperty(Vocab.applicationBatchNumber, ApplicationBatchNumberResource);
+                        output.addProperty(Vocab.applicationBatchNumber, ApplicationBatchNumberResource);
 
                         Resource ProductNameResource = outputModel.createResource();
                         ProductNameResource.addProperty(Vocab.type, Vocab.ProductName);
                         ProductNameResource.addLiteral(Vocab.has_value, productNameVal);
-                        FieldEventIdRes.addProperty(Vocab.productName, ProductNameResource);
+                        output.addProperty(Vocab.productName, ProductNameResource);
 
                         Resource ManufacturerResource = outputModel.createResource();
                         ManufacturerResource.addProperty(Vocab.type, Vocab.Manufacturer);
                         ManufacturerResource.addLiteral(Vocab.has_value, manufacturerVal);
-                        FieldEventIdRes.addProperty(Vocab.manufacturer, ManufacturerResource);
+                        output.addProperty(Vocab.manufacturer, ManufacturerResource);
 
                         Resource TemporaryFieldIdResource = outputModel.createResource();
                         TemporaryFieldIdResource.addProperty(Vocab.type, Vocab.TemporaryFieldId);
                         TemporaryFieldIdResource.addLiteral(Vocab.has_value, temporaryFieldIdVal);
-                        FieldEventIdRes.addProperty(Vocab.temporaryFieldId, TemporaryFieldIdResource);
+                        output.addProperty(Vocab.temporaryFieldId, TemporaryFieldIdResource);
 
                         Resource CatchmentIdResource = outputModel.createResource();
                         CatchmentIdResource.addProperty(Vocab.type, Vocab.CatchmentName);
                         CatchmentIdResource.addLiteral(Vocab.has_value, catchmentNameVal);
-                        FieldEventIdRes.addProperty(Vocab.catchmentName, CatchmentIdResource);
+                        output.addProperty(Vocab.catchmentName, CatchmentIdResource);
 
                         Resource Operation_nameResource = outputModel.createResource();
                         Operation_nameResource.addProperty(Vocab.type, Vocab.OperationName);
                         Operation_nameResource.addLiteral(Vocab.has_value, operationNameVal);
-                        FieldEventIdRes.addProperty(Vocab.operation_name, Operation_nameResource);
+                        output.addProperty(Vocab.operation_name, Operation_nameResource);
 
                         Resource OperationGroupResource = outputModel.createResource();
                         OperationGroupResource.addProperty(Vocab.type, Vocab.OperationGroup);
                         OperationGroupResource.addLiteral(Vocab.has_value, operationGroupVal);
-                        FieldEventIdRes.addProperty(Vocab.operationGroup, OperationGroupResource);
+                        output.addProperty(Vocab.operationGroup, OperationGroupResource);
 
                         Resource ApplicationNameResource = outputModel.createResource();
                         ApplicationNameResource.addProperty(Vocab.type, Vocab.ApplicationName);
                         ApplicationNameResource.addLiteral(Vocab.has_value, applicationNameVal);
-                        FieldEventIdRes.addProperty(Vocab.applicationName, ApplicationNameResource);
+                        output.addProperty(Vocab.applicationName, ApplicationNameResource);
 
                         Resource ApplicationInfoAppsResource = outputModel.createResource();
                         ApplicationInfoAppsResource.addProperty(Vocab.type, Vocab.ApplicationInfoApps);
                         ApplicationInfoAppsResource.addLiteral(Vocab.has_value, applicationInfoAppsVal);
-                        FieldEventIdRes.addProperty(Vocab.applicationInfoApps, ApplicationInfoAppsResource);
+                        output.addProperty(Vocab.applicationInfoApps, ApplicationInfoAppsResource);
 
                         Resource FormatNameResource = outputModel.createResource();
                         FormatNameResource.addProperty(Vocab.type, Vocab.FormatName);
                         FormatNameResource.addLiteral(Vocab.has_value, formatNameVal);
-                        FieldEventIdRes.addProperty(Vocab.formatName, FormatNameResource);
+                        output.addProperty(Vocab.formatName, FormatNameResource);
 
                         Resource RangeEndDateTimeResource = outputModel.createResource();
                         RangeEndDateTimeResource.addProperty(Vocab.type, Vocab.RangeEndDateTime);
                         RangeEndDateTimeResource.addLiteral(Vocab.has_value, rangeEndDateTimeVal);
-                        FieldEventIdRes.addProperty(Vocab.rangeEndDateTime, RangeEndDateTimeResource);
+                        output.addProperty(Vocab.rangeEndDateTime, RangeEndDateTimeResource);
 
                         Resource RangeStartDateTimeResource = outputModel.createResource();
                         RangeStartDateTimeResource.addProperty(Vocab.type, Vocab.RangeStartDateTime);
                         RangeStartDateTimeResource.addLiteral(Vocab.has_value, rangeStartDateTimeVal);
-                        FieldEventIdRes.addProperty(Vocab.rangeStartDateTime, RangeStartDateTimeResource);
+                        output.addProperty(Vocab.rangeStartDateTime, RangeStartDateTimeResource);
 
                         Resource TempFieldIdResource = outputModel.createResource();
                         TempFieldIdResource.addProperty(Vocab.type, Vocab.TempFieldId);
                         TempFieldIdResource.addLiteral(Vocab.has_value, tempFieldIdVal);
-                        FieldEventIdRes.addProperty(Vocab.tempFieldId, TempFieldIdResource);
+                        output.addProperty(Vocab.tempFieldId, TempFieldIdResource);
 
                         Resource FarmletNewResource = outputModel.createResource();
                         FarmletNewResource.addProperty(Vocab.type, Vocab.NewFarmlet);
                         FarmletNewResource.addLiteral(Vocab.has_value, farmletNewVal);
-                        FieldEventIdRes.addProperty(Vocab.newFarmlet, FarmletNewResource);
+                        output.addProperty(Vocab.newFarmlet, FarmletNewResource);
 
                         Resource FarmletOldResource = outputModel.createResource();
                         FarmletOldResource.addProperty(Vocab.type, Vocab.OldFarmlet);
                         FarmletOldResource.addLiteral(Vocab.has_value, farmletOldVal);
-                        FieldEventIdRes.addProperty(Vocab.oldFarmlet, FarmletOldResource);
-
-                        FieldEventIdRes.addProperty(Vocab.type, output);
+                        output.addProperty(Vocab.oldFarmlet, FarmletOldResource);
                     }
                 }
                 log.info("getFieldEvent service completed.");
@@ -315,44 +311,45 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
 
     public static final class Vocab {
         private static final Model m_model = ModelFactory.createDefaultModel();
+        // Object properties
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
 
         // properties
-        public static final Property fieldEventId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#fieldEventId");
-        public static final Property datasetVersionId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#datasetVersionId");
-        public static final Property catchmentDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentDisplayName");
-        public static final Property eventDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#eventDate");
-        public static final Property timeIn = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#timeIn");
-        public static final Property timeOut = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#timeOut");
-        public static final Property timeInField = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#timeInField");
-        public static final Property applicationTypeName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#applicationTypeName");
-        public static final Property fieldName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#fieldName");
-        public static final Property tempFieldName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#tempFieldName");
-        public static final Property totalApplication = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#totalApplication");
-        public static final Property applicationInfo = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#applicationInfo");
-        public static final Property applicationRate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#applicationRate");
-        public static final Property fieldId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#fieldId");
-        public static final Property tractorId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#tractorId");
-        public static final Property startTractorHours = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#startTractorHours");
-        public static final Property endTractorHours = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#endTractorHours");
-        public static final Property totalTractorHours = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#totalTractorHours");
-        public static final Property fieldOperationId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#fieldOperationId");
-        public static final Property fieldApplicationId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#fieldApplicationId");
-        public static final Property applicationBatchNumber = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#applicationBatchNumber");
-        public static final Property productName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#productName");
-        public static final Property manufacturer = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#manufacturer");
-        public static final Property temporaryFieldId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#temporaryFieldId");
-        public static final Property catchmentName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentName");
+        public static final Property fieldEventId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fieldEventId");
+        public static final Property datasetVersionId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_datasetVersionId");
+        public static final Property catchmentDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentDisplayName");
+        public static final Property eventDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_eventDate");
+        public static final Property timeIn = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_temporaryFieldIdhttp://localhost:8080/ontology/domain-ontology/nwf.owl#has_timeIn");
+        public static final Property timeOut = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_timeOut");
+        public static final Property timeInField = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_temporaryFieldIdhttp://localhost:8080/ontology/domain-ontology/nwf.owl#has_timeInField");
+        public static final Property applicationTypeName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_applicationTypeName");
+        public static final Property fieldName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fieldName");
+        public static final Property tempFieldName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_tempFieldName");
+        public static final Property totalApplication = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_totalApplication");
+        public static final Property applicationInfo = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_applicationInfo");
+        public static final Property applicationRate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_applicationRate");
+        public static final Property fieldId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fieldId");
+        public static final Property tractorId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_tractorId");
+        public static final Property startTractorHours = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_startTractorHours");
+        public static final Property endTractorHours = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_endTractorHours");
+        public static final Property totalTractorHours = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_totalTractorHours");
+        public static final Property fieldOperationId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fieldOperationId");
+        public static final Property fieldApplicationId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fieldApplicationId");
+        public static final Property applicationBatchNumber = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_applicationBatchNumber");
+        public static final Property productName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_productName");
+        public static final Property manufacturer = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_manufacturer");
+        public static final Property temporaryFieldId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_temporaryFieldId");
+        public static final Property catchmentName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentName");
         public static final Property operation_name = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#operation_name");
-        public static final Property operationGroup = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#operationGroup");
-        public static final Property applicationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#applicationName");
-        public static final Property applicationInfoApps = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#applicationInfoApps");
-        public static final Property formatName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#formatName");
-        public static final Property rangeEndDateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#rangeEndDateTime");
-        public static final Property rangeStartDateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#rangeStartDateTime");
-        public static final Property tempFieldId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#tempFieldId");
-        public static final Property newFarmlet = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#newFarmlet");
-        public static final Property oldFarmlet = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#oldFarmlet");
+        public static final Property operationGroup = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_operationGroup");
+        public static final Property applicationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_applicationName");
+        public static final Property applicationInfoApps = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_applicationInfoApps");
+        public static final Property formatName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_formatName");
+        public static final Property rangeEndDateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_rangeEndDateTime");
+        public static final Property rangeStartDateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_rangeStartDateTime");
+        public static final Property tempFieldId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_tempFieldId");
+        public static final Property newFarmlet = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_newFarmlet");
+        public static final Property oldFarmlet = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_oldFarmlet");
         // data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
         public static final Property has_FieldEventId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_FieldEventId");

@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.sadiframework.service.annotations.*;
@@ -36,10 +33,12 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getDataQuality");
         // Extract the catchment id from the input RDF:
-        String dataQualityId = input.getRequiredProperty(Vocab.has_DataQualityId).getString();
+        int dataQualityId = input.getRequiredProperty(Vocab.has_DataQualityId).getInt();
+        // create instance of the output model
         Model outputModel = output.getModel();
 
         try {
+            // initiate GET request to the endpoint
             String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getDataQualities";
             URL url = new URL(endPoint);
             long startTime = System.currentTimeMillis();
@@ -53,8 +52,8 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
             conn.addRequestProperty("User-Agent", "Mozilla");
             log.info("Request URL: " + url);
 
+            // gather response from the request
             int status = conn.getResponseCode();
-
             if (status == HttpURLConnection.HTTP_OK) {
                 log.info("'GET' Request is Successful. Http Status Code: " + status);
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
@@ -83,30 +82,29 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
 
                     element = elementIterator.next().getAsJsonObject();
 
-                    String idVal = getNullAsEmptyString(element.get("Id"));
-                    String descriptionVal = getNullAsEmptyString(element.get("Description"));
-                    String severityOrderVal = getNullAsEmptyString(element.get("Severity_Order"));
-
-                    Resource dataQualityRes = outputModel.createResource();
+                    //String idVal = getNullAsEmptyString(element.get("Id"));
+                    Literal idVal = outputModel.createTypedLiteral(element.get("Id").getAsInt());
 
                     //Resource IdResource = outputModel.createResource();
                     //IdResource.addProperty(Vocab.type, Vocab.DataQualityId);
                     //IdResource.addLiteral(Vocab.has_value, idVal);
                     //dataQualityRes.addProperty(Vocab.dataQualityId, IdResource);
 
-                    if (idVal.equals(dataQualityId)) {
+                    if (idVal.getInt() == dataQualityId) {
+                        //String descriptionVal = getNullAsEmptyString(element.get("Description"));
+                        Literal descriptionVal = outputModel.createTypedLiteral(element.get("Description").getAsString());
+                        //String severityOrderVal = getNullAsEmptyString(element.get("Severity_Order"));
+                        Literal severityOrderVal = outputModel.createTypedLiteral(element.get("Severity_Order").getAsInt());
 
                         Resource DescriptionResource = outputModel.createResource();
                         DescriptionResource.addProperty(Vocab.type, Vocab.Description);
                         DescriptionResource.addLiteral(Vocab.has_value, descriptionVal);
-                        dataQualityRes.addProperty(Vocab.description, DescriptionResource);
+                        output.addProperty(Vocab.description, DescriptionResource);
 
                         Resource SeverityOrderResource = outputModel.createResource();
                         SeverityOrderResource.addProperty(Vocab.type, Vocab.SeverityOrder);
                         SeverityOrderResource.addLiteral(Vocab.has_value, severityOrderVal);
-                        dataQualityRes.addProperty(Vocab.severityOrder, SeverityOrderResource);
-
-                        dataQualityRes.addProperty(Vocab.type, output);
+                        output.addProperty(Vocab.severityOrder, SeverityOrderResource);
                     }
                 }
                 log.info("getDataQuality service completed.");
@@ -122,9 +120,9 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
         private static final Model m_model = ModelFactory.createDefaultModel();
         // Object properties
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property dataQualityId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#dataQualityId");
-        public static final Property description = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#description");
-        public static final Property severityOrder = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#severityOrder");
+        public static final Property dataQualityId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_dataQualityId");
+        public static final Property description = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_description");
+        public static final Property severityOrder = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_severityOrder");
         // Data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
         public static final Property has_DataQualityId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_DataQualityId");

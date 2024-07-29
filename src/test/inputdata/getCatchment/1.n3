@@ -3,4 +3,5 @@
 @prefix service: <http://localhost:8080/ontology/service-ontology/getCatchment.owl#> .
 
 nwf:Catchment a  service:Input ;
-              nwf:has_CatchmentId "1"^^xsd:string .
+              nwf:catchmentId [a nwf:CatchmentId ;
+                               nwf:has_value "4"^^xsd:int ] .

@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.sadiframework.service.annotations.*;
@@ -36,10 +33,12 @@ public class GetField extends SimpleSynchronousServiceServlet {
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getField");
         // Extract the field id from the input RDF:
-        String fieldId = input.getRequiredProperty(Vocab.has_FieldId).getString();
+        int fieldId = input.getRequiredProperty(Vocab.has_FieldId).getInt();
+        // create instance of the output model
         Model outputModel = output.getModel();
 
         try {
+            // initiate GET request to the endpoint
             String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getFields";
             URL url = new URL(endPoint);
             long startTime = System.currentTimeMillis();
@@ -53,8 +52,8 @@ public class GetField extends SimpleSynchronousServiceServlet {
             conn.addRequestProperty("User-Agent", "Mozilla");
             log.info("Request URL: " + url);
 
+            // gather response from the request
             int status = conn.getResponseCode();
-
             if (status == HttpURLConnection.HTTP_OK) {
                 log.info("'GET' Request is Successful. Http Status Code: " + status);
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
@@ -83,19 +82,20 @@ public class GetField extends SimpleSynchronousServiceServlet {
 
                     element = elementIterator.next().getAsJsonObject();
 
-                    String idVal = getNullAsEmptyString(element.get("Id"));
-                    String displayIdVal = getNullAsEmptyString(element.get("DisplayId"));
-                    String nameVal = getNullAsEmptyString(element.get("Name"));
-                    String validFromVal = getNullAsEmptyString(element.get("ValidFrom"));
-                    String validUntilVal = getNullAsEmptyString(element.get("ValidUntil"));
-                    String cuttingAreaVal = getNullAsEmptyString(element.get("CuttingArea"));
-                    String fencedAreaVal = getNullAsEmptyString(element.get("FencedArea"));
-                    String organicSpreadingAreaVal = getNullAsEmptyString(element.get("OrganicSpreadingArea"));
-                    String inorganicSpreadingAreaVal = getNullAsEmptyString(element.get("InorganicSpreadingArea"));
-                    String catchment_idVal = getNullAsEmptyString(element.get("Catchment_Id"));
-                    String hydrologicalAreaVal = getNullAsEmptyString(element.get("HydrologicalArea"));
+                    Literal idVal = outputModel.createTypedLiteral(element.get("Id").getAsInt());
 
-                    if (idVal.equals(fieldId)) {
+                    if (idVal.getInt() == fieldId) {
+
+                        String displayIdVal = getNullAsEmptyString(element.get("DisplayId"));
+                        String nameVal = getNullAsEmptyString(element.get("Name"));
+                        String validFromVal = getNullAsEmptyString(element.get("ValidFrom"));
+                        String validUntilVal = getNullAsEmptyString(element.get("ValidUntil"));
+                        String cuttingAreaVal = getNullAsEmptyString(element.get("CuttingArea"));
+                        String fencedAreaVal = getNullAsEmptyString(element.get("FencedArea"));
+                        String organicSpreadingAreaVal = getNullAsEmptyString(element.get("OrganicSpreadingArea"));
+                        String inorganicSpreadingAreaVal = getNullAsEmptyString(element.get("InorganicSpreadingArea"));
+                        String catchment_idVal = getNullAsEmptyString(element.get("Catchment_Id"));
+                        String hydrologicalAreaVal = getNullAsEmptyString(element.get("HydrologicalArea"));
 
                         Resource DisplayIdResource = outputModel.createResource();
                         DisplayIdResource.addProperty(Vocab.type, Vocab.DisplayId);
@@ -161,18 +161,19 @@ public class GetField extends SimpleSynchronousServiceServlet {
 
     public static final class Vocab {
         private static final Model m_model = ModelFactory.createDefaultModel();
+        // Object properties
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property fieldId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#fieldId");
-        public static final Property displayId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#displayId");
-        public static final Property name = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#name");
-        public static final Property validFrom = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#validFrom");
-        public static final Property validUntil = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#validUntil");
-        public static final Property cuttingArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#cuttingArea");
-        public static final Property fencedArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#fencedArea");
-        public static final Property organicSpreadingArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#organicSpreadingArea");
-        public static final Property inorganicSpreadingArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#inorganicSpreadingArea");
-        public static final Property catchmentId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentId");
-        public static final Property hydrologicalArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#hydrologicalArea");
+        public static final Property fieldId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fieldId");
+        public static final Property displayId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_displayId");
+        public static final Property name = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_name");
+        public static final Property validFrom = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#is_validFrom");
+        public static final Property validUntil = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#is_validUntil");
+        public static final Property cuttingArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_cuttingArea");
+        public static final Property fencedArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fencedArea");
+        public static final Property organicSpreadingArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_organicSpreadingArea");
+        public static final Property inorganicSpreadingArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_inorganicSpreadingArea");
+        public static final Property catchmentId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentId");
+        public static final Property hydrologicalArea = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_hydrologicalArea");
 
 
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");

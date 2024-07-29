@@ -37,9 +37,11 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
         log.info("Invoking SADI service:  getCatchmentMeasurementType");
         // Extract the catchmentMeasurementTypeId from the input RDF:
         String catchmentMeasurementTypeId = input.getRequiredProperty(Vocab.has_CatchmentMeasurementTypeId).getString();
+        // create instance of the output model
         Model outputModel = output.getModel();
 
         try {
+            // initiate GET request to the endpoint
             String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getCatchmentMeasurementTypes";
             URL url = new URL(endPoint);
             long startTime = System.currentTimeMillis();
@@ -53,8 +55,8 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
             conn.addRequestProperty("User-Agent", "Mozilla");
             log.info("Request URL: " + url);
 
+            // gather response from the request
             int status = conn.getResponseCode();
-
             if (status == HttpURLConnection.HTTP_OK) {
                 log.info("'GET' Request is Successful. Http Status Code: " + status);
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
@@ -163,11 +165,12 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
 
     public static final class Vocab {
         private static final Model m_model = ModelFactory.createDefaultModel();
+        // Object properties
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-
-        public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
         public static final Property has_CatchmentMeasurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_CatchmentMeasurementTypeId");
-
+        // Data property
+        public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
+        // Resources
         public static final Resource CatchmentId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentId");
         public static final Resource CatchmentName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentName");
         public static final Resource MeasurementTypeDisplayName = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeDisplayName");
@@ -179,15 +182,15 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
         public static final Resource ConcentrationNameAndUnit = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ConcentrationNameAndUnit");
 
 
-        public static final Property catchmentId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentId");
-        public static final Property catchmentName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentName");
-        public static final Property measurementTypeDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementTypeDisplayName");
-        public static final Property locationId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationId");
-        public static final Property locationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationName");
-        public static final Property locationTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationTypeId");
-        public static final Property locationTypeName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationTypeName");
-        public static final Property measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementTypeId");
-        public static final Property concentrationNameAndUnit = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#concentrationNameAndUnit");
+        public static final Property catchmentId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentId");
+        public static final Property catchmentName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentName");
+        public static final Property measurementTypeDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeDisplayName");
+        public static final Property locationId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationId");
+        public static final Property locationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationName");
+        public static final Property locationTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationTypeId");
+        public static final Property locationTypeName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationTypeName");
+        public static final Property measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeId");
+        public static final Property concentrationNameAndUnit = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_concentrationNameAndUnit");
 
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/getCatchmentMeasurementType.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/getCatchmentMeasurementType.owl#Output");

@@ -2,4 +2,4 @@
 @prefix nwf:  <http://localhost:8080/ontology/domain-ontology/nwf.owl#> .
 @prefix service: <http://localhost:8080/ontology/service-ontology/allMeasurementTypesLong.owl#> .
 
-nwf:Measurement a  service:Input .
+nwf:MeasurementTypeLong a  service:Input .

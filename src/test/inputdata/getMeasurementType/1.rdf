@@ -4,7 +4,7 @@
 
     <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Measurement">
         <rdf:type rdf:resource="http://localhost:8080/ontology/service-ontology/getMeasurementType.owl#Input"/>
-        <ns0:has_MeasurementTypeId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</ns0:has_MeasurementTypeId>
+        <ns0:has_MeasurementTypeId rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</ns0:has_MeasurementTypeId>
     </rdf:Description>
 
 </rdf:RDF>

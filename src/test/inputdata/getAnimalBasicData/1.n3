@@ -3,4 +3,4 @@
 @prefix service: <http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#> .
 
 nwf:Animal a  service:Input ;
-              nwf:has_AnimalBasicDataId "4770"^^xsd:string .
+              nwf:has_AnimalBasicDataId "4770"^^xsd:int .

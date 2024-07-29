@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.sadiframework.service.annotations.*;
@@ -36,10 +33,12 @@ public class GetMeasurementLocation extends SimpleSynchronousServiceServlet {
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getMeasurementLocation");
         // Extract the measurementLocationId from the input RDF:
-        String measurementLocationId = input.getRequiredProperty(Vocab.has_MeasurementLocationId).getString();
+        int measurementLocationId = input.getRequiredProperty(Vocab.has_MeasurementLocationId).getInt();
+        // create instance of the output model
         Model outputModel = output.getModel();
 
         try {
+            // initiate GET request to the endpoint
             String endPoint = "https://nwfp.rothamsted.ac.uk:8443/getMeasurementLocations";
             URL url = new URL(endPoint);
             long startTime = System.currentTimeMillis();
@@ -53,8 +52,8 @@ public class GetMeasurementLocation extends SimpleSynchronousServiceServlet {
             conn.addRequestProperty("User-Agent", "Mozilla");
             log.info("Request URL: " + url);
 
+            // gather response from the request
             int status = conn.getResponseCode();
-
             if (status == HttpURLConnection.HTTP_OK) {
                 log.info("'GET' Request is Successful. Http Status Code: " + status);
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
@@ -83,26 +82,24 @@ public class GetMeasurementLocation extends SimpleSynchronousServiceServlet {
 
                     element = elementIterator.next().getAsJsonObject();
 
-                    String idVal = getNullAsEmptyString(element.get("Id"));
-                    String measurementLocationNameVal = getNullAsEmptyString(element.get("measurementLocationName"));
-                    String catchmentNameVal = getNullAsEmptyString(element.get("catchmentName"));
-                    String catchmentDisplayNameVal = getNullAsEmptyString(element.get("catchmentDisplayName"));
-                    String locationTypeNameVal = getNullAsEmptyString(element.get("locationTypeName"));
-                    String locationXVal = getNullAsEmptyString(element.get("LocationX"));
-                    String locationYVal = getNullAsEmptyString(element.get("LocationY"));
-                    String farmletNameVal = getNullAsEmptyString(element.get("farmletName"));
-                    String fieldNameVal = getNullAsEmptyString(element.get("fieldName"));
-                    String catchmentIdVal = getNullAsEmptyString(element.get("Catchment_Id"));
-                    String farmletIdVal = getNullAsEmptyString(element.get("Farmlet_Id"));
-                    String fieldIdVal = getNullAsEmptyString(element.get("Field_Id"));
-                    String locationTypeIdVal = getNullAsEmptyString(element.get("LocationType_Id"));
-                    String heightVal = getNullAsEmptyString(element.get("Height"));
-                    String validFromDateVal = getNullAsEmptyString(element.get("ValidFrom"));
-                    String validUntilDateVal = getNullAsEmptyString(element.get("ValidUntil"));
+                    Literal idVal = outputModel.createTypedLiteral(element.get("Id").getAsInt());
 
-                    if (idVal.equals(measurementLocationId)) {
-
-                        Resource Measurement = outputModel.createResource();
+                    if (idVal.getInt() == measurementLocationId) {
+                        String measurementLocationNameVal = getNullAsEmptyString(element.get("measurementLocationName"));
+                        String catchmentNameVal = getNullAsEmptyString(element.get("catchmentName"));
+                        String catchmentDisplayNameVal = getNullAsEmptyString(element.get("catchmentDisplayName"));
+                        String locationTypeNameVal = getNullAsEmptyString(element.get("locationTypeName"));
+                        String locationXVal = getNullAsEmptyString(element.get("LocationX"));
+                        String locationYVal = getNullAsEmptyString(element.get("LocationY"));
+                        String farmletNameVal = getNullAsEmptyString(element.get("farmletName"));
+                        String fieldNameVal = getNullAsEmptyString(element.get("fieldName"));
+                        String catchmentIdVal = getNullAsEmptyString(element.get("Catchment_Id"));
+                        String farmletIdVal = getNullAsEmptyString(element.get("Farmlet_Id"));
+                        String fieldIdVal = getNullAsEmptyString(element.get("Field_Id"));
+                        String locationTypeIdVal = getNullAsEmptyString(element.get("LocationType_Id"));
+                        String heightVal = getNullAsEmptyString(element.get("Height"));
+                        String validFromDateVal = getNullAsEmptyString(element.get("ValidFrom"));
+                        String validUntilDateVal = getNullAsEmptyString(element.get("ValidUntil"));
 
                         //Resource IdResource = outputModel.createResource();
                         //IdResource.addProperty(Vocab.type, Vocab.MeasurementLocationId);
@@ -112,80 +109,77 @@ public class GetMeasurementLocation extends SimpleSynchronousServiceServlet {
                         Resource MeasurementLocationNameResource = outputModel.createResource();
                         MeasurementLocationNameResource.addProperty(Vocab.type, Vocab.MeasurementLocationName);
                         MeasurementLocationNameResource.addLiteral(Vocab.has_value, measurementLocationNameVal);
-                        Measurement.addProperty(Vocab.measurementLocationName, MeasurementLocationNameResource);
+                        output.addProperty(Vocab.measurementLocationName, MeasurementLocationNameResource);
 
                         Resource CatchmentNameResource = outputModel.createResource();
                         CatchmentNameResource.addProperty(Vocab.type, Vocab.CatchmentName);
                         CatchmentNameResource.addLiteral(Vocab.has_value, catchmentNameVal);
-                        Measurement.addProperty(Vocab.catchmentName, CatchmentNameResource);
+                        output.addProperty(Vocab.catchmentName, CatchmentNameResource);
 
                         Resource CatchmentDisplayNameResource = outputModel.createResource();
                         CatchmentDisplayNameResource.addProperty(Vocab.type, Vocab.CatchmentDisplayName);
                         CatchmentDisplayNameResource.addLiteral(Vocab.has_value, catchmentDisplayNameVal);
-                        Measurement.addProperty(Vocab.catchmentDisplayName, CatchmentDisplayNameResource);
+                        output.addProperty(Vocab.catchmentDisplayName, CatchmentDisplayNameResource);
 
                         Resource LocationTypeNameResource = outputModel.createResource();
                         LocationTypeNameResource.addProperty(Vocab.type, Vocab.LocationTypeName);
                         LocationTypeNameResource.addLiteral(Vocab.has_value, locationTypeNameVal);
-                        Measurement.addProperty(Vocab.locationTypeName, LocationTypeNameResource);
+                        output.addProperty(Vocab.locationTypeName, LocationTypeNameResource);
 
                         Resource LocationXResource = outputModel.createResource();
                         LocationXResource.addProperty(Vocab.type, Vocab.LocationX);
                         LocationXResource.addLiteral(Vocab.has_value, locationXVal);
-                        Measurement.addProperty(Vocab.locationX, LocationXResource);
+                        output.addProperty(Vocab.locationX, LocationXResource);
 
                         Resource LocationYResource = outputModel.createResource();
                         LocationYResource.addProperty(Vocab.type, Vocab.LocationY);
                         LocationYResource.addLiteral(Vocab.has_value, locationYVal);
-                        Measurement.addProperty(Vocab.locationY, LocationYResource);
+                        output.addProperty(Vocab.locationY, LocationYResource);
 
                         Resource FarmletNameResource = outputModel.createResource();
                         FarmletNameResource.addProperty(Vocab.type, Vocab.FarmletName);
                         FarmletNameResource.addLiteral(Vocab.has_value, farmletNameVal);
-                        Measurement.addProperty(Vocab.farmletName, FarmletNameResource);
+                        output.addProperty(Vocab.farmletName, FarmletNameResource);
 
                         Resource FieldNameResource = outputModel.createResource();
                         FieldNameResource.addProperty(Vocab.type, Vocab.FieldName);
                         FieldNameResource.addLiteral(Vocab.has_value, fieldNameVal);
-                        Measurement.addProperty(Vocab.fieldName, FieldNameResource);
+                        output.addProperty(Vocab.fieldName, FieldNameResource);
 
                         Resource CatchmentIdResource = outputModel.createResource();
                         CatchmentIdResource.addProperty(Vocab.type, Vocab.CatchmentId);
                         CatchmentIdResource.addLiteral(Vocab.has_value, catchmentIdVal);
-                        Measurement.addProperty(Vocab.catchmentId, CatchmentIdResource);
+                        output.addProperty(Vocab.catchmentId, CatchmentIdResource);
 
                         Resource FarmletIdResource = outputModel.createResource();
                         FarmletIdResource.addProperty(Vocab.type, Vocab.FarmletId);
                         FarmletIdResource.addLiteral(Vocab.has_value, farmletIdVal);
-                        Measurement.addProperty(Vocab.farmletId, FarmletIdResource);
+                        output.addProperty(Vocab.farmletId, FarmletIdResource);
 
                         Resource FieldIdResource = outputModel.createResource();
                         FieldIdResource.addProperty(Vocab.type, Vocab.FieldId);
                         FieldIdResource.addLiteral(Vocab.has_value, fieldIdVal);
-                        Measurement.addProperty(Vocab.fieldId, FieldIdResource);
+                        output.addProperty(Vocab.fieldId, FieldIdResource);
 
                         Resource LocationTypeIdResource = outputModel.createResource();
                         LocationTypeIdResource.addProperty(Vocab.type, Vocab.LocationTypeId);
                         LocationTypeIdResource.addLiteral(Vocab.has_value, locationTypeIdVal);
-                        Measurement.addProperty(Vocab.locationTypeId, LocationTypeIdResource);
+                        output.addProperty(Vocab.locationTypeId, LocationTypeIdResource);
 
                         Resource HeightResource = outputModel.createResource();
                         HeightResource.addProperty(Vocab.type, Vocab.Height);
                         HeightResource.addLiteral(Vocab.has_value, heightVal);
-                        Measurement.addProperty(Vocab.height, HeightResource);
+                        output.addProperty(Vocab.height, HeightResource);
 
                         Resource ValidFromDateResource = outputModel.createResource();
                         ValidFromDateResource.addProperty(Vocab.type, Vocab.ValidFromDate);
                         ValidFromDateResource.addLiteral(Vocab.has_value, validFromDateVal);
-                        Measurement.addProperty(Vocab.validFromDate, ValidFromDateResource);
+                        output.addProperty(Vocab.validFromDate, ValidFromDateResource);
 
                         Resource ValidUntilDateResource = outputModel.createResource();
                         ValidUntilDateResource.addProperty(Vocab.type, Vocab.ValidUntilDate);
                         ValidUntilDateResource.addLiteral(Vocab.has_value, validUntilDateVal);
-                        Measurement.addProperty(Vocab.validUntilDate, ValidUntilDateResource);
-
-                        Measurement.addProperty(Vocab.type, output);
-
+                        output.addProperty(Vocab.validUntilDate, ValidUntilDateResource);
                     }
 
                 }
@@ -202,23 +196,24 @@ public class GetMeasurementLocation extends SimpleSynchronousServiceServlet {
 
     public static final class Vocab {
         private static final Model m_model = ModelFactory.createDefaultModel();
+        // Object properties
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property measurementLocationId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementLocationId");
-        public static final Property measurementLocationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#measurementLocationName");
-        public static final Property catchmentName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentName");
-        public static final Property catchmentDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentDisplayName");
-        public static final Property locationTypeName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationTypeName");
-        public static final Property locationX = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationX");
-        public static final Property locationY = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationY");
-        public static final Property farmletName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#farmletName");
-        public static final Property fieldName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#fieldName");
-        public static final Property catchmentId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#catchmentId");
-        public static final Property farmletId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#farmletId");
-        public static final Property fieldId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#fieldId");
-        public static final Property locationTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#locationTypeId");
-        public static final Property height = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#height");
-        public static final Property validFromDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#validFromDate");
-        public static final Property validUntilDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#validUntilDate");
+        public static final Property measurementLocationId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementLocationId");
+        public static final Property measurementLocationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementLocationName");
+        public static final Property catchmentName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentName");
+        public static final Property catchmentDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentDisplayName");
+        public static final Property locationTypeName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationTypeName");
+        public static final Property locationX = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationX");
+        public static final Property locationY = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationY");
+        public static final Property farmletName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_farmletName");
+        public static final Property fieldName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fieldName");
+        public static final Property catchmentId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentId");
+        public static final Property farmletId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_farmletId");
+        public static final Property fieldId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_fieldId");
+        public static final Property locationTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationTypeId");
+        public static final Property height = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_height");
+        public static final Property validFromDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#is_validFromDate");
+        public static final Property validUntilDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#is_validUntilDate");
 
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
         public static final Property has_MeasurementLocationId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_MeasurementLocationId");

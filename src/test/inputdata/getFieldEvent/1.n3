@@ -3,4 +3,4 @@
 @prefix service: <http://localhost:8080/ontology/service-ontology/getFieldEvent.owl#> .
 
 nwf:FieldEvent a  service:Input ;
-                 nwf:has_FieldEventId "3213"^^xsd:string .
+                 nwf:has_FieldEventId "3213"^^xsd:int .
