@@ -2,9 +2,14 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:ns0="http://localhost:8080/ontology/domain-ontology/nwf.owl#">
 
-    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Animal">
+    <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#AnimalBasicData">
         <rdf:type rdf:resource="http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Input"/>
-        <ns0:has_AnimalBasicDataId rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4770</ns0:has_AnimalBasicDataId>
+        <ns0:has_animalBasicDataId>
+            <ns0:AnimalBasicDataId>
+                <ns0:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4770</ns0:has_value>
+            </ns0:AnimalBasicDataId>
+        </ns0:has_animalBasicDataId>
+
     </rdf:Description>
 
 </rdf:RDF>
