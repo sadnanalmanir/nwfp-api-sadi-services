@@ -23,6 +23,7 @@ import java.util.Iterator;
 @InputClass("http://localhost:8080/ontology/service-ontology/allDataQualities.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allDataQualities.owl#Output")
 public class AllDataQualities extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(AllDataQualities.class);
 
     @Override
@@ -32,6 +33,7 @@ public class AllDataQualities extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service: allDataQualities");
+
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -73,6 +75,7 @@ public class AllDataQualities extends SimpleSynchronousServiceServlet {
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
+                // Read each unique identifier value
                 while (elementIterator.hasNext()) {
                     element = elementIterator.next().getAsJsonObject();
                     // read identifier as integer typed literal
@@ -108,11 +111,6 @@ public class AllDataQualities extends SimpleSynchronousServiceServlet {
         public static final Resource DataQualityId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#DataQualityId");
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/allDataQualities.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/allDataQualities.owl#Output");
-
-    }
-
-    private static String getNullAsEmptyString(JsonElement jsonElement) {
-        return jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
     }
 }
 

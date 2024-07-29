@@ -23,6 +23,7 @@ import java.util.Iterator;
 @InputClass("http://localhost:8080/ontology/service-ontology/allMeasurementTypes.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allMeasurementTypes.owl#Output")
 public class AllMeasurementTypes extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(AllMeasurementTypes.class);
 
     @Override
@@ -32,6 +33,7 @@ public class AllMeasurementTypes extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service: allMeasurementTypes");
+
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -73,6 +75,7 @@ public class AllMeasurementTypes extends SimpleSynchronousServiceServlet {
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
+                // Read each unique identifier value
                 while (elementIterator.hasNext()) {
                     element = elementIterator.next().getAsJsonObject();
                     // read identifier as integer typed literal
@@ -105,7 +108,6 @@ public class AllMeasurementTypes extends SimpleSynchronousServiceServlet {
         public static final Resource MeasurementTypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeId");
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/allMeasurementTypes.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/allMeasurementTypes.owl#Output");
-
     }
 }
 

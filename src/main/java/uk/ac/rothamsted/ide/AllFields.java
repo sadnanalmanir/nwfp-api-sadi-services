@@ -23,6 +23,7 @@ import java.util.Iterator;
 @InputClass("http://localhost:8080/ontology/service-ontology/allFields.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allFields.owl#Output")
 public class AllFields extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(AllFields.class);
 
     @Override
@@ -32,6 +33,7 @@ public class AllFields extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service: allFields");
+
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -73,6 +75,7 @@ public class AllFields extends SimpleSynchronousServiceServlet {
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
+                // Read each unique identifier value
                 while (elementIterator.hasNext()) {
                     element = elementIterator.next().getAsJsonObject();
                     // read identifier as integer typed literal
@@ -104,15 +107,9 @@ public class AllFields extends SimpleSynchronousServiceServlet {
         // Data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
         // Resources
-        public static final Resource Field = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#Field");
         public static final Resource FieldId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldId");
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/allFields.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/allFields.owl#Output");
-
-    }
-
-    private static String getNullAsEmptyString(JsonElement jsonElement) {
-        return jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
     }
 }
 

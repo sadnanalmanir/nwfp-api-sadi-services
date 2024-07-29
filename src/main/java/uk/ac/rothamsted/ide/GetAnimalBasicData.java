@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 @InputClass("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Output")
 public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(GetAnimalBasicData.class);
 
     @Override
@@ -31,8 +32,10 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
         PropertyConfigurator.configure(log.getClass().getClassLoader().getResource("log4j.properties"));
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service: getAnimalBasicData");
+
         // Extract the animalBasicDataId from the input RDF:
-        int animalBasicData_Id = input.getRequiredProperty(Vocab.has_AnimalBasicDataId).getInt();
+        int animalBasicDataId = input.getRequiredProperty(Vocab.has_AnimalBasicDataId).getInt();
+
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -76,12 +79,13 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
+                // Read each unique identifier value
                 while (elementIterator.hasNext()) {
                     element = elementIterator.next().getAsJsonObject();
                     // Read current unique identifier value
                     Literal idVal = outputModel.createTypedLiteral(element.get("Id").getAsInt());
                     // check if the current id matches the extracted id
-                    if (idVal.getInt() == animalBasicData_Id) {
+                    if (idVal.getInt() == animalBasicDataId) {
                         String officialTagVal = getNullAsEmptyString(element.get("OfficialTag"));
                         String managementTagVal = getNullAsEmptyString(element.get("ManagementTag"));
                         String breedVal = getNullAsEmptyString(element.get("Breed"));
@@ -256,7 +260,6 @@ public class GetAnimalBasicData extends SimpleSynchronousServiceServlet {
         public static final Resource BreedingAnimal = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#BreedingAnimal");
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/getAnimalBasicData.owl#Output");
-
     }
 
     private static String getNullAsEmptyString(JsonElement jsonElement) {

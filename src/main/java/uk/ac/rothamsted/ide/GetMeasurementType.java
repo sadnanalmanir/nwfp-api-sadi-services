@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 @InputClass("http://localhost:8080/ontology/service-ontology/getMeasurementType.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getMeasurementType.owl#Output")
 public class GetMeasurementType extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(GetMeasurementType.class);
 
     @Override
@@ -32,8 +33,10 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getMeasurementType");
+
         // Extract the measurementTypeId from the input RDF:
         int measurementTypeId = input.getRequiredProperty(Vocab.has_measurementTypeId).getResource().getRequiredProperty(Vocab.has_value).getInt();
+
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -76,6 +79,7 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
+                // Read each unique identifier value
                 while (elementIterator.hasNext()) {
                     element = elementIterator.next().getAsJsonObject();
                     // Read current unique identifier value
@@ -140,8 +144,6 @@ public class GetMeasurementType extends SimpleSynchronousServiceServlet {
         } catch (Exception e) {
             log.info(e);
         }
-
-
     }
 
     public static final class Vocab {

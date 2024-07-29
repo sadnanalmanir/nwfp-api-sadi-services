@@ -22,6 +22,7 @@ import java.nio.charset.StandardCharsets;
 @InputClass("http://localhost:8080/ontology/service-ontology/allMeasurementTypesLong.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allMeasurementTypesLong.owl#Output")
 public class AllMeasurementTypesLong extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(AllMeasurementTypesLong.class);
 
     @Override
@@ -31,6 +32,7 @@ public class AllMeasurementTypesLong extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  allMeasurementTypesLong");
+
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -117,7 +119,6 @@ public class AllMeasurementTypesLong extends SimpleSynchronousServiceServlet {
         public static final Resource MeasurementTypeLongId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#MeasurementTypeLongId");
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/allMeasurementTypesLong.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/allMeasurementTypesLong.owl#Output");
-
     }
 }
 

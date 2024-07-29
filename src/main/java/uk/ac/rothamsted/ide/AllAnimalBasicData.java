@@ -23,6 +23,7 @@ import java.util.Iterator;
 @InputClass("http://localhost:8080/ontology/service-ontology/allAnimalBasicData.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allAnimalBasicData.owl#Output")
 public class AllAnimalBasicData extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(AllAnimalBasicData.class);
 
     @Override
@@ -32,6 +33,7 @@ public class AllAnimalBasicData extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service: allAnimalBasicData");
+
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -72,6 +74,7 @@ public class AllAnimalBasicData extends SimpleSynchronousServiceServlet {
                 JsonArray jsonArray = new Gson().fromJson(response.toString(), JsonArray.class);
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
+
                 // Read each unique identifier value
                 while (elementIterator.hasNext()) {
                     element = elementIterator.next().getAsJsonObject();
@@ -106,6 +109,5 @@ public class AllAnimalBasicData extends SimpleSynchronousServiceServlet {
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/allAnimalBasicData.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/allAnimalBasicData.owl#Output");
     }
-
 }
 

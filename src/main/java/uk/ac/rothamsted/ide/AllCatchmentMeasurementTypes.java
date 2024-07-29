@@ -23,6 +23,7 @@ import java.util.Iterator;
 @InputClass("http://localhost:8080/ontology/service-ontology/allCatchmentMeasurementTypes.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allCatchmentMeasurementTypes.owl#Output")
 public class AllCatchmentMeasurementTypes extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(AllCatchmentMeasurementTypes.class);
 
     @Override
@@ -32,6 +33,8 @@ public class AllCatchmentMeasurementTypes extends SimpleSynchronousServiceServle
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service: allCatchmentMeasurementTypes");
+
+        // create instance of the output model
         Model outputModel = output.getModel();
 
         try {
@@ -72,6 +75,7 @@ public class AllCatchmentMeasurementTypes extends SimpleSynchronousServiceServle
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
+                // Read each unique identifier value
                 while (elementIterator.hasNext()) {
                     element = elementIterator.next().getAsJsonObject();
                     // read identifier as integer typed literal
@@ -106,11 +110,6 @@ public class AllCatchmentMeasurementTypes extends SimpleSynchronousServiceServle
         public static final Resource CatchmentMeasurementTypeId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#CatchmentMeasurementTypeId");
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/allCatchmentMeasurementTypes.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/allCatchmentMeasurementTypes.owl#Output");
-
-    }
-
-    private static String getNullAsEmptyString(JsonElement jsonElement) {
-        return jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
     }
 }
 

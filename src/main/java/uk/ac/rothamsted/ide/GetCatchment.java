@@ -20,6 +20,7 @@ import java.nio.charset.StandardCharsets;
 @InputClass("http://localhost:8080/ontology/service-ontology/getCatchment.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getCatchment.owl#Output")
 public class GetCatchment extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(GetCatchment.class);
 
     @Override
@@ -74,6 +75,7 @@ public class GetCatchment extends SimpleSynchronousServiceServlet {
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
+                // Read each unique identifier value
                 while (elementIterator.hasNext()) {
                     element = elementIterator.next().getAsJsonObject();
                     // Read current unique identifier value

@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 @InputClass("http://localhost:8080/ontology/service-ontology/getCatchmentMeasurementType.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getCatchmentMeasurementType.owl#Output")
 public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(GetCatchmentMeasurementType.class);
 
     @Override
@@ -78,14 +79,13 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
+                // Read each unique identifier value
                 while (elementIterator.hasNext()) {
-
                     element = elementIterator.next().getAsJsonObject();
                     // Read current unique identifier value
                     Literal typeIdVal = outputModel.createTypedLiteral(element.get("type_id").getAsInt());
                     // check if the current id matches the extracted id
                     if (typeIdVal.getInt() == catchmentMeasurementTypeId) {
-
                         String catchmentIdVal = getNullAsEmptyString(element.get("catchment_ID"));
                         String catchmentNameVal = getNullAsEmptyString(element.get("catchment_name"));
                         String measurementTypeDisplayNameVal = getNullAsEmptyString(element.get("MeasTypeDisplayName"));
@@ -144,8 +144,6 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
         } catch (Exception e) {
             log.error(e);
         }
-
-
     }
 
     public static final class Vocab {
@@ -176,7 +174,6 @@ public class GetCatchmentMeasurementType extends SimpleSynchronousServiceServlet
         public static final Resource ConcentrationNameAndUnit = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#ConcentrationNameAndUnit");
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/getCatchmentMeasurementType.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/getCatchmentMeasurementType.owl#Output");
-
     }
 
     private static String getNullAsEmptyString(JsonElement jsonElement) {

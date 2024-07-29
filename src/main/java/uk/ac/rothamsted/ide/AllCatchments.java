@@ -23,6 +23,7 @@ import java.util.Iterator;
 @InputClass("http://localhost:8080/ontology/service-ontology/allCatchments.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allCatchments.owl#Output")
 public class AllCatchments extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(AllCatchments.class);
 
     @Override
@@ -32,6 +33,7 @@ public class AllCatchments extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service: allCatchments");
+
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -73,6 +75,7 @@ public class AllCatchments extends SimpleSynchronousServiceServlet {
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
+                // Read each unique identifier value
                 while (elementIterator.hasNext()) {
                     element = elementIterator.next().getAsJsonObject();
                     // read identifier as integer typed literal

@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 @InputClass("http://localhost:8080/ontology/service-ontology/getFieldEvent.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getFieldEvent.owl#Output")
 public class GetFieldEvent extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(GetFieldEvent.class);
 
     @Override
@@ -33,7 +34,7 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getFieldEvent");
 
-        // Extract the catchment id from the input RDF:
+        // Extract the field event id from the input RDF:
         int fieldEventId = input.getRequiredProperty(Vocab.has_fieldEventId).getResource().getRequiredProperty(Vocab.has_value).getInt();
 
         // create instance of the output model
@@ -79,6 +80,7 @@ public class GetFieldEvent extends SimpleSynchronousServiceServlet {
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
+                // Read each unique identifier value
                 while (elementIterator.hasNext()) {
                     element = elementIterator.next().getAsJsonObject();
                     // Read current unique identifier value

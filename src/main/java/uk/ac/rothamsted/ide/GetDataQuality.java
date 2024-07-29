@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 @InputClass("http://localhost:8080/ontology/service-ontology/getDataQuality.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getDataQuality.owl#Output")
 public class GetDataQuality extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(GetDataQuality.class);
 
     @Override
@@ -32,8 +33,10 @@ public class GetDataQuality extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getDataQuality");
-        // Extract the catchment id from the input RDF:
+
+        // Extract the data quality id from the input RDF:
         int dataQualityId = input.getRequiredProperty(Vocab.has_dataQualityId).getResource().getRequiredProperty(Vocab.has_value).getInt();
+
         // create instance of the output model
         Model outputModel = output.getModel();
 

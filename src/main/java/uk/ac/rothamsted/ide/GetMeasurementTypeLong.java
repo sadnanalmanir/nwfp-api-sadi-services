@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 @InputClass("http://localhost:8080/ontology/service-ontology/getMeasurementTypeLong.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/getMeasurementTypeLong.owl#Output")
 public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(GetMeasurementTypeLong.class);
 
     @Override
@@ -32,8 +33,10 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getMeasurementTypeLong");
+
         // Extract the measurementTypeLongId from the input RDF:
         int measurementTypeLongId = input.getRequiredProperty(Vocab.has_measurementTypeLongId).getResource().getRequiredProperty(Vocab.has_value).getInt();
+
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -161,7 +164,6 @@ public class GetMeasurementTypeLong extends SimpleSynchronousServiceServlet {
         public static final Resource SystemSetQuality = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#SystemSetQuality");
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/getMeasurementTypeLong.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/getMeasurementTypeLong.owl#Output");
-
     }
 
     private static String getNullAsEmptyString(JsonElement jsonElement) {

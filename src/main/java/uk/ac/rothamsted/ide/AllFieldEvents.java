@@ -23,6 +23,7 @@ import java.util.Iterator;
 @InputClass("http://localhost:8080/ontology/service-ontology/allFieldEvents.owl#Input")
 @OutputClass("http://localhost:8080/ontology/service-ontology/allFieldEvents.owl#Output")
 public class AllFieldEvents extends SimpleSynchronousServiceServlet {
+
     private static final Logger log = Logger.getLogger(AllFieldEvents.class);
 
     @Override
@@ -32,6 +33,7 @@ public class AllFieldEvents extends SimpleSynchronousServiceServlet {
 
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service: allFieldEvents");
+
         // create instance of the output model
         Model outputModel = output.getModel();
 
@@ -73,6 +75,7 @@ public class AllFieldEvents extends SimpleSynchronousServiceServlet {
                 Iterator<JsonElement> elementIterator = jsonArray.iterator();
                 JsonObject element;
 
+                // Read each unique identifier value
                 while (elementIterator.hasNext()) {
                     element = elementIterator.next().getAsJsonObject();
                     // read identifer as integer typed literal
@@ -92,8 +95,6 @@ public class AllFieldEvents extends SimpleSynchronousServiceServlet {
         } catch (Exception e) {
             log.info(e);
         }
-
-
     }
 
     public static final class Vocab {
@@ -104,15 +105,9 @@ public class AllFieldEvents extends SimpleSynchronousServiceServlet {
         // Data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
         // Resources
-        public static final Resource FieldEvent = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldEvent");
         public static final Resource FieldEventId = m_model.createResource("http://localhost:8080/ontology/domain-ontology/nwf.owl#FieldEventId");
         public static final Resource Input = m_model.createResource("http://localhost:8080/ontology/service-ontology/allFieldEvents.owl#Input");
         public static final Resource Output = m_model.createResource("http://localhost:8080/ontology/service-ontology/allFieldEvents.owl#Output");
-
-    }
-
-    private static String getNullAsEmptyString(JsonElement jsonElement) {
-        return jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
     }
 }
 
