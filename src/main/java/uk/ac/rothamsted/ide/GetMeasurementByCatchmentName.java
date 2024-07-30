@@ -40,33 +40,33 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
         log.info("Invoking SADI service:  getMeasurementByCatchmentName");
         Model outputModel = output.getModel();
 
-        String startDateValue = input.getPropertyResourceValue(Vocab.startDate).getRequiredProperty(Vocab.has_value).getString();
-        if (startDateValue == null | startDateValue == ""){
+        String startDateValue = input.getPropertyResourceValue(Vocab.has_startDate).getRequiredProperty(Vocab.has_value).getString();
+        if (startDateValue == null | startDateValue.equals("")){
             log.info("Failed to extract start date from: "
-                    + input.getLocalName() + " -> " + Vocab.startDate.getLocalName() + " -> " + Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_startDate.getLocalName() + " -> " + Vocab.has_value.getLocalName());
             throw new IllegalArgumentException("Failed to extract start date from: "
-                    + input.getLocalName() + " -> " + Vocab.startDate.getLocalName() + " -> " + Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_startDate.getLocalName() + " -> " + Vocab.has_value.getLocalName());
         }
-        String endDateValue = input.getPropertyResourceValue(Vocab.endDate).getRequiredProperty(Vocab.has_value).getString();
+        String endDateValue = input.getPropertyResourceValue(Vocab.has_endDate).getRequiredProperty(Vocab.has_value).getString();
         if (endDateValue == null){
             log.info("Failed to extract end date from: "
-                    + input.getLocalName() + " -> " + Vocab.endDate.getLocalName() + " -> " + Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_endDate.getLocalName() + " -> " + Vocab.has_value.getLocalName());
             throw new IllegalArgumentException("Failed to extract end date from: "
-                    + input.getLocalName() + " -> " + Vocab.endDate.getLocalName() + " -> " + Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_endDate.getLocalName() + " -> " + Vocab.has_value.getLocalName());
         }
-        String catchmentNameValue = input.getPropertyResourceValue(Vocab.catchmentName).getRequiredProperty(Vocab.has_value).getString();
+        String catchmentNameValue = input.getPropertyResourceValue(Vocab.has_catchmentName).getRequiredProperty(Vocab.has_value).getString();
         if (catchmentNameValue == null){
             log.info("Failed to extract catchment name from: "
-                    + input.getLocalName() + " -> " + Vocab.catchmentName.getLocalName() + " -> " + Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_catchmentName.getLocalName() + " -> " + Vocab.has_value.getLocalName());
             throw new IllegalArgumentException("Failed to extract catchment name from: "
-                    + input.getLocalName() + " -> " + Vocab.catchmentName.getLocalName() + " -> " + Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_catchmentName.getLocalName() + " -> " + Vocab.has_value.getLocalName());
         }
-        String typeIdValue = input.getPropertyResourceValue(Vocab.measurementTypeId).getRequiredProperty(Vocab.has_value).getString();
+        String typeIdValue = input.getPropertyResourceValue(Vocab.has_measurementTypeId).getRequiredProperty(Vocab.has_value).getString();
         if (typeIdValue == null){
             log.info("Failed to extract start type id from: "
-                    + input.getLocalName() + " -> " + Vocab.measurementTypeId.getLocalName() + " -> " + Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_measurementTypeId.getLocalName() + " -> " + Vocab.has_value.getLocalName());
             throw new IllegalArgumentException("Failed to extract start type id from: "
-                    + input.getLocalName() + " -> " + Vocab.measurementTypeId.getLocalName() + " -> " + Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_measurementTypeId.getLocalName() + " -> " + Vocab.has_value.getLocalName());
         }
         String body = "{\n" +
                 "    \"startDate\": \"" +startDateValue+ "\",\n" +
@@ -134,32 +134,32 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
                     Resource DateTimeResource = outputModel.createResource();
                     DateTimeResource.addProperty(Vocab.type, Vocab.DateTime);
                     DateTimeResource.addLiteral(Vocab.has_value, dateTimeVal);
-                    output.addProperty(Vocab.dateTime, DateTimeResource);
+                    output.addProperty(Vocab.has_dateTime, DateTimeResource);
 
                     Resource MeasurementValueResource = outputModel.createResource();
                     MeasurementValueResource.addProperty(Vocab.type, Vocab.MeasurementValue);
                     MeasurementValueResource.addLiteral(Vocab.has_value, valueVal);
-                    output.addProperty(Vocab.measurementValue, MeasurementValueResource);
+                    output.addProperty(Vocab.has_measurementValue, MeasurementValueResource);
 
                     Resource MeasurementTypeDisplayNameResource = outputModel.createResource();
                     MeasurementTypeDisplayNameResource.addProperty(Vocab.type, Vocab.MeasurementTypeDisplayName);
                     MeasurementTypeDisplayNameResource.addLiteral(Vocab.has_value, measurementTypeDisplayNameVal);
-                    output.addProperty(Vocab.measurementTypeDisplayName, MeasurementTypeDisplayNameResource);
+                    output.addProperty(Vocab.has_measurementTypeDisplayName, MeasurementTypeDisplayNameResource);
 
                     Resource LocationNameResource = outputModel.createResource();
                     LocationNameResource.addProperty(Vocab.type, Vocab.LocationName);
                     LocationNameResource.addLiteral(Vocab.has_value, locationNameVal);
-                    output.addProperty(Vocab.locationName, LocationNameResource);
+                    output.addProperty(Vocab.has_locationName, LocationNameResource);
 
                     Resource CatchmentDisplayNameResource = outputModel.createResource();
                     CatchmentDisplayNameResource.addProperty(Vocab.type, Vocab.CatchmentDisplayName);
                     CatchmentDisplayNameResource.addLiteral(Vocab.has_value, catchmentDisplayNameVal);
-                    output.addProperty(Vocab.catchmentDisplayName, CatchmentDisplayNameResource);
+                    output.addProperty(Vocab.has_catchmentDisplayName, CatchmentDisplayNameResource);
 
                     Resource DataQualityResource = outputModel.createResource();
                     DataQualityResource.addProperty(Vocab.type, Vocab.DataQuality);
                     DataQualityResource.addLiteral(Vocab.has_value, dataQualityVal);
-                    output.addProperty(Vocab.dataQuality, DataQualityResource);
+                    output.addProperty(Vocab.has_dataQuality, DataQualityResource);
                 }
                 log.info("getMeasurementByCatchmentName service completed.");
             }else if (status > 299){
@@ -178,16 +178,16 @@ public class GetMeasurementByCatchmentName extends SimpleSynchronousServiceServl
         private static final Model m_model = ModelFactory.createDefaultModel();
         // object properties
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property startDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_startDate");
-        public static final Property endDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_endDate");
-        public static final Property measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeId");
-        public static final Property catchmentName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentName");
-        public static final Property dateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_dateTime");
-        public static final Property measurementValue = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementValue");
-        public static final Property measurementTypeDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeDisplayName");
-        public static final Property locationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationName");
-        public static final Property catchmentDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentDisplayName");
-        public static final Property dataQuality = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_dataQuality");
+        public static final Property has_startDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_startDate");
+        public static final Property has_endDate = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_endDate");
+        public static final Property has_measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeId");
+        public static final Property has_catchmentName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentName");
+        public static final Property has_dateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_dateTime");
+        public static final Property has_measurementValue = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementValue");
+        public static final Property has_measurementTypeDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeDisplayName");
+        public static final Property has_locationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationName");
+        public static final Property has_catchmentDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentDisplayName");
+        public static final Property has_dataQuality = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_dataQuality");
         // data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
         // resources

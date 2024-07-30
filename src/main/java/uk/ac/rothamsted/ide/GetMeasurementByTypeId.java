@@ -40,26 +40,26 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
         log.info("*** SADI Service ***");
         log.info("Invoking SADI service:  getMeasurementByTypeId");
         Model outputModel = output.getModel();
-        String itemPerPageValue = input.getPropertyResourceValue(Vocab.itemPerPage).getRequiredProperty(Vocab.has_value).getString();
+        String itemPerPageValue = input.getPropertyResourceValue(Vocab.has_itemPerPage).getRequiredProperty(Vocab.has_value).getString();
         if (itemPerPageValue == null | itemPerPageValue == ""){
             log.info("Failed to extract items per page from: "
-                    + input.getLocalName() + " -> " + Vocab.itemPerPage.getLocalName() + " -> " + GetMeasurementByTypeId.Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_itemPerPage.getLocalName() + " -> " + Vocab.has_value.getLocalName());
             throw new IllegalArgumentException("Failed to extract items per page from: "
-                    + input.getLocalName() + " -> " + Vocab.itemPerPage.getLocalName() + " -> " + GetMeasurementByTypeId.Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_itemPerPage.getLocalName() + " -> " + Vocab.has_value.getLocalName());
         }
-        String pageNumberValue = input.getPropertyResourceValue(Vocab.pageNumber).getRequiredProperty(Vocab.has_value).getString();
+        String pageNumberValue = input.getPropertyResourceValue(Vocab.has_pageNumber).getRequiredProperty(Vocab.has_value).getString();
         if (pageNumberValue == null | pageNumberValue == ""){
             log.info("Failed to extract page number from: "
-                    + input.getLocalName() + " -> " + Vocab.pageNumber.getLocalName() + " -> " + GetMeasurementByTypeId.Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_pageNumber.getLocalName() + " -> " + Vocab.has_value.getLocalName());
             throw new IllegalArgumentException("Failed to extract page number from: "
-                    + input.getLocalName() + " -> " + Vocab.pageNumber.getLocalName() + " -> " + GetMeasurementByTypeId.Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_pageNumber.getLocalName() + " -> " + Vocab.has_value.getLocalName());
         }
-        String typeIdValue = input.getPropertyResourceValue(Vocab.measurementTypeId).getRequiredProperty(Vocab.has_value).getString();
+        String typeIdValue = input.getPropertyResourceValue(Vocab.has_measurementTypeId).getRequiredProperty(Vocab.has_value).getString();
         if (typeIdValue == null | typeIdValue == ""){
             log.info("Failed to extract type id from: "
-                    + input.getLocalName() + " -> " + Vocab.measurementTypeId.getLocalName() + " -> " + GetMeasurementByTypeId.Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_measurementTypeId.getLocalName() + " -> " + Vocab.has_value.getLocalName());
             throw new IllegalArgumentException("Failed to extract type id from: "
-                    + input.getLocalName() + " -> " + Vocab.measurementTypeId.getLocalName() + " -> " + GetMeasurementByTypeId.Vocab.has_value.getLocalName());
+                    + input.getLocalName() + " -> " + Vocab.has_measurementTypeId.getLocalName() + " -> " + Vocab.has_value.getLocalName());
         }
         String body = "{\n" +
                 "    \"numPerPage\": " + itemPerPageValue + ",\n" +
@@ -140,32 +140,32 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
                                 Resource DateTimeResource = outputModel.createResource();
                                 DateTimeResource.addProperty(Vocab.type, Vocab.DateTime);
                                 DateTimeResource.addLiteral(Vocab.has_value, dateTimeVal);
-                                output.addProperty(Vocab.dateTime, DateTimeResource);
+                                output.addProperty(Vocab.has_dateTime, DateTimeResource);
 
                                 Resource MeasurementValueResource = outputModel.createResource();
                                 MeasurementValueResource.addProperty(Vocab.type, Vocab.MeasurementValue);
                                 MeasurementValueResource.addLiteral(Vocab.has_value, valueVal);
-                                output.addProperty(Vocab.measurementValue, MeasurementValueResource);
+                                output.addProperty(Vocab.has_measurementValue, MeasurementValueResource);
 
                                 Resource MeasurementTypeDisplayNameResource = outputModel.createResource();
                                 MeasurementTypeDisplayNameResource.addProperty(Vocab.type, Vocab.MeasurementTypeDisplayName);
                                 MeasurementTypeDisplayNameResource.addLiteral(Vocab.has_value, measurementTypeDisplayNameVal);
-                                output.addProperty(Vocab.measurementTypeDisplayName, MeasurementTypeDisplayNameResource);
+                                output.addProperty(Vocab.has_measurementTypeDisplayName, MeasurementTypeDisplayNameResource);
 
                                 Resource LocationNameResource = outputModel.createResource();
                                 LocationNameResource.addProperty(Vocab.type, Vocab.LocationName);
                                 LocationNameResource.addLiteral(Vocab.has_value, locationNameVal);
-                                output.addProperty(Vocab.locationName, LocationNameResource);
+                                output.addProperty(Vocab.has_locationName, LocationNameResource);
 
                                 Resource CatchmentDisplayNameResource = outputModel.createResource();
                                 CatchmentDisplayNameResource.addProperty(Vocab.type, Vocab.CatchmentDisplayName);
                                 CatchmentDisplayNameResource.addLiteral(Vocab.has_value, catchmentDisplayNameVal);
-                                output.addProperty(Vocab.catchmentDisplayName, CatchmentDisplayNameResource);
+                                output.addProperty(Vocab.has_catchmentDisplayName, CatchmentDisplayNameResource);
 
                                 Resource DataQualityResource = outputModel.createResource();
                                 DataQualityResource.addProperty(Vocab.type, Vocab.DataQuality);
                                 DataQualityResource.addLiteral(Vocab.has_value, dataQualityVal);
-                                output.addProperty(Vocab.dataQuality, DataQualityResource);
+                                output.addProperty(Vocab.has_dataQuality, DataQualityResource);
                             }
                         }
                     }
@@ -184,16 +184,15 @@ public class GetMeasurementByTypeId extends SimpleSynchronousServiceServlet {
         private static final Model m_model = ModelFactory.createDefaultModel();
         // object properties
         public static final Property type = m_model.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        public static final Property itemPerPage = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_itemPerPage");
-        public static final Property pageNumber = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_pageNumber");
-        public static final Property measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeId");
-
-        public static final Property dateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_dateTime");
-        public static final Property measurementValue = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementValue");
-        public static final Property measurementTypeDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeDisplayName");
-        public static final Property locationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationName");
-        public static final Property catchmentDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentDisplayName");
-        public static final Property dataQuality = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_dataQuality");
+        public static final Property has_itemPerPage = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_itemPerPage");
+        public static final Property has_pageNumber = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_pageNumber");
+        public static final Property has_measurementTypeId = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeId");
+        public static final Property has_dateTime = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_dateTime");
+        public static final Property has_measurementValue = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementValue");
+        public static final Property has_measurementTypeDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_measurementTypeDisplayName");
+        public static final Property has_locationName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_locationName");
+        public static final Property has_catchmentDisplayName = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_catchmentDisplayName");
+        public static final Property has_dataQuality = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_dataQuality");
         // data property
         public static final Property has_value = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_value");
         // resources

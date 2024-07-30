@@ -4,23 +4,23 @@
 
     <rdf:Description rdf:about="http://localhost:8080/ontology/domain-ontology/nwf.owl#Catchment">
         <rdf:type rdf:resource="http://localhost:8080/ontology/service-ontology/getMeasurementByDateRange.owl#Input"/>
-        <ns0:startDate>
+        <ns0:has_startDate>
             <ns0:StartDate rdf:about="http://example.com/person#node1">
                 <ns0:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-12-17</ns0:has_value>
             </ns0:StartDate>
-        </ns0:startDate>
+        </ns0:has_startDate>
 
-        <ns0:endDate>
+        <ns0:has_endDate>
             <ns0:EndDate rdf:about="http://example.com/person#node2">
                 <ns0:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2019-12-19</ns0:has_value>
             </ns0:EndDate>
-        </ns0:endDate>
+        </ns0:has_endDate>
 
-        <ns0:measurementTypeId>
+        <ns0:has_measurementTypeId>
             <ns0:MeasurementTypeId rdf:about="http://example.com/person#node3">
                 <ns0:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">19</ns0:has_value>
             </ns0:MeasurementTypeId>
-        </ns0:measurementTypeId>
+        </ns0:has_measurementTypeId>
 
     </rdf:Description>
 

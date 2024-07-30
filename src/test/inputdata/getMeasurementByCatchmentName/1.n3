@@ -4,10 +4,10 @@
 @prefix ex: <http://example.com/person#> .
 
 nwf:Catchment a  service:Input ;
-    nwf:startDate ex:node1 ;
-    nwf:endDate ex:node2 ;
-    nwf:catchmentName ex:node3 ;
-    nwf:measurementTypeId ex:node4 .
+    nwf:has_startDate ex:node1 ;
+    nwf:has_endDate ex:node2 ;
+    nwf:has_catchmentName ex:node3 ;
+    nwf:has_measurementTypeId ex:node4 .
 
 ex:node1 a  nwf:StartDate ;
     nwf:has_value "2019-12-17"^^xsd:string .

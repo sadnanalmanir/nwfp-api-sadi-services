@@ -4,9 +4,9 @@
 @prefix ex: <http://example.com/person#> .
 
 nwf:Catchment a  service:Input ;
-    nwf:itemPerPage ex:node1 ;
-    nwf:pageNumber ex:node2 ;
-    nwf:measurementTypeId ex:node3 .
+    nwf:has_itemPerPage ex:node1 ;
+    nwf:has_pageNumber ex:node2 ;
+    nwf:has_measurementTypeId ex:node3 .
 
 ex:node1 a  nwf:ItemPerPage ;
     nwf:has_value "50"^^xsd:string .

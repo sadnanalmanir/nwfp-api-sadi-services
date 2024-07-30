@@ -2,7 +2,7 @@
 SADI Services exposing RESTful API [endpoints](https://red-crescent-623716.postman.co/documentation/7453000-ae05790f-8bea-4c3c-8b9c-006ebab9e13e) of the [North Wyke Farm Platform](https://nwfp.rothamsted.ac.uk/) Data 
 
 ## SADI services
-The following table shows the SADI services, their CRUD operations, the endpoints they expose
+The following table shows the SADI services, their CRUD operations, and the endpoints they expose
 
 | SADI Service                  | Description                                                                                                | HTTP Method | API Endpoint                                                      |
 |-------------------------------|------------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------|
@@ -12,7 +12,7 @@ The following table shows the SADI services, their CRUD operations, the endpoint
 | getCatchmentMeasurementTypeInfo   | Get information about the measurements of catchments based on the identifier (**type_id identifiers are Non-unique**)                              | GET         | https://nwfp.rothamsted.ac.uk:8443/getCatchmentMeasurementTypes   |
 | allFields                     | List all fields by their unique identifiers                                                                | GET         | https://nwfp.rothamsted.ac.uk:8443/getFields                      |
 | getFieldInfo                      | Get information about the fields based on the identifier                                                   | GET         | https://nwfp.rothamsted.ac.uk:8443/getFields                      |
-| allFieldEvents                | List all events in the fields by their identifiers (Max 1500 rows output)                                  | GET         | https://nwfp.rothamsted.ac.uk:8443/getFieldEvents                 |
+| allFieldEvents                | List all events in the fields by their identifiers                                   | GET         | https://nwfp.rothamsted.ac.uk:8443/getFieldEvents                 |
 | getFieldEventInfo                 | Get information about the events in the fields based on the identifier                                     | GET         | https://nwfp.rothamsted.ac.uk:8443/getFieldEvents                 |
 | allAnimalBasicData            | List all basic animal data by their unique identifiers                                                     | GET         | https://nwfp.rothamsted.ac.uk:8443/getAnimalBasicData             |
 | getAnimalBasicDataInfo            | Get information about the basic animal data based on the identifier                                        | GET         | https://nwfp.rothamsted.ac.uk:8443/getAnimalBasicData             |
