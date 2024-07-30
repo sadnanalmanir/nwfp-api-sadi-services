@@ -119,12 +119,12 @@ public class GetMeasurementTypeInfo extends SimpleSynchronousServiceServlet {
                         Resource LLOResource = outputModel.createResource();
                         LLOResource.addProperty(Vocab.type, Vocab.LLO);
                         LLOResource.addLiteral(Vocab.has_value, lLOVal);
-                        output.addProperty(Vocab.has_lLO, LLOResource);
+                        output.addProperty(Vocab.has_llo, LLOResource);
 
                         Resource ULOResource = outputModel.createResource();
                         ULOResource.addProperty(Vocab.type, Vocab.ULO);
                         ULOResource.addLiteral(Vocab.has_value, uLOVal);
-                        output.addProperty(Vocab.has_uLO, ULOResource);
+                        output.addProperty(Vocab.has_ulo, ULOResource);
 
                         Resource GroupResource = outputModel.createResource();
                         GroupResource.addProperty(Vocab.type, Vocab.Group);
@@ -155,8 +155,8 @@ public class GetMeasurementTypeInfo extends SimpleSynchronousServiceServlet {
         public static final Property has_name = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_name");
         public static final Property has_unit = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_unit");
         public static final Property has_displayUnit = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_displayUnit");
-        public static final Property has_lLO = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#lLO");
-        public static final Property has_uLO = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#uLO");
+        public static final Property has_llo = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_llo");
+        public static final Property has_ulo = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_ulo");
         public static final Property has_group = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_group");
         public static final Property has_systemSetQuality = m_model.createProperty("http://localhost:8080/ontology/domain-ontology/nwf.owl#has_systemSetQuality");
         // Data property
